@@ -28,7 +28,7 @@ set.seed(0)
 We use this model tot predict the values.
 
 ```{r}
-fit <- lm(y~ï..T*C*K,data = data)
+fit <- lm(y~T*C*K,data = data)
 
 ```
 
@@ -37,13 +37,13 @@ fit <- lm(y~ï..T*C*K,data = data)
 ```{r}
 
 matCube <- function(model, var1,var2,var3,title) {
-  newData<-data.frame(   ï..T =c(-1,1,-1,1,-1,1,-1,1),
+  newData<-data.frame(T =c(-1,1,-1,1,-1,1,-1,1),
                       C=c(-1,-1,1,1,-1,-1,1,1),
                       K=c(-1,-1,-1,-1,1,1,1,1))
   newData$y=predict(model,newData)
   newData[newData==-1]=0
   newData$dim_margin=(newData$K)/2;
-  newData$plot_T=newData$ï..T+newData$dim_margin;
+  newData$plot_T=newData$T+newData$dim_margin;
   newData$plot_C=newData$C+newData$dim_margin;
   print(newData)
   plots<-data.frame(x1 = as.numeric(0), y1 = as.numeric(0), x2 = as.numeric(0), y2 = as.numeric(1),
