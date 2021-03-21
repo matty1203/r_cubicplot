@@ -7,46 +7,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Datasets:
 
+## To do for 2nd April meeting: 
 
-To start with I will give you the following two datasets: 
-1. Full_Cassini_Master_MP_BS_CMJ_revised.csv
-2. Cass_data.rds
+1. Read Readme.rmd file and Sections 1 and 2 in  the Jackman et al paper
 
+2. Collate the two datasets together using time variables as key. Be careful how you treat time variables  - you will need to convert them to a differebnt variable type. Note: dataset 2 is the full dataset and dataset 1 is just the occurrences of MP: magnetopause and
+BS: bow shock, so dataset 1 is much smaller. The vertical red lines in Fig 1a) and b) are the MP: magnetopause and BS: bow shock from the 1st dataset.
 
-## 1. Full_Cassini_Master_MP_BS_CMJ_revised.csv
+3. Reproduce figure 1 a) and b) from the paper (only the top two panels)
 
-This contains list of crossings of the magnetopause and bow shock
-boundaries at Saturn, made by a manual inspection of the data from the
-Cassini magnetometer and plasma instruments.
-The list is a complete set covering the entire mission. 
-Bow shocks are much easier to detect than magnetopause crossings. 
-
-The file labels are:
-
-Type:
-MP: magnetopause
-BS: bow shock
-DG: data gap
-SC: SCAS interval (unreliable data)
-
-Direction:
-I: in
-O: out
-S_SW start in the solar wind (for data gap or SCAS)
-E_SW end in the solar wind (for data gap or SCAS)
-S_SH start in the sheath (for data gap or SCAS)
-E_SH end in the sheath (for data gap or SCAS)
-S_SP start in the magnetosphere (for data gap or SCAS)
-E_SP end in the magnetosphere (for data gap or SCAS)
-
-
-## 2. Cass_data.rds
-
-Cassini magnetometer data for the entire mission. It is quite a large file.
-Most interesting variables:  BTotal.nT. BX_KRTP.nT. BY_KRTP.nT. BZ_KRTP.nT.
-
-
-
-Need to collate the two datasets together
