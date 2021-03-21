@@ -39,12 +39,12 @@ To start with I will give you the following two datasets:
 2. Cass_data.rds
 
 
-## 1. Full_Cassini_Master_MP_BS_CMJ_revised.csv
+## 1. Full_Cassini_Master_MP_BS_CMJ_revised2005.csv 
 
 This contains list of crossings of the magnetopause and bow shock
 boundaries at Saturn, made by a manual inspection of the data from the
 Cassini magnetometer and plasma instruments.
-The list is a complete set covering the entire mission. 
+The list is covering 2005. 
 Bow shocks are much easier to detect than magnetopause crossings. 
 
 The file labels are:
@@ -66,8 +66,8 @@ S_SP start in the magnetosphere (for data gap or SCAS)
 E_SP end in the magnetosphere (for data gap or SCAS)
 
 
-## 2. Cass_data.rds
+## 2. Cass_data2005.rds
 
-Cassini magnetometer data for the entire mission. It is quite a large file.
+Cassini magnetometer data for 2005. the full dataset spans 2004-2017.
 Most interesting variables:  BTotal.nT. BX_KRTP.nT. BY_KRTP.nT. BZ_KRTP.nT.
 (These are abs(B(nT)) and Bxyz(nT) in Figure 1 a) and b) in the Jackman et al paper)
