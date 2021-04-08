@@ -41,9 +41,15 @@ temp<-filter(leftJoinDf,between(date,d1,d2))
 bowShock<-filter(temp,type_cross=="BS")$TimeStamp
 MagP<-filter(temp,type_cross=="MP")$TimeStamp
 
+
+#####Plotting Data
 ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
   geom_line()+
-  geom_vline(xintercept=bowShock, linetype="dotted",colour="blue")+
-  geom_vline(xintercept=MagP, linetype="dotted",colour="red")
-temp[temp$type_cross=='BS',1]
+  ylab("|B|(nT)")+
+  geom_vline(xintercept=bowShock, linetype="dotted",colour="blue",size=1.3)+
+  geom_vline(xintercept=MagP, linetype="dotted",colour="red",size=1.3)+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
   
