@@ -1,22 +1,11 @@
 library(dplyr)
-data1<-readRDS('Full_Cassini_Master_MP_BS_CMJ_revised2005.rds', refhook = NULL)
-data2<-readRDS('Cass_data2005.rds', refhook = NULL)
+data1<-readRDS('./Data/Full_Cassini_Master_MP_BS_CMJ_revised2005.rds', refhook = NULL)
+data2<-readRDS('./Data/Cass_data2005.rds', refhook = NULL)
 copy_data1<-data1
 copy_data2<-data2
 
 head(data1)
 head(data2)
-#as.POSIXct(paste(data1$))
-max(data1$doy_cross)
-
-##min and max of crossing year
-min(data1$year_cross)
-max(data1$year_cross)
-###converting day into date 
-as.Date(365,origin="2005-01-01")
-max(data1$hour_cross)
-min(data1$hour_cross) 
-
 
 ###################### Formatting Date in Data1
 
@@ -32,3 +21,7 @@ copy_data1<-copy_data1%>%select(-c(date,time))
 head(copy_data2)
 copy_data2$TimeStamp<-as.POSIXct(copy_data2$Timestamp.UTC., format="%d/%m/%Y %H:%M:%S")
 copy_data2$TimeStamp<-format(copy_data2$TimeStamp, "%Y-%m-%d %H:%M:%S" )
+
+
+######### Merging with time variables 
+
