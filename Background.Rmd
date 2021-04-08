@@ -1,0 +1,73 @@
+---
+title: "Background"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Background:
+
+The regions separated by the magnetopause and bow shock crossings are
+quite distinct. As you fly towards the planet, you see:
+1 The solar wind upstream of the planet (low magnitude field strength,
+quiet character field) 
+2. then bow shock boundary 
+3. then magnetosheath
+(turbulent, compressed field, heated plasma)
+4. then the magnetopause boundary 
+5. then the magnetosphere (stronger magnetic field, direction
+oriented with the planetary dipole). 
+
+It's also important to note that
+the boundaries are constantly moving in a delicate pressure balance
+between the upstream solar wind and the magnetospheric field and plasma
+environment. Thus for a given inbound (toward the planet) or outbound
+(away from the planet) trajectory, it's possible to cross a given
+boundary multiple times and it moves back and forth over the spacecraft
+
+## Aim
+1. Classify the boundary transitions themselves, 
+2. Classify the regions which they separate (if we have time).
+
+
+## Datasets:
+
+
+To start with I will give you the following two datasets: 
+1. Full_Cassini_Master_MP_BS_CMJ_revised.csv
+2. Cass_data.rds
+
+
+## 1. Full_Cassini_Master_MP_BS_CMJ_revised2005.csv 
+
+This contains list of crossings of the magnetopause and bow shock
+boundaries at Saturn, made by a manual inspection of the data from the
+Cassini magnetometer and plasma instruments.
+The list is covering 2005. 
+Bow shocks are much easier to detect than magnetopause crossings. 
+
+The file labels are:
+
+Type:
+MP: magnetopause
+BS: bow shock
+DG: data gap
+SC: SCAS interval (unreliable data)
+
+Direction:
+I: in
+O: out
+S_SW start in the solar wind (for data gap or SCAS)
+E_SW end in the solar wind (for data gap or SCAS)
+S_SH start in the sheath (for data gap or SCAS)
+E_SH end in the sheath (for data gap or SCAS)
+S_SP start in the magnetosphere (for data gap or SCAS)
+E_SP end in the magnetosphere (for data gap or SCAS)
+
+
+## 2. Cass_data2005.rds
+
+Cassini magnetometer data for 2005. the full dataset spans 2004-2017.
+Most interesting variables:  BTotal.nT. BX_KRTP.nT. BY_KRTP.nT. BZ_KRTP.nT.
+(These are abs(B(nT)) and Bxyz(nT) in Figure 1 a) and b) in the Jackman et al paper)

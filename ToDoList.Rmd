@@ -1,0 +1,19 @@
+---
+title: "TO DO LIST"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## To do for 2nd April meeting: 
+
+1. Read Readme.rmd file and Sections 1 and 2 in  the Jackman et al paper
+
+2. Collate the two datasets together using time variables as key. Be careful how you treat time variables  - you will need to convert them to a differebnt variable type. Note: dataset 2 is the full dataset and dataset 1 is just the occurrences of MP: magnetopause and
+BS: bow shock, so dataset 1 is much smaller. The vertical red lines in Fig 1a) and b) are the MP: magnetopause and BS: bow shock from the 1st dataset.
+
+3. Reproduce figure 1 a) and b) from the paper (only the top two panels)
+
