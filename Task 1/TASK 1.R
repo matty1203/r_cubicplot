@@ -1,7 +1,7 @@
 library(dplyr)
 library(ggplot2)
-data1<-readRDS('./Data/Full_Cassini_Master_MP_BS_CMJ_revised2005.rds', refhook = NULL)
-data2<-readRDS('./Data/Cass_data2005.rds', refhook = NULL)
+data1<-readRDS('../Data/Full_Cassini_Master_MP_BS_CMJ_revised2005.rds', refhook = NULL)
+data2<-readRDS('../Data/Cass_data2005.rds', refhook = NULL)
 copy_data1<-data1
 copy_data2<-data2
 
