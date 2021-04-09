@@ -55,8 +55,8 @@ head(leftJoinDf %>% filter(!is.na(zcrosslist)))
 ## Filtering all points in MAG 2005 between day 72 and 74
 Filtering the points and finding the bowshock and magnetic pause x coordinates.<br /> 
 ```{r }
-d1<-as.Date(72,origin="2005-01-01")
-d2<-as.Date(73,origin="2005-01-01")
+d1<-as.Date(72,origin="2004-12-31")
+d2<-as.Date(73,origin="2004-12-31")
 
 temp<-filter(leftJoinDf,between(date,d1,d2))
 bowShock<-filter(temp,type_cross=="BS")$TimeStamp
@@ -65,7 +65,7 @@ MagP<-filter(temp,type_cross=="MP")$TimeStamp
 ## Plotting Graphs
 ```{r }
 ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
-  geom_line()+
+  geom_line()+ylim(0,6)+
   ylab("|B|(nT)")+
   geom_vline(xintercept=bowShock, linetype="dotted",colour="blue",size=1.3)+
   geom_vline(xintercept=MagP, linetype="dotted",colour="red",size=1.3)+
