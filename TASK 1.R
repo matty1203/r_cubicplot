@@ -42,7 +42,7 @@ bowShock<-filter(temp,type_cross=="BS")$TimeStamp
 MagP<-filter(temp,type_cross=="MP")$TimeStamp
 
 
-#####Plotting Data
+#####Plotting Graph1
 ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
   geom_line()+
   ylab("|B|(nT)")+
@@ -52,4 +52,46 @@ ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 
+#####Plotting Graph2
+ggplot(data=temp, aes(x=TimeStamp)) +
+  geom_line(aes(y = BX_KRTP.nT.), color = "red")+
+  geom_line(aes(y = BY_KRTP.nT.), color = "green")+
+  geom_line(aes(y = BZ_KRTP.nT.), color = "blue")+
+  ylab("Bxyz(nT)")+
+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+ 
   
+###Finding all points in MAG 2005 between day 136 and 138
+
+d1<-as.Date(136,origin="2005-01-01")
+d2<-as.Date(138,origin="2005-01-01")
+
+temp<-filter(leftJoinDf,between(date,d1,d2))
+bowShock<-filter(temp,type_cross=="BS")$TimeStamp
+MagP<-filter(temp,type_cross=="MP")$TimeStamp
+
+
+#####Plotting Graph1
+ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
+  geom_line()+
+  ylab("|B|(nT)")+
+  geom_vline(xintercept=bowShock, linetype="dotted",colour="blue",size=1.3)+
+  geom_vline(xintercept=MagP, linetype="dotted",colour="red",size=1.3)+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+#####Plotting Graph2
+ggplot(data=temp, aes(x=TimeStamp)) +
+  geom_line(aes(y = BX_KRTP.nT.), color = "red")+
+  geom_line(aes(y = BY_KRTP.nT.), color = "green")+
+  geom_line(aes(y = BZ_KRTP.nT.), color = "blue")+
+  ylab("Bxyz(nT)")+
+  
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
