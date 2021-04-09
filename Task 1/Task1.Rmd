@@ -75,11 +75,11 @@ ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
 
 ```
 ```{r }
-ggplot(data=temp, aes(x=TimeStamp)) +
-  geom_line(aes(y = BX_KRTP.nT.), color = "red")+
-  geom_line(aes(y = BY_KRTP.nT.), color = "green")+
-  geom_line(aes(y = BZ_KRTP.nT.), color = "blue")+
-  ylab("Bxyz(nT)")+
+ggplot(data=temp, aes(x=TimeStamp)) +ylim(-3,3)+
+  geom_line(aes(y = -BX_KRTP.nT.), color = "green")+
+  geom_line(aes(y = -BY_KRTP.nT.), color = "blue")+
+  geom_line(aes(y = BZ_KRTP.nT.), color = "red")+
+  ylab("Bxyz(nT)")+geom_hline(aes(yintercept = 0), col = 8)+
 
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
