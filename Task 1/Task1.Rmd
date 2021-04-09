@@ -31,7 +31,7 @@ head(data2)
 Converted doy_cross variable to 2005 Date.<br />
 
 ```{r }
-copy_data1$date<-as.Date(copy_data1$doy_cross,origin="2005-01-01")
+copy_data1$date<-as.Date(copy_data1$doy_cross,origin="2004-12-31")
 head(copy_data1)
 copy_data1$time<-paste(copy_data1$hour_cross,copy_data1$minute_cross,"00",sep=":")
 head(copy_data1)
@@ -50,7 +50,7 @@ head(copy_data2)
 Merging two dataset by using time variables.<br /> 
 ```{r }
 leftJoinDf <- left_join(copy_data2,copy_data1,by=c('date','hour_cross','minute_cross'))
-head(leftJoinDf)
+head(leftJoinDf %>% filter(!is.na(zcrosslist)))
 ```
 ## Filtering all points in MAG 2005 between day 72 and 74
 Filtering the points and finding the bowshock and magnetic pause x coordinates.<br /> 
