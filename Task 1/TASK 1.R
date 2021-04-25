@@ -1,7 +1,7 @@
 library(dplyr)
 library(ggplot2)
-data1<-readRDS('../Data/Full_Cassini_Master_MP_BS_CMJ_revised2005.rds', refhook = NULL)
-data2<-readRDS('../Data/Cass_data2005.rds', refhook = NULL)
+data1<-readRDS('Data/Full_Cassini_Master_MP_BS_CMJ_revised2005.rds', refhook = NULL)
+data2<-readRDS('Data/Cass_data_ksm2005.rds', refhook = NULL)
 copy_data1<-data1
 copy_data2<-data2
 
@@ -24,7 +24,7 @@ copy_data2$TimeStamp<-as.POSIXct(copy_data2$Timestamp.UTC., format="%d/%m/%Y %H:
 copy_data2$date<-as.Date(format(copy_data2$TimeStamp, "%Y-%m-%d" ))
 copy_data2$hour_cross<-as.integer(format(copy_data2$TimeStamp, "%H" )) 
 copy_data2$minute_cross<-as.integer(format(copy_data2$TimeStamp, "%M" )) 
-copy_data2<-copy_data2%>%select(-c(TimeStamp))
+#copy_data2<-copy_data2%>%select(-c(TimeStamp))
 
 ######### Merging with time variables 
 
@@ -54,9 +54,9 @@ ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
 
 #####Plotting Graph2
 ggplot(data=temp, aes(x=TimeStamp)) +
-  geom_line(aes(y = BX_KRTP.nT.), color = "red")+
-  geom_line(aes(y = BY_KRTP.nT.), color = "green")+
-  geom_line(aes(y = BZ_KRTP.nT.), color = "blue")+
+  geom_line(aes(y = BX_KSM.nT.), color = "red")+
+  geom_line(aes(y = BY_KSM.nT.), color = "green")+
+  geom_line(aes(y = BZ_KSM.nT.), color = "blue")+
   ylab("Bxyz(nT)")+
 
   theme(axis.title.x=element_blank(),
@@ -86,9 +86,9 @@ ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
 
 #####Plotting Graph2
 ggplot(data=temp, aes(x=TimeStamp)) +
-  geom_line(aes(y = BX_KRTP.nT.), color = "red")+
-  geom_line(aes(y = BY_KRTP.nT.), color = "green")+
-  geom_line(aes(y = BZ_KRTP.nT.), color = "blue")+
+  geom_line(aes(y = BX_KSM.nT.), color = "red")+
+  geom_line(aes(y = BY_KSM.nT.), color = "green")+
+  geom_line(aes(y = BZ_KSM.nT.), color = "blue")+
   ylab("Bxyz(nT)")+
   
   theme(axis.title.x=element_blank(),
