@@ -32,7 +32,7 @@ copy_data2$minute_cross<-as.integer(format(copy_data2$TimeStamp, "%M" ))
 
 joinedData <- left_join(copy_data2,copy_data1,by=c('date','hour_cross','minute_cross'))
 copy_joined<-joinedData
-bowShock<-filter(joinedData,type_cross=="BS")%>%select(c('TimeStamp','Timestamp.UTC.','hour_cross','minute_cross','year_cross','doy_cross'))
+bowShock<-filter(joinedData,type_cross=="BS")
 bowShock$minlag<-bowShock$TimeStamp-(15*60)
 bowShock$minlead<-bowShock$TimeStamp+(15*60)
 write.csv(bowShock,"bow_shock_only_Data.csv")
