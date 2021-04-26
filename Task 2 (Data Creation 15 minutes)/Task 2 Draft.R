@@ -35,7 +35,7 @@ copy_joined<-joinedData
 bowShock<-filter(joinedData,type_cross=="BS")%>%select(c('TimeStamp','Timestamp.UTC.','hour_cross','minute_cross','year_cross','doy_cross'))
 bowShock$minlag<-bowShock$TimeStamp-(15*60)
 bowShock$minlead<-bowShock$TimeStamp+(15*60)
-
+write.csv(bowShock,"bow_shock_only_Data.csv")
 #######New Task of Finding 15 minutes before and after Bow Shock
 
 
@@ -54,7 +54,7 @@ for(bs in c(1:dim(bowShock)[1])){
 
 final_data<-formattedData%>%select(-c('time'))%>% distinct(Timestamp.UTC., .keep_all= TRUE)
 
-write.csv(final_data,"Bow_Shock_Data.csv")
+write.csv(final_data,"15minutes_interval_boeshockData.csv")
 
 head(bowShock)
 head(copy_joined)

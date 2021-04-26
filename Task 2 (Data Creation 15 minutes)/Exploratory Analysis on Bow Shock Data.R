@@ -2,7 +2,7 @@
 library(dplyr)
 library(ggplot2)
 
-bowShock<-read.csv('Data/Bow_Shock_Data.csv')
+bowShock<-read.csv('Data/bow_shock_only_Data.csv')
 
 ggplot(bowShock, aes(x=type_cross , y=BTotal.nT.)) + 
   geom_boxplot(notch=TRUE)
