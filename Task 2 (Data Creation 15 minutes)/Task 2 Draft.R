@@ -51,6 +51,11 @@ for(bs in c(1:dim(bowShock)[1])){
   }
   
 } 
+
+final_data<-formattedData%>%select(-c('time'))%>% distinct(Timestamp.UTC., .keep_all= TRUE)
+
+
+
 head(bowShock)
 head(copy_joined)
 head(formattedData)
