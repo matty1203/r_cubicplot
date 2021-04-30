@@ -99,6 +99,9 @@ write.csv(final_data,"15minutes_interval_boeshockData.csv")
 ## Displaying all data created
 
 ```{r}
+final_data<-formattedData%>%select(-c('time'))%>% distinct(Timestamp.UTC., .keep_all= TRUE)
+
+write.csv(final_data,"15minutes_interval_boeshockData.csv")
 
 head(bowShock)
 head(copy_joined)
