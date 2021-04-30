@@ -17,7 +17,7 @@ library(ggplot2)
 Using read RDS for getting the data from a rds file format. Created a copy of original variable<br />
 ```{r}
 data1<-readRDS('../Data/Full_Cassini_Master_MP_BS_CMJ_revised2005.rds', refhook = NULL)
-data2<-readRDS('../Data/Cass_data2005.rds', refhook = NULL)
+data2<-readRDS('../Data/Cass_data_ksm2005.rds', refhook = NULL)
 copy_data1<-data1
 copy_data2<-data2
 ```
@@ -65,7 +65,7 @@ MagP<-filter(temp,type_cross=="MP")$TimeStamp
 ## Plotting Graphs
 ```{r }
 ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
-  geom_line()+ylim(0,6)+
+  geom_line()+
   ylab("|B|(nT)")+
   geom_vline(xintercept=bowShock, linetype="dotted",colour="blue",size=1.3)+
   geom_vline(xintercept=MagP, linetype="dotted",colour="red",size=1.3)+
@@ -75,16 +75,15 @@ ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
 
 ```
 ```{r }
-ggplot(data=temp, aes(x=TimeStamp)) +ylim(-3,3)+
-  geom_line(aes(y = -BX_KRTP.nT.), color = "green")+
-  geom_line(aes(y = -BY_KRTP.nT.), color = "blue")+
-  geom_line(aes(y = BZ_KRTP.nT.), color = "red")+
-  ylab("Bxyz(nT)")+geom_hline(aes(yintercept = 0), col = 8)+
+ggplot(data=temp, aes(x=TimeStamp)) +
+  geom_line(aes(y = BX_KSM.nT.), color = "red")+
+  geom_line(aes(y = BY_KSM.nT.), color = "green")+
+  geom_line(aes(y = BZ_KSM.nT.), color = "blue")+
+  ylab("Bxyz(nT)")+
 
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
- 
   
 
 ```
@@ -102,7 +101,7 @@ MagP<-filter(temp,type_cross=="MP")$TimeStamp
 ## Plotting Graphs
 ```{r }
 ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
-  geom_line()+ylim(0,6)+
+  geom_line()+
   ylab("|B|(nT)")+
   geom_vline(xintercept=bowShock, linetype="dotted",colour="blue",size=1.3)+
   geom_vline(xintercept=MagP, linetype="dotted",colour="red",size=1.3)+
@@ -113,11 +112,11 @@ ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
 ```
 ```{r }
 ggplot(data=temp, aes(x=TimeStamp)) +
-  geom_line(aes(y = BX_KRTP.nT.), color = "red")+
-  geom_line(aes(y = BY_KRTP.nT.), color = "green")+
-  geom_line(aes(y = BZ_KRTP.nT.), color = "blue")+
+  geom_line(aes(y = BX_KSM.nT.), color = "red")+
+  geom_line(aes(y = BY_KSM.nT.), color = "green")+
+  geom_line(aes(y = BZ_KSM.nT.), color = "blue")+
   ylab("Bxyz(nT)")+
-
+  
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
