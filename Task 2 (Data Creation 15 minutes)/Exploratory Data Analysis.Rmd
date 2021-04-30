@@ -10,14 +10,14 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(ggplot2)
 library(corrplot)
-
-bowShock<-read.csv('Data/bow_shock_only_Data.csv')
-finalData<-read.csv('Data/15minutes_interval_boeshockData.csv')
+library("PerformanceAnalytics")
+bowShock<-read.csv('../Data/bow_shock_only_Data.csv')
+finalData<-read.csv('../Data/15minutes_interval_boeshockData.csv')
 ```
 
 ## Formatting
 <br />
-Trying to filer only the important predictors from the otiginal dataset
+Trying to filer only the important predictors from the original datasets
 
 
 ```{r}
@@ -32,28 +32,28 @@ head(bowShock)
 
 ## Outlier Checks
 
-Box plot of Total Magnetic field points <br />
+<b> Box plot of Total Magnetic field points </b> <br />
 
 ```{r }
 ggplot(finalData, aes(x=type_cross , y=BTotal.nT.)) + 
   geom_boxplot(notch=TRUE)
 ```
 
-Box plot of Magnetic field across X direction <br />
+<b> Box plot of Magnetic field across X direction </b> <br />
 
 ```{r }
 ggplot(finalData, aes(x=type_cross , y=BX_KSM.nT.)) + 
   geom_boxplot(notch=TRUE)
 ```
 
-Box plot of Magnetic field across Y direction <br />
+<b>Box plot of Magnetic field across Y direction</b> <br />
 
 ```{r }
 ggplot(finalData, aes(x=type_cross , y=BY_KSM.nT.)) + 
   geom_boxplot(notch=TRUE)
 ```
 
-Box plot of Magnetic field across Z direction <br />
+<b>Box plot of Magnetic field across Z direction</b> <br />
 
 ```{r }
 ggplot(finalData, aes(x=type_cross , y=BZ_KSM.nT.)) + 
@@ -77,8 +77,11 @@ ggplot(finalData, aes(x=type_cross)) +
 <br />
 
 From the plot we it is clear that BS events occured in a 16 minute time is very low.
-```{r }
-ggplot(finalData, aes(x=type_cross)) + 
-  geom_bar()
+```{r fig.width=12}
+temp<-finalData%>%select(c('X_KSM.km.','Y_KSM.km.','Z_KSM.km.','BTotal.nT.','BX_KSM.nT.','BY_KSM.nT.','BZ_KSM.nT.','xcrosslist','zcrosslist','ycrosslist'))
+chart.Correlation(temp, histogram=TRUE, pch=19)
 ```
+<br /> 
+Most of the variables are un correlated except BTotal and BZ since BTotal is derived using BZ.
 
+<br />
