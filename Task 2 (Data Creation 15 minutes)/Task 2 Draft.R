@@ -31,6 +31,7 @@ copy_data2$minute_cross<-as.integer(format(copy_data2$TimeStamp, "%M" ))
 ######### Merging with time variables 
 
 joinedData <- left_join(copy_data2,copy_data1,by=c('date','hour_cross','minute_cross'))
+write.csv(joinedData,"joined_data.csv")
 copy_joined<-joinedData
 bowShock<-filter(joinedData,type_cross=="BS")
 bowShock$minlag<-bowShock$TimeStamp-(15*60)
@@ -41,6 +42,7 @@ write.csv(bowShock,"bow_shock_only_Data.csv")
 
 d<-copy_joined%>%filter(as.Date(TimeStamp)>=bowShock$minlag[1]&as.Date(TimeStamp)<=bowShock$minlead[1])
 formattedData<-NULL;
+width
 for(bs in c(1:dim(bowShock)[1])){
   temp=copy_joined%>%filter(TimeStamp>=bowShock$minlag[bs]&TimeStamp<=bowShock$minlead[bs])
   if(bs==1){
