@@ -4,7 +4,7 @@ library(lubridate)
 
 data1<-read.csv('Data/15minutes_interval_boeshockData.csv')
 bs_data<-read.csv('Data/bow_shock_only_Data.csv')
-join_data<-read.csv('joined_data.csv')
+join_data<-readRDS('joined_data.rds', refhook = NULL)
 copy_data1<-data1
 copy_bs<-bs_data
 head(data1)
