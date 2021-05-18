@@ -16,7 +16,6 @@ for(bs in c(1:dim(copy_bs)[1])){
   temp=join_data%>%filter(TimeStamp>=bs_data$minlag[bs]&TimeStamp<=bs_data$minlead[bs])
   for(minData in c(1:dim(temp)[1])){
     if(minData!=16){
-      
        formattedData[bs,paste("X_KSM",minData,sep = "")]<-temp[minData,'X_KSM.km.']
        formattedData[bs,paste("Y_KSM",minData,sep = "")]<-temp[minData,'Y_KSM.km.']
        formattedData[bs,paste("Z_KSM",minData,sep = "")]<-temp[minData,'Z_KSM.km.']
