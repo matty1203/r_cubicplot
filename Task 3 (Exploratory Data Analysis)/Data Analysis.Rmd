@@ -23,6 +23,8 @@ short_Data<-readRDS('../Average_Data.rds', refhook = NULL)
 joined_data<-readRDS('../Data/joined_data.rds', refhook = NULL)
 data_copy<-data_Wider
 events_data<-na.omit(data_copy,cols=c("type_cross"))
+bs_avgData<-na.omit(short_Data,cols=c("type_cross"))
+
 ```
 
 ## Showing all Data
@@ -159,7 +161,7 @@ ggplot(events_data, aes(type_cross, fill=dirn_cross )) +
 
 
 <br/>
-From the plot we can clearly say that BowSchock events are recorded more times that Magneto pause.But  the proportion of Inward or Outward direction is same for both.
+From the plot we can clearly say that BowShock events are recorded more times that Magneto pause.But  the proportion of Inward or Outward direction is same for both.
 <br />
 
 
@@ -175,3 +177,64 @@ ggplot(data = short_Data) +
   geom_bar(mapping = aes(x = type_cross, fill=dirn_cross) , position = "fill")
 
 ```
+
+
+### Line graph of Average BTot(15 min Lag) vs BTOt. (Complete Datset)
+
+<br/>
+In this plot we are trying to identify the pattern in which average value changes with the current value .
+<br />
+```{r fig.width=11}
+
+
+ggplot(data=short_Data, aes(x=TimeStamp, group=1)) +
+  geom_line(aes(y = B_Tot), color = "red")+
+  geom_line(aes(y = Avg_Lag_BTot), color = "green")
+
+
+```
+
+
+### Line graph of Average BTot(15 min Lag) and BTOt. (Bow Shock Datset)
+
+<br/>
+In this plot we are trying to identify the pattern in which average 15 minute Lag value changes with the current value when an event occurs .
+<br />
+```{r fig.width=11}
+
+
+ggplot(data=bs_avgData, aes(x=TimeStamp, group=1)) +
+  geom_line(aes(y = B_Tot), color = "red")+
+  geom_line(aes(y = Avg_Lag_BTot), color = "green")
+
+
+```
+
+### Line graph of Average BTot(15 min Lead) and BTOt. (Bow Shock Datset)
+
+<br/>
+In this plot we are trying to identify the pattern in which average 15 minute Lead value changes with the current value when an event occurs .
+<br />
+<b>Orange :</b> Magneto Pause
+<b>Yellow :</b>Bow Shock
+<br />
+```{r fig.width=11}
+
+bowShock<-filter(bs_avgData,type_cross=="BS")$TimeStamp
+MagP<-filter(bs_avgData,type_cross=="MP")$TimeStamp
+
+ggplot(data=bs_avgData, aes(x=TimeStamp, group=1)) +
+    geom_vline(xintercept=bowShock,colour="yellow",size=1.3,alpha=0.4)+
+  geom_vline(xintercept=MagP,colour="orange",size=1.3,alpha=0.4)+
+  
+  geom_line(aes(y = B_Tot), color = "red",size=1.3)+
+  geom_line(aes(y = Avg_Lead_BTot), color = "blue",size=1.3)+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+```
+<br/>
+Its is clear that BTot is higher in the region of Magnetopause and Avg values are linearly related to the Current value.
+<br /><br /><br />
+

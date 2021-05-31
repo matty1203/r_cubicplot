@@ -1,6 +1,7 @@
 library(ggplot2)
 library(dplyr)
 library(plotly)
+library(rgl)
 
 data_Wider<-readRDS('Full_Data_Wider.rds', refhook = NULL)
 bs_data<-read.csv('Data/bow_shock_only_Data.csv')
@@ -62,6 +63,70 @@ short_Data<-data.frame(TimeStamp=data_Wider[,1], X_KSM=data_Wider[,2],Y_KSM=data
                        Avg_Lead_Bz=rowMeans(data_Wider[,lead_col_index+2]),
                        Avg_Lead_BTot=rowMeans(data_Wider[,lead_col_index+3])
                        )
+
+saveRDS(short_Data,"Average_Data.rds")
+
+
+
+###################SHORT DATA Exploratory Data Analysis
+
+###Data Imbalance
+
+counts.with_na <- table(short_Data$type_cross,useNA = "always")
+counts.without_na<-table(short_Data$type_cross)
+barplot(counts.with_na,names.arg=c("BS", "DG", "MP","SC","NA"))
+barplot(counts.without_na)
+
+
+ggplot(data = short_Data) +
+  geom_bar(mapping = aes(x = type_cross, fill=dirn_cross) , position = "fill")
+
+###Direction
+
+ggplot(events_data, aes(type_cross, fill=dirn_cross )) +
+  geom_bar(stat="count")
+
+
+
+ggplot(data = events_data) +
+  geom_bar(mapping = aes(x = type_cross, fill=dirn_cross) , position = "fill")
+
+###Checking Outliers
+
+
+##only bowshock Data
+ggplot(data=bs_data, aes(x=type_cross, y=B_Tot)) +
+  geom_boxplot()
+
+##Overall Bx Data
+ggplot(data=short_Data, aes(B_Tot)) +
+  geom_boxplot()
+
+#### Checking Correlation
+
+
+bs_data<-na.omit(short_Data,cols=c("type_cross"))
+
+
+ggplot(short_Data)+
+  geom_point(alpha=0.3)
+
+
+ggplot(data=short_Data, aes(x=TimeStamp, y=BX, group=1)) +
+  geom_line(color="blue", size=1.2)
+
+
+ggplot(data=bs_data, aes(x=TimeStamp, group=1)) +
+  geom_line(aes(y = BX), color = "red")+
+  geom_line(aes(y = Avg_Lag_Bx), color = "green")
+
+
+
+ggplot(data=bs_data, aes(x=BX, y=Avg_Lag_Bx,color=type_cross)) +
+  geom_point()
+
+
+
 
 
 head(bs_data)
