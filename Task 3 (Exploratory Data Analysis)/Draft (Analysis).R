@@ -45,7 +45,7 @@ lag_col_index<-c(15,22,29,36,43,50,57,64,71,78,85,92,99,106,113)
 lead_col_index<-c(120,127,134,141,148,155,162,169,176,183,190,197,204,211,218)
 
 
-short_Data<-data.frame(TimeStamp=data_Wider[,1],X_KSM=data_Wider[,2],Y_KSM=data_Wider[,3],
+short_Data<-data.frame(TimeStamp=data_Wider[,1], X_KSM=data_Wider[,2],Y_KSM=data_Wider[,3],
                        Z_KSM=data_Wider[,4],
                        B_Tot=data_Wider[,5],
                        BX=data_Wider[,6],
@@ -60,7 +60,7 @@ short_Data<-data.frame(TimeStamp=data_Wider[,1],X_KSM=data_Wider[,2],Y_KSM=data_
                        Avg_Lead_Bx=rowMeans(data_Wider[,lead_col_index]),
                        Avg_Lead_By=rowMeans(data_Wider[,lead_col_index+1]),
                        Avg_Lead_Bz=rowMeans(data_Wider[,lead_col_index+2]),
-                       Avg_Lead_BTot=rowMeans(data_Wider[,lead_col_index+3]),
+                       Avg_Lead_BTot=rowMeans(data_Wider[,lead_col_index+3])
                        )
 
 
