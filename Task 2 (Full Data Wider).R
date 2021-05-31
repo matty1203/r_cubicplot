@@ -90,3 +90,4 @@ newData_creator<-function(data_ip){
 
 
 res<-newData_creator(copy_data)
+write.csv(res,'Full_Data_Wider.csv')
