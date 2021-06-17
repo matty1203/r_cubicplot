@@ -131,3 +131,15 @@ ggplot(data=bs_data, aes(x=BX, y=Avg_Lag_Bx,color=type_cross)) +
 
 head(bs_data)
 as.factor(data_Wider$type_cross)
+
+
+counts.with_na <- table(data_Wider$type_cross,useNA = "always")
+barplot(counts.with_na,names.arg=c("BS", "DG", "MP","SC","NE"))
+
+
+ggplot(data = data_Wider) +
+  geom_bar(mapping = aes(x = type_cross))
+
+
+ggplot(data = data_Wider) +
+  geom_bar(mapping = aes(x = type_cross, fill=dirn_cross) , position = "fill")
