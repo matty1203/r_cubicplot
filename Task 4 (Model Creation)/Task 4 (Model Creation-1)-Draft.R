@@ -4,8 +4,11 @@ library(dplyr)
 library(caret)
 library(ranger)
 library(matrixStats)
+library(janitor)
 
 data_Wider<-readRDS('input_dataset.rds', refhook = NULL)
+x<-tabyl(data_Wider, type_cross)
+View(x)
 copy_data<-data_Wider
 
 scaled_data<-copy_data%>%mutate_if(is.numeric,scale)
@@ -44,3 +47,7 @@ cassini.test <- new_data[-train.idx, ]
 cassini.rfmodel2 <- ranger(type_cross ~ ., data = cassini.train, write.forest = TRUE)
 cassini.test$pred<-predict(cassini.rfmodel2,data = cassini.test)$predictions
 confusionMatrix(cassini.test$pred, cassini.test$type_cross)
+
+
+#############Count of Data
+head(data_Wider)
