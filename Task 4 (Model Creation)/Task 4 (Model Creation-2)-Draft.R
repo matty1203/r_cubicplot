@@ -16,6 +16,9 @@ scaled_data<-copy_data%>%mutate_if(is.numeric,scale)
 
 set.seed(234)
 new_data<-scaled_data%>%filter(type_cross=='NE')%>%sample_n(500)%>%rbind(scaled_data%>%filter(type_cross!='NE'))
+
+
+
 new_data<-new_data%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='DG'|type_cross=='SC',0,1))
 new_data$event_occured<-as.factor(new_data$event_occured)
 new_data<-dplyr::select(new_data,-c(type_cross))
@@ -27,7 +30,7 @@ cassini.test <- new_data[-train.idx, ]
 log_model <- glm(event_occured ~ ., family = "binomial", data = cassini.train)
 
 cassini.test$prob=predict(log_model,cassini.test,type="response")
-cassini.test$pred <- factor(ifelse(cassini.test$prob < .9, 0,1))
+cassini.test$pred <- factor(ifelse(cassini.test$prob < .9,0,1))
 
 confusionMatrix(cassini.test$pred, cassini.test$event_occured)
 
