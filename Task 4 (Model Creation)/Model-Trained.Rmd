@@ -3,6 +3,8 @@ title: "Model Creation R Markdown"
 author: "Mathews Philip Venattu"
 date: "07/06/2021"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -24,6 +26,7 @@ Here I have used input dataset which is the same one as full_wider_data but with
 ```{r}
 data_Wider<-readRDS('input_dataset.rds', refhook = NULL)
 copy_data<-data_Wider
+copy_data<-copy_data %>% select(!contains("15"))
 kable(head(copy_data),"html")%>% scroll_box(width = "100%")
 ```
 
@@ -53,6 +56,7 @@ dim(scaled_data)
 set.seed(234)
 new_data<-scaled_data%>%filter(type_cross=='NE')%>%sample_n(500)%>%rbind(scaled_data%>%filter(type_cross!='NE'))
 dim(new_data)
+
 ```
 
 
@@ -158,8 +162,9 @@ Creation of new column `event_occured`. <br />
 ```{r}
 data1<-scaled_data%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='DG'|type_cross=='SC',0,1))
 data1$event_occured<-as.factor(data1$event_occured)
-data1<-dplyr::select(data1,-c(type_cross))
+data1 <- dplyr::select(data1,-c(type_cross, dirn_cross))
 
+table(data1$dirn_cross, data1$event_occured)
 data2<-data1%>%filter(event_occured==0)%>%sample_n(500)%>%rbind(data1%>%filter(event_occured!=0))
 ```
 
@@ -227,7 +232,7 @@ Splitting the data into training and test datasets. <br />
 
 ```{r}
 log_model1 <- glm(event_occured ~ ., family = "binomial", data = cassini.train1)
-
+plot(cassini.train1$X_KSM15, cassini.train1$X_KSM.km.)
 ```
 
 ##### Results
@@ -243,7 +248,7 @@ Confusion Matrix of Test Datset is given below. <br />
 
 ```{r}
 cassini.test1$prob=predict(log_model1,cassini.test1,type="response")
-cassini.test1$pred <- factor(ifelse(cassini.test1$prob < .4, 0,1))
+cassini.test1$pred <- factor(ifelse(cassini.test1$prob < .6, 0,1))
 confusionMatrix(cassini.test1$pred, cassini.test1$event_occured)
 
 ```
