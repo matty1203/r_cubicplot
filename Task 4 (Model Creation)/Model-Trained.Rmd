@@ -26,7 +26,7 @@ Here I have used input dataset which is the same one as full_wider_data but with
 ```{r}
 data_Wider<-readRDS('input_dataset.rds', refhook = NULL)
 copy_data<-data_Wider
-copy_data<-copy_data %>% select(!contains("15"))
+copy_data<-dplyr::select(copy_data,!contains("15"))
 kable(head(copy_data),"html")%>% scroll_box(width = "100%")
 ```
 
