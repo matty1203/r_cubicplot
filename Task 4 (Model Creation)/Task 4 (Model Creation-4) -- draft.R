@@ -130,5 +130,5 @@ class(trialTrain$BX_KSM5)
 class(trialTest$BX_KSM5)
 
 cassini.logTest$prob=predict(LOGModel1,cassini.logTest,type="response")
-cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
+cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .95, 0,1))
 confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,positive='1')
