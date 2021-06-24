@@ -1,0 +1,173 @@
+---
+title: "Logistic Regression"
+author: "Mathews Philip Venattu"
+date: "24/06/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+library(caret)
+library(ranger)
+library(matrixStats)
+library(MASS)
+```
+
+## Logistic Regresssion Model
+
+Creating indexes for dataset and removing the datapoints that contains `DG` and `SG`
+
+```{r }
+
+data_wider<-readRDS('input_dataset.rds', refhook = NULL)
+copy_data<-data_wider
+copy_data<-dplyr::select(data_wider, !ends_with("15"))
+t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
+copy_data<-t
+copy_data$type_cross<-factor(copy_data$type_cross)
+copy_data$id<-seq.int(nrow(copy_data))
+```
+
+
+## Making the data Balanced
+
+Making the data balanced and creating training and test datset
+
+```{r}
+
+cassini.train_unscaled<-copy_data%>%filter(type_cross=='NE')%>%sample_n(100)%>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross<-factor(cassini.train_unscaled$type_cross)
+cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
+cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
+cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
+```
+
+
+## Shuffling Dataset
+
+```{r}
+set.seed(42)
+rows <- sample(nrow(cassini.train_unscaled))
+temp<- cassini.train_unscaled[rows, ]
+cassini.train_unscaled<-temp
+```
+
+
+## Scaling the data
+
+```{r}
+cassini.train_scaled<-cassini.train_unscaled%>%mutate_if(is.numeric,scale)
+means <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), mean)
+sds <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), sd)
+means <- matrix(unlist(means), ncol = 210, byrow = FALSE)
+sds <- matrix(unlist(sds), ncol = 210, byrow = FALSE)
+```
+
+
+## Normalizing the TEST DATASET
+
+
+```{r}
+
+cassini.test_scaled<-dplyr::select(cassini.test_unscaled,-c(type_cross,dirn_cross))
+
+for(col in c(1:dim(cassini.test_scaled)[2])){
+  temp<-(cassini.test_scaled[,col]-means[,col])/sds[,col]
+  cassini.test_scaled[,col]<-as.matrix(temp)
+  temp<-NULL
+  
+}
+cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
+cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
+```
+
+## Logistic Regression Model 1
+
+### BS as 1 and all other events as 0
+
+Removing dirn_cross and creating new variable `new_trainData`.
+
+```{r}
+new_trainData<-dplyr::select(cassini.train_scaled,-dirn_cross)
+new_testData<-dplyr::select(cassini.test_scaled,-c(dirn_cross))
+
+
+```
+
+#### Training Data
+
+```{r}
+cassini.logTrain<-new_trainData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='MP',0,1))
+cassini.logTrain$event_occured<-as.factor(cassini.logTrain$event_occured)
+cassini.logTrain <- dplyr::select(cassini.logTrain,-c(type_cross))
+
+```
+
+#### Test Data
+
+```{r}
+cassini.logTest<-new_testData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='MP',0,1))
+cassini.logTest$event_occured<-as.factor(cassini.logTest$event_occured)
+cassini.logTest <- dplyr::select(cassini.logTest,-c(type_cross))
+```
+
+
+#### Model 1 Training and Confusion Matrix
+```{r}
+LOGModel1<- glm(event_occured ~ ., family = "binomial", data = cassini.logTrain)
+
+summary(LOGModel1)
+
+cassini.logTest$prob=predict(LOGModel1,cassini.logTest,type="response")
+cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
+confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,positive='1')
+
+```
+
+
+## Logistic Regression Model 2
+
+### MP as 1 and all other events as 0
+
+Removing dirn_cross and creating new variable `new_trainData`.
+
+```{r}
+new_trainData<-dplyr::select(cassini.train_scaled,-dirn_cross)
+new_testData<-dplyr::select(cassini.test_scaled,-c(dirn_cross))
+
+
+```
+
+#### Training Data
+
+```{r}
+cassini.logTrain<-new_trainData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='BS',0,1))
+cassini.logTrain$event_occured<-as.factor(cassini.logTrain$event_occured)
+cassini.logTrain <- dplyr::select(cassini.logTrain,-c(type_cross))
+
+```
+
+#### Test Data
+
+```{r}
+cassini.logTest<-new_testData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='BS',0,1))
+cassini.logTest$event_occured<-as.factor(cassini.logTest$event_occured)
+cassini.logTest <- dplyr::select(cassini.logTest,-c(type_cross))
+
+```
+
+
+#### Model 2 Training and Confusion Matrix
+```{r}
+LOGModel1<- glm(event_occured ~ ., family = "binomial", data = cassini.logTrain)
+
+summary(LOGModel1)
+
+cassini.logTest$prob=predict(LOGModel1,cassini.logTest,type="response")
+cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
+confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,positive='1')
+
+```
