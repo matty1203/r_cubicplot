@@ -1,0 +1,95 @@
+---
+title: "Random Forrest"
+author: "Mathews Philip Venattu"
+date: "24/06/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+library(caret)
+library(ranger)
+library(matrixStats)
+library(MASS)
+```
+
+## Random Forrest Model
+
+Creating indexes for dataset and removing the datapoints that contains `DG` and `SG`
+
+```{r }
+
+data_wider<-readRDS('input_dataset.rds', refhook = NULL)
+copy_data<-data_wider
+copy_data<-dplyr::select(data_wider, !ends_with("15"))
+t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
+copy_data<-t
+copy_data$type_cross<-factor(copy_data$type_cross)
+copy_data$id<-seq.int(nrow(copy_data))
+```
+
+
+## Making the data Balanced
+
+Making the data balanced and creating training and test datset
+
+```{r}
+
+cassini.train_unscaled<-copy_data%>%filter(type_cross=='NE')%>%sample_n(100)%>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross<-factor(cassini.train_unscaled$type_cross)
+cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
+cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
+cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
+```
+
+
+## Shuffling Dataset
+
+```{r}
+set.seed(42)
+rows <- sample(nrow(cassini.train_unscaled))
+temp<- cassini.train_unscaled[rows, ]
+cassini.train_unscaled<-temp
+```
+
+
+## Scaling the data
+
+```{r}
+cassini.train_scaled<-cassini.train_unscaled%>%mutate_if(is.numeric,scale)
+means <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), mean)
+sds <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), sd)
+means <- matrix(unlist(means), ncol = 210, byrow = FALSE)
+sds <- matrix(unlist(sds), ncol = 210, byrow = FALSE)
+```
+
+
+## Normalizing the TEST DATASET
+
+
+```{r}
+
+cassini.test_scaled<-dplyr::select(cassini.test_unscaled,-c(type_cross,dirn_cross))
+  
+for(col in c(1:dim(cassini.test_scaled)[2])){
+  temp<-(cassini.test_scaled[,col]-means[,col])/sds[,col]
+  cassini.test_scaled[,col]<-temp
+  temp<-NULL
+  
+}
+cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
+cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
+```
+
+## Model TrainiNg and Confusion Matrix
+
+```{r}
+cassini.rfmodel <- ranger(type_cross ~ ., data = cassini.train_scaled)
+cassini.test_scaled$pred<-predict(cassini.rfmodel,data = cassini.test_scaled)$predictions
+confusionMatrix(cassini.test_scaled$pred, cassini.test_scaled$type_cross)
+
+
+```
