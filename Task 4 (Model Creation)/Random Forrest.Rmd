@@ -3,6 +3,8 @@ title: "Random Forrest"
 author: "Mathews Philip Venattu"
 date: "24/06/2021"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -87,9 +89,12 @@ cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
 ## Model TrainiNg and Confusion Matrix
 
 ```{r}
-cassini.rfmodel <- ranger(type_cross ~ ., data = cassini.train_scaled)
-cassini.test_scaled$pred<-predict(cassini.rfmodel,data = cassini.test_scaled)$predictions
+cassini.rfmodel <- ranger(type_cross ~ ., data = cassini.train_scaled %>% select(-"dirn_cross"), importance = 'impurity' )
+cassini.test_scaled$pred<-predict(cassini.rfmodel,data = cassini.test_scaled%>% select(-"dirn_cross"))$predictions
 confusionMatrix(cassini.test_scaled$pred, cassini.test_scaled$type_cross)
 
+?ranger
+
+plot(cassini.rfmodel$variable.importance)
 
 ```

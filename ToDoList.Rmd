@@ -8,6 +8,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+## To do 25/06:
+
+ - use only 15 minute window before 
+ - try lasso from e.g. glmnet 
+ - lasso which coefficient are !=0
+ - create a new column with mean (e.g. B_Total) and SD (e.g. B_Total) also for Bx By and Bz
+ - variable importance from RF
+- Remove dirn_cross 
+ - start on your thesis draft 1. Look at moodle
+
 ## To do for 2nd April meeting: 
 
 1. Read Readme.rmd file and Sections 1 and 2 in  the Jackman et al paper

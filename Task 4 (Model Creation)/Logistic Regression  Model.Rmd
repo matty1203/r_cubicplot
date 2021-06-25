@@ -3,10 +3,13 @@ title: "Logistic Regression"
 author: "Mathews Philip Venattu"
 date: "24/06/2021"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 library(tidyr)
 library(ggplot2)
 library(dplyr)
@@ -22,9 +25,10 @@ Creating indexes for dataset and removing the datapoints that contains `DG` and 
 
 ```{r }
 
-data_wider<-readRDS('input_dataset.rds', refhook = NULL)
+data_wider<-readRDS("/Users/kat/Desktop/r_cubicplot/Task 4 (Model Creation)/input_dataset.rds", refhook = NULL)
+data_wider %>% glimpse()
 copy_data<-data_wider
-copy_data<-dplyr::select(data_wider, !ends_with("15"))
+copy_data<-dplyr::select(data_wider, !ends_with("15")) # add 16
 t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
 copy_data<-t
 copy_data$type_cross<-factor(copy_data$type_cross)
@@ -38,22 +42,23 @@ Making the data balanced and creating training and test datset
 
 ```{r}
 
-cassini.train_unscaled<-copy_data%>%filter(type_cross=='NE')%>%sample_n(100)%>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
-cassini.train_unscaled$type_cross<-factor(cassini.train_unscaled$type_cross)
+cassini.train_unscaled<-copy_data%>% filter(type_cross=='NE')%>%sample_n(100) %>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross %>% table()
+cassini.train_unscaled$type_cross<-as.factor(cassini.train_unscaled$type_cross)
 cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
 cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
 cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
 ```
 
 
-## Shuffling Dataset
+<!-- ## Shuffling Dataset -->
 
-```{r}
-set.seed(42)
-rows <- sample(nrow(cassini.train_unscaled))
-temp<- cassini.train_unscaled[rows, ]
-cassini.train_unscaled<-temp
-```
+<!-- ```{r} -->
+<!-- set.seed(42) -->
+<!-- rows <- sample(nrow(cassini.train_unscaled)) -->
+<!-- temp<- cassini.train_unscaled[rows, ] -->
+<!-- cassini.train_unscaled<-temp -->
+<!-- ``` -->
 
 
 ## Scaling the data
@@ -78,7 +83,6 @@ for(col in c(1:dim(cassini.test_scaled)[2])){
   temp<-(cassini.test_scaled[,col]-means[,col])/sds[,col]
   cassini.test_scaled[,col]<-as.matrix(temp)
   temp<-NULL
-  
 }
 cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
 cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
@@ -94,7 +98,7 @@ Removing dirn_cross and creating new variable `new_trainData`.
 new_trainData<-dplyr::select(cassini.train_scaled,-dirn_cross)
 new_testData<-dplyr::select(cassini.test_scaled,-c(dirn_cross))
 
-
+new_trainData$X_KSM.km.
 ```
 
 #### Training Data
@@ -104,6 +108,8 @@ cassini.logTrain<-new_trainData%>%mutate(event_occured=ifelse(type_cross=='NE'|t
 cassini.logTrain$event_occured<-as.factor(cassini.logTrain$event_occured)
 cassini.logTrain <- dplyr::select(cassini.logTrain,-c(type_cross))
 
+
+dim(cassini.logTrain)
 ```
 
 #### Test Data
@@ -120,6 +126,8 @@ cassini.logTest <- dplyr::select(cassini.logTest,-c(type_cross))
 LOGModel1<- glm(event_occured ~ ., family = "binomial", data = cassini.logTrain)
 
 summary(LOGModel1)
+
+library(glmnet)
 
 cassini.logTest$prob=predict(LOGModel1,cassini.logTest,type="response")
 cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
