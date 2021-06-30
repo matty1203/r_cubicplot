@@ -31,6 +31,7 @@ set.seed(42)
 rows <- sample(nrow(cassini.train_unscaled))
 temp<- cassini.train_unscaled[rows, ]
 cassini.train_unscaled<-temp
+
 ##### Scaling the data
 
 
