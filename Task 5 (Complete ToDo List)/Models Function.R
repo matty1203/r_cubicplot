@@ -66,10 +66,11 @@ lr<-function(test_data,train_data,limit){
 ##### Logistic Regression
 
 rf<-function(test_data,train_data){
-  rfmodel <- ranger(type_cross ~ ., data = train_data)
+  rfmodel <- ranger(type_cross ~ ., data = train_data,importance="impurity")
   test_data$pred<-predict(rfmodel,data = test_data)$predictions
   confusionMatrix(test_data$pred, test_data$type_cross)
-}
+  return(rfmodel)
+  }
 
 ###########################  Different Data  ###########################################
 
@@ -93,10 +94,41 @@ scaled<-prepareData(dat_15,100,100,100,TRUE)
   
   lr( cassini.logTest,cassini.logTrain,0.8)
   
+  ##Random Forrest
+  scaled<-prepareData(dat_15,100,100,100,TRUE)
+  t<-rf(scaled$testData,scaled$trainData)
+  plot(t$variable.importance)
+  
+##Data: Only considering 15 minutes after
+  
+
+  dat_15<-data[,c(1:9,107:219)]
+  scaled<-prepareData(dat_15,100,100,100,TRUE)
+  ##Logistic Regression Model
+  
+  ###Train Data
+  cassini.logTrain<-scaled$trainData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='MP',0,1))
+  cassini.logTrain$event_occured<-as.factor(cassini.logTrain$event_occured)
+  cassini.logTrain <- dplyr::select(cassini.logTrain,-c(type_cross))
+  
+  ###Test Data
+  cassini.logTest<-scaled$testData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='MP',0,1))
+  cassini.logTest$event_occured<-as.factor(cassini.logTest$event_occured)
+  cassini.logTest <- dplyr::select(cassini.logTest,-c(type_cross))
+  
+  lr( cassini.logTest,cassini.logTrain,0.8)
+  
+  ##Random Forrest
+  scaled<-prepareData(dat_15,100,100,100,TRUE)
+  t<-rf(drop_na(scaled$testData),drop_na(scaled$trainData))
+  plot(t$variable.importance)
+  
 ##Data : Average mean and SD 
 
-
-
-
-
-
+data<-readRDS('Average_SD_Data.rds', refhook = NULL)
+dat_avg<-data
+scaled<-prepareData(dat_avg,100,100,100,TRUE)
+##Random Forrest
+  t<-rf(drop_na(scaled$testData),drop_na(scaled$trainData))
+  plot(t$variable.importance)  
+  
