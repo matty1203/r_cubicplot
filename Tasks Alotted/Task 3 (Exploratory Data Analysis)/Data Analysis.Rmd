@@ -1,0 +1,240 @@
+---
+title: "Exploratory Data Analysis"
+author: "Mathews Philip Venattu"
+date: "31/05/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(dplyr)
+library(kableExtra)
+```
+
+
+##Reading Data
+Using read RDS for getting the data from a rds file format. Created a copy of original variable<br />
+```{r}
+data_Wider<-readRDS('../Full_Data_Wider.rds', refhook = NULL)
+bs_data<-read.csv('../Data/bow_shock_only_Data.csv')
+short_Data<-readRDS('../Average_Data.rds', refhook = NULL)
+
+joined_data<-readRDS('../Data/joined_data.rds', refhook = NULL)
+data_copy<-data_Wider
+events_data<-na.omit(data_copy,cols=c("type_cross"))
+bs_avgData<-na.omit(short_Data,cols=c("type_cross"))
+
+```
+
+## Showing all Data
+
+### Short Data Variable(short_data)
+
+<br/>
+It contains the columns that represents th average of 15 minutes before and 15 minutes after each event occurs <br />
+```{r}
+head(short_Data)
+```
+
+### Bow Shock Data Variable (bs_data)
+<br />
+It contains only bow shock data. <br />
+```{r}
+kable(head(bs_data),"html")%>% scroll_box(width = "100%")
+```
+
+### Events Data Variable (events_data)
+
+<br />
+It contains only the data of all the events that occured (BS,MP,DG,SC) <br />
+```{r}
+kable(head(events_data),"html")%>% scroll_box(width = "100%")
+```
+
+## Analysing the Bowshock events and Magnetopause events from Dataset
+
+### When cassini was in Outbound
+This happened between the days 72 and 74 of the year 2005 <br />
+
+#### Plotting Total Magnetic strength vs Time Stamp. 
+ Also drawing a line that pointing the events.<br />
+```{r fig.width=13}
+
+###Finding all points in MAG 2005 between day 72 and 74
+
+d1<-as.Date(72,origin="2005-01-01")
+d2<-as.Date(73,origin="2005-01-01")
+temp<-filter(joined_data,between(date,d1,d2))
+bowShock<-filter(temp,type_cross=="BS")$TimeStamp
+MagP<-filter(temp,type_cross=="MP")$TimeStamp
+
+ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
+  geom_line()+
+  ylab("|B|(nT)")+
+  xlab("Timestamp")+
+  geom_vline(xintercept=bowShock, linetype="dotted",colour="blue",size=1.3)+
+  geom_vline(xintercept=MagP, linetype="dotted",colour="red",size=1.3)+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+```
+<br />
+From the above figure the Red dotted line represents the time at which the Magnetopause region identified and blue dotted line represents the Bow Shock events.<br />
+
+
+### When cassini was in Inbound
+This happened between the days 136 and 138 of the year 2005 <br />
+
+#### Plotting Total Magnetic strength vs Time Stamp. 
+ Also drawing a line that pointing the events.<br />
+```{r fig.width=10}
+
+###Finding all points in MAG 2005 between day 72 and 74
+
+d1<-as.Date(136,origin="2005-01-01")
+d2<-as.Date(138,origin="2005-01-01")
+temp<-filter(joined_data,between(date,d1,d2))
+bowShock<-filter(temp,type_cross=="BS")$TimeStamp
+MagP<-filter(temp,type_cross=="MP")$TimeStamp
+
+ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
+  geom_line()+
+  ylab("|B|(nT)")+
+  xlab("Timestamp")+
+  geom_vline(xintercept=bowShock, linetype="dotted",colour="blue",size=1.3)+
+  geom_vline(xintercept=MagP, linetype="dotted",colour="red",size=1.3)+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+```
+<br />
+From the above figure the Red dotted line represents the time at which the Magnetopause region identified and blue dotted line represents the Bow Shock events.<br />
+
+## Plotting the trajectory of Cassini
+<br/>
+In this plot we are trying to identify the positions at which all the events occurred.
+<br />
+```{r fig.width=11, fig.height=7}
+
+ggplot(data_Wider, aes(x=X_KSM.km. , y=Y_KSM.km.))+
+  geom_point(alpha=0.3)+
+  geom_point(events_data, mapping =aes(x=X_KSM.km. , y=Y_KSM.km.,color=type_cross,shape=dirn_cross))
+
+
+```
+<br/>
+From this plot we can say that most of the events occurred in a particular region which faces the sun .
+<br />
+
+
+## Data Imbalance
+
+
+
+### Proportion of Different directions in each event types.
+
+<br/>
+In this plot we are trying to identify the proportion of Total events in the dataset (large).
+<br />
+```{r fig.width=11}
+
+
+ggplot(data = short_Data) +
+  geom_bar(mapping = aes(x = type_cross, fill=dirn_cross))
+
+```
+
+
+### Proportion of each event types in Dataset.
+
+<br/>
+In this plot we are trying to identify the Count of each events from an events only dataset.
+<br />
+```{r fig.width=11}
+
+
+ggplot(events_data, aes(type_cross, fill=dirn_cross )) +
+  geom_bar(stat="count")
+
+```
+
+
+<br/>
+From the plot we can clearly say that BowShock events are recorded more times that Magneto pause.But  the proportion of Inward or Outward direction is same for both.
+<br />
+
+
+### Proportion of Different directions in each event types.
+
+<br/>
+In this plot we are trying to identify the proportion of each events in the dataset.
+<br />
+```{r fig.width=11}
+
+
+ggplot(data = short_Data) +
+  geom_bar(mapping = aes(x = type_cross, fill=dirn_cross) , position = "fill")
+
+```
+
+
+### Line graph of Average BTot(15 min Lag) vs BTOt. (Complete Datset)
+
+<br/>
+In this plot we are trying to identify the pattern in which average value changes with the current value .
+<br />
+```{r fig.width=11}
+
+
+ggplot(data=short_Data, aes(x=TimeStamp, group=1)) +
+  geom_line(aes(y = B_Tot), color = "red")+
+  geom_line(aes(y = Avg_Lag_BTot), color = "green")
+
+
+```
+
+
+### Line graph of Average BTot(15 min Lag) and BTOt. (Bow Shock Datset)
+
+<br/>
+In this plot we are trying to identify the pattern in which average 15 minute Lag value changes with the current value when an event occurs .
+<br />
+```{r fig.width=11}
+
+
+ggplot(data=bs_avgData, aes(x=TimeStamp, group=1)) +
+  geom_line(aes(y = B_Tot), color = "red")+
+  geom_line(aes(y = Avg_Lag_BTot), color = "green")
+
+
+```
+
+### Line graph of Average BTot(15 min Lead) and BTOt. (Bow Shock Datset)
+
+<br/>
+In this plot we are trying to identify the pattern in which average 15 minute Lead value changes with the current value when an event occurs .
+<br />
+<b>Orange :</b> Magneto Pause
+<b>Yellow :</b>Bow Shock
+<br />
+```{r fig.width=11}
+
+bowShock<-filter(bs_avgData,type_cross=="BS")$TimeStamp
+MagP<-filter(bs_avgData,type_cross=="MP")$TimeStamp
+
+ggplot(data=bs_avgData, aes(x=TimeStamp, group=1)) +
+    geom_vline(xintercept=bowShock,colour="yellow",size=1.3,alpha=0.4)+
+  geom_vline(xintercept=MagP,colour="orange",size=1.3,alpha=0.4)+
+  
+  geom_line(aes(y = B_Tot), color = "red",size=1.3)+
+  geom_line(aes(y = Avg_Lead_BTot), color = "blue",size=1.3)+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+```
+<br/>
+Its is clear that BTot is higher in the region of Magnetopause and Avg values are linearly related to the Current value.
+<br /><br /><br />
+

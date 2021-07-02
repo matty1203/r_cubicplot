@@ -1,0 +1,257 @@
+---
+title: "Model Creation R Markdown"
+author: "Mathews Philip Venattu"
+date: "07/06/2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+library(caret)
+library(ranger)
+library(matrixStats)
+library(kableExtra)
+```
+
+## Model Creation
+
+### Reading Data
+Here I have used input dataset which is the same one as full_wider_data but withour Timestamps. I have  also created the copy of that dataset.<br />
+
+```{r}
+data_Wider<-readRDS('input_dataset.rds', refhook = NULL)
+copy_data<-data_Wider
+copy_data<-dplyr::select(copy_data,!contains("15"))
+kable(head(copy_data),"html")%>% scroll_box(width = "100%")
+```
+
+### Scaling the data
+
+From the table we can see that X and Y coordinate have very high values when compared to the Bx,By ,Bz and BTOt  variables So, we are normalizing the data using the scale function.<br />
+
+```{r}
+scaled_data<-copy_data%>%mutate_if(is.numeric,scale)
+kable(head(scaled_data),"html")%>% scroll_box(width = "100%")
+
+```
+
+### Datasets Used
+
+Two datsets were used in this Task.<br />
+
+#### Full Dataset
+
+```{r}
+dim(scaled_data)
+```
+
+#### Randomly chosen 500 NE Points + the remaining Events
+
+```{r}
+set.seed(234)
+new_data<-scaled_data%>%filter(type_cross=='NE')%>%sample_n(500)%>%rbind(scaled_data%>%filter(type_cross!='NE'))
+dim(new_data)
+
+```
+
+
+## Models Trained
+
+### Random Forrest
+
+Used the ranger fucntion from the package `ranger`. I have trained two model with two  different sets of data  <br />
+
+#### Full Dataset
+
+With all datapoints.(we know that `NE` constitutes 90% of the data)<br />
+
+##### Splitting the Full Dataset to get training and Testing Dateset
+
+
+Here I used 2/3 of the dataset (67%) as the training data and remaining 33% as testing data.<br />
+
+```{r}
+train.idx <- sample(nrow(scaled_data), 2/3 * nrow(scaled_data))
+cassini.train <- scaled_data[train.idx, ]
+cassini.test <- scaled_data[-train.idx, ]
+dim(cassini.test)
+dim(cassini.train)
+
+```
+
+##### Training Random Forrest Model
+
+
+Here the `num.trees` used was 500 (default) <br />
+
+```{r}
+cassini.rfmodel_full <- ranger(type_cross ~ ., data = cassini.train, write.forest = TRUE)
+```
+
+##### Results
+
+
+Confusion Matrix of Test Datset is given below. <br />
+
+```{r}
+cassini.test$pred<-predict(cassini.rfmodel_full,data = cassini.test)$predictions
+
+confusionMatrix(cassini.test$pred, cassini.test$type_cross)
+
+```
+
+
+#### Randomly Chosen 500 NE events + the remaining Events
+
+Total Data points  = 500 `NE` events + `DG` + `BS` + `MP` + `MS` + `SC` .(we know that `NE` constitutes 90% of the data, thats why we are trying to reduce the size of NE to check whether there is any change)<br />
+
+##### Splitting the Dataset to get training and Testing Dateset
+
+
+Here I used 2/3 of the dataset (67%) as the training data and remaining 33% as testing data.(same as above)<br />
+
+```{r}
+train.idx <- sample(nrow(new_data), 2/3 * nrow(new_data))
+cassini.train2 <- new_data[train.idx, ]
+cassini.test2 <- new_data[-train.idx, ]
+dim(cassini.test2)
+dim(cassini.train2)
+
+```
+
+##### Training the  Model
+
+
+Here the `num.trees` used was 500 (default) <br />
+
+```{r}
+cassini.rfmodel_small <- ranger(type_cross ~ ., data = cassini.train2, write.forest = TRUE)
+```
+
+##### Results
+
+
+Confusion Matrix of Test Dataset is given below. <br />
+
+```{r}
+cassini.test2$pred<-predict(cassini.rfmodel_small,data = cassini.test2)$predictions
+
+confusionMatrix(cassini.test2$pred, cassini.test2$type_cross)
+
+```
+
+
+
+### Logistic Regresson
+
+In this section I was trying to classify the Occurrence of Bow Shock Events.So I created an another column called `event_occured` and 
+it will have values 0 and 1.<br/>
+0 for Not a Bow Shock Event <br />
+1 for a Bow Shock Event <br />
+
+
+#### Data Modification
+
+Creation of new column `event_occured`. <br />
+
+```{r}
+data1<-scaled_data%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='DG'|type_cross=='SC',0,1))
+data1$event_occured<-as.factor(data1$event_occured)
+data1 <- dplyr::select(data1,-c(type_cross, dirn_cross))
+
+table(data1$dirn_cross, data1$event_occured)
+data2<-data1%>%filter(event_occured==0)%>%sample_n(500)%>%rbind(data1%>%filter(event_occured!=0))
+```
+
+#### Full Dataset
+
+##### Splitting the data
+
+Splitting the data into training and test datasets. <br />
+
+```{r}
+set.seed(120)
+train.idx <- sample(nrow(data1), 2/3 * nrow(data1))
+cassini.train <- data1[train.idx, ]
+cassini.test <- data1[-train.idx, ]
+
+```
+
+
+##### Training the Model
+
+Splitting the data into training and test datasets. <br />
+
+```{r}
+log_model <- glm(event_occured ~ ., family = "binomial", data = cassini.train)
+```
+
+##### Results
+
+<b>Summary</b> <br />
+
+```{r}
+summary(log_model)
+```
+<br />
+
+Confusion Matrix of Test Datset is given below. <br />
+
+```{r}
+cassini.test$prob=predict(log_model,cassini.test,type="response")
+cassini.test$pred <- factor(ifelse(cassini.test$prob < .9, 0,1))
+confusionMatrix(cassini.test$pred, cassini.test$event_occured)
+
+```
+
+
+
+#### Randomly Chosen 500 NE events + the remaining Events
+
+##### Splitting the data
+
+Splitting the data into training and test datasets. <br />
+
+```{r}
+set.seed(120)
+train.idx <- sample(nrow(data2), 2/3 * nrow(data2))
+cassini.train1 <- data2[train.idx, ]
+cassini.test1 <- data2[-train.idx, ]
+
+```
+
+
+##### Training the Model
+
+Splitting the data into training and test datasets. <br />
+
+```{r}
+log_model1 <- glm(event_occured ~ ., family = "binomial", data = cassini.train1)
+plot(cassini.train1$X_KSM15, cassini.train1$X_KSM.km.)
+```
+
+##### Results
+
+<b>Summary</b> <br />
+
+```{r}
+summary(log_model1)
+```
+<br />
+
+Confusion Matrix of Test Datset is given below. <br />
+
+```{r}
+cassini.test1$prob=predict(log_model1,cassini.test1,type="response")
+cassini.test1$pred <- factor(ifelse(cassini.test1$prob < .6, 0,1))
+confusionMatrix(cassini.test1$pred, cassini.test1$event_occured)
+
+```
+
+
+
