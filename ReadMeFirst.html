@@ -477,7 +477,7 @@ Inside <code>data_version_2 Folder</code> there are six files which are created 
 <code>Average_SD_Data.rds</code> : Contains - average value of magnetic properties 15 minutes before each event, average value of magnetic properties 15 minutes after each event, standard deviation of magnetic properties 15 minutes before each event and standard deviation of magnetic properties 15 minutes after each event
 </li>
 <li>
-<code>Full_Data_Wider.csv</code> and <code>Full_Data_Wider.rds</code> : Contains all the Data points (about 49000) and 15 minutes before and after each points as columns (dimensions are 49000.210)
+<code>Full_Data_Wider.csv</code> and <code>Full_Data_Wider.rds</code> : Contains all the Data points (about 49000) and 15 minutes before and after each points as columns (dimensions are 49000,210)
 </li>
 <li>
 <code>input_dataset.rds</code> : Contains all the Data in <code>Full_Data_Wider.csv</code> and <code>Full_Data_Wider.rds</code> but imputed the NA values with required values and also it doesn;t contains the varibale <code>Timestamp</code>.
@@ -518,7 +518,18 @@ Inside <code>Presentation Folder</code> it contains only the pptx file which i p
 <p>This project was divided into different tasks to make it more understandable. Each task has its own folder and files. <br /><br /> <b>NB:</b>You can use the tab below to read more about each folders and the files in it. <br /></p>
 <div id="task-1-merging-the-data" class="section level4">
 <h4>Task 1 (Merging the Data)</h4>
-<p>s</p>
+Inside <b><code>Task 1 (Merging the Data) Folder</code> </b> it contains three files related to merging the <code>Cass_data_ksm2005.rds</code> dataset and <code>Full_Cassini_Master_MP_BS_CMJ_revised2005.rds</code> dataset by using <code>Timestamp</code> variable as the key. <br /><br /> <b><u>Files and its Explanations </u></b><br />
+<ul>
+<li>
+<b><code>Task.R</code></b> :This a draft file that contains the code i used for merging the two datasets.
+</li>
+<li>
+<b><code>Task.Rmd</code> </b>: Rmd File which contains all the information including a brief description of each chunk of code that i wrote in <code>Task.R</code>
+</li>
+<li>
+<b><code>Task.html</code> </b> : HTML knitted version of <code>Task.Rmd</code>
+</li>
+</ul>
 </div>
 <div id="task-2-data-creation-15-minutes" class="section level4">
 <h4>Task 2 (Data Creation 15 minutes)</h4>

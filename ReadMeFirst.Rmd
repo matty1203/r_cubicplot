@@ -109,7 +109,16 @@ This project was divided into different tasks to make it more understandable. Ea
 
 #### Task 1 (Merging the Data)
 
-s
+Inside <b >`Task 1 (Merging the Data) Folder` </b> it contains three files related to merging the `Cass_data_ksm2005.rds` dataset and  `Full_Cassini_Master_MP_BS_CMJ_revised2005.rds` dataset by using `Timestamp` variable as the key. <br /><br />
+ <b><u>Files and its Explanations </u></b><br/>
+<ul>
+
+<li><b>`Task.R`</b> :This a draft file that contains the code i used for merging the two datasets.</li>
+
+<li><b>`Task.Rmd ` </b>: This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task.R` </li>
+<li><b>`Task.html ` </b> : HTML knitted version of `Task.Rmd` </li>
+
+</ul>
 
 #### Task 2 (Data Creation 15 minutes)
 
