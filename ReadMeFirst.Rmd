@@ -1,0 +1,141 @@
+---
+title: "Readme"
+author: "Mathews Philip Venattu"
+date: "02/07/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Readme File for this Project Directory {.tabset }
+
+In this Directory there are 6 Folders: Data, Figures, Literature Surveys, Presentation, Tasks Allotted and Thesis Report Files.<br />
+<br />
+<b>NB:</b>You can use the tab below to read more about each folders and the files in it. 
+<br />
+
+### Data {.tabset .tabset-pills}
+
+`Data Folder` contains all the datasets that i used and created for this project.Inside this `Data Folder` there are 3 Folders (in github there are only 2 because of storage constraints).
+
+#### data_version_0
+  
+  In `dataset_version_0 Folder` it contains the raw data that i got for this project.<br/><br/>
+  <b><u>Files and its Explanations </u></b><br/>
+<ul>
+<li>`Cass_data_ksm2005.rds`: Contains the Magnetic Field measurements of Cassini Space Craft and its Positions in KSM Cordinate System</li>
+<li>`Cass_data2005.rds`:  Contains the Magnetic Field measurements of Cassini Space Craft and its Positions. </li>
+<li>`Full_Cassini_Master_MP_BS_CMJ_revised2005.rds` : Contains the data of the Bow Shock, Magneto Pause Events (when they occured)</li>
+<li>`joined_data` : It is a dataset created by me by joining the `Full_Cassini_Master_MP_BS_CMJ_revised2005.rds` and `Cass_data2005.rds`</li>
+
+<li>`bow_shock_only_Data.csv` and `Bow_Shock_Data.csv` : Contains only the bow Shock Data</li>
+
+<li>`15minutes_interval_boeshockData.csv ` : Contains all the Data that is 15 minutes before and after a bow shock occurs </li>
+
+<li>`15minData_Wider.csv ` : Contains all the Data that is 15 minutes before and after a bow shock occurs as columns </li>
+
+</ul>
+
+#### data_version_1
+
+Inside `data_version_1 Folder`  there are three files which are the slightly modified versions of `bow_shock_only_Data.csv`, `15minutes_interval_boeshockData.csv` and `15minData_Wider.csv` files in `data_version_0 Folder`. <br /><br />
+ <b><u>Files and its Explanations </u></b><br/>
+<ul>
+
+<li>`bow_shock_only_Data.csv` : Contains only the bow Shock Data</li>
+
+<li>`15minutes_interval_boeshockData.csv ` : Contains all the Data that is 15 minutes before and after a bow shock occurs </li>
+
+<li>`15minData_Wider.csv ` : Contains all the Data that is 15 minutes before and after a bow shock occurs as columns </li>
+
+</ul>
+
+#### data_version_2 (Not Available in GitHub)
+
+Inside `data_version_2 Folder`  there are six files which are  created for training the different Models I created. <br />
+<b>NB:</b> Not pushed to the gitHub repo because of Large Size.<br /><br />
+ <b><u>Files and its Explanations </u></b><br/>
+<ul>
+<li>`Average_Data.rds` : Contains - average value of magnetic properties 15 minutes before each event and average value of magnetic properties 15 minutes after each event</li>
+
+<li>`Average_SD_Data.rds` : Contains - average value of magnetic properties 15 minutes before each event, average value of magnetic properties 15 minutes after each event, standard deviation of magnetic properties 15 minutes before each event and standard deviation of magnetic properties 15 minutes after each event</li>
+
+<li>`Full_Data_Wider.csv` and `Full_Data_Wider.rds` : Contains all the Data points (about 49000) and 15 minutes before and after each points as columns (dimensions are 49000,210) </li>
+
+<li>`input_dataset.rds` : Contains all the Data in `Full_Data_Wider.csv` and `Full_Data_Wider.rds` but imputed the NA values with required values and also it doesn;t contains the varibale `Timestamp`. </li>
+
+<li>`input_dataset.rds` : Contains all the Data in `input_dataset.rds` but doesn't contains the variable `dirn_cross`</li>
+
+</ul>
+
+
+
+
+### Figures
+
+Inside this folder it contains some of the sample graphs I saved during Exploratory Data Analysis. <br/><br/>
+  <b><u>Files and its Explanations </u></b><br/>
+  All files are either in `png`  or `pdf` format.
+
+### Literature Surveys
+
+Inside `Literature Surveys Folder`  it contains some of the papers that i refered during my research work for this project and it also contains a documents which i created to prepare notes. <br /><br />
+ <b><u>Files and its Explanations </u></b><br/>
+<ul>
+
+<li>`.docx` / `.txt` : Files with this extensions are my notes</li>
+
+<li>`.pdf ` : Files with this extensions are the papers I refered. </li>
+
+</ul>
+
+### Presentation
+
+Inside `Presentation Folder`  it contains only the pptx file which i presented in the project review meeting. <br /><br />
+ <b><u>Files and its Explanations </u></b><br/>
+<ul>
+
+<li>`.pptx` : This is the presentation file I used. It contains a brief description of the project so far</li>
+
+</ul>
+
+### Tasks Alloted {.tabset .tabset-pills}
+
+This project was divided into different tasks to make it more understandable. Each task has its own folder and files. <br/><br/>
+<b>NB:</b>You can use the tab below to read more about each folders and the files in it. 
+<br />
+
+#### Task 1 (Merging the Data)
+
+s
+
+#### Task 2 (Data Creation 15 minutes)
+
+s
+
+#### Task 2 (Making Wider Data)
+
+s
+
+#### Task 3 (Exploratory Data Analysis)
+
+s
+
+
+#### Task 4 (Model Creation)
+
+s
+
+#### Task 5 (Complete ToDo List)
+
+s
+
+
+### Thesis Report Files
+
+Hi there
+```{r}
+
+```

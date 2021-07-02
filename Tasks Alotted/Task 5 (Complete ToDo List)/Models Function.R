@@ -76,7 +76,7 @@ rf<-function(test_data,train_data){
 
 ##Data: Only considering 15 minutes before
 
-data<-readRDS('input_datasetFinal.rds', refhook = NULL)
+data<-readRDS('./Data/dataset_version_2/input_datasetFinal.rds', refhook = NULL)
 glimpse(data)
 dat_15<-data[,1:107]
 scaled<-prepareData(dat_15,100,100,100,TRUE)
@@ -125,7 +125,7 @@ scaled<-prepareData(dat_15,100,100,100,TRUE)
   
 ##Data : Average mean and SD 
 
-data<-readRDS('Average_SD_Data.rds', refhook = NULL)
+data<-readRDS('./Data/dataset_version_2/Average_SD_Data.rds', refhook = NULL)
 dat_avg<-data
 scaled<-prepareData(dat_avg,100,100,100,TRUE)
 ##Random Forrest
