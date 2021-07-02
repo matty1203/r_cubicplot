@@ -137,8 +137,8 @@ Inside <b >`Task 2 (Data Creation 15 minutes) Folder` </b> it contains nine file
 
 </li>
 
-<li><b>`Task.Rmd ` </b>: This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task.R` </li>
-<li><b>`Task.html ` </b> : HTML knitted version of `Task.Rmd` </li>
+<li><b>`Exploratory Analysis on Bow Shock Data.R ` </b>: This a draft file that contains the code i wrote to do exploratory data Analysis on the Datasets i Created. </li>
+<li><b>`Exploratory Analysis.Rmd ` </b> : HTML knitted version of `Task.Rmd` </li>
 
 </ul>
 
