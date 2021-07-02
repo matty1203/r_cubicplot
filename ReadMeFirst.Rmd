@@ -113,7 +113,7 @@ Inside <b >`Task 1 (Merging the Data) Folder` </b> it contains three files relat
  <b><u>Files and its Explanations </u></b><br/>
 <ul>
 
-<li><b>`Task.R`</b> :This a draft file that contains the code i used for merging the two datasets.</li>
+<li><b>`Task.R`</b> :This a draft file that contains the code i wrote for merging the two datasets.</li>
 
 <li><b>`Task.Rmd ` </b>: This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task.R` </li>
 <li><b>`Task.html ` </b> : HTML knitted version of `Task.Rmd` </li>
@@ -122,7 +122,25 @@ Inside <b >`Task 1 (Merging the Data) Folder` </b> it contains three files relat
 
 #### Task 2 (Data Creation 15 minutes)
 
-s
+Inside <b >`Task 2 (Data Creation 15 minutes) Folder` </b> it contains nine files related to creation of different datasets for training the models and also did some basic exploratory analysis on created Data(not a detailed one) <br /><br />
+ <b><u>Files and its Explanations </u></b><br/>
+<ul>
+
+<li><b>`Task 2 Draft.R`</b> :This a draft file that contains the code i wrote for creating the files below.
+<ul>
+
+<li>`bow_shock_only_Data.csv` : Contains only the bow Shock Data</li>
+
+<li>`15minutes_interval_boeshockData.csv ` : Contains all the Data that is 15 minutes before and after a bow shock occurs </li>
+
+</ul>
+
+</li>
+
+<li><b>`Task.Rmd ` </b>: This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task.R` </li>
+<li><b>`Task.html ` </b> : HTML knitted version of `Task.Rmd` </li>
+
+</ul>
 
 #### Task 2 (Making Wider Data)
 
