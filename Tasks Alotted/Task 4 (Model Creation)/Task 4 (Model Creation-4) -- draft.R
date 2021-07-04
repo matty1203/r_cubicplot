@@ -51,7 +51,6 @@ for(col in c(1:dim(cassini.test_scaled)[2])){
   temp<-(cassini.test_scaled[,col]-means[,col])/sds[,col]
   cassini.test_scaled[,col]<-as.matrix(temp)
   temp<-NULL
-  
 }
 cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
 cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross

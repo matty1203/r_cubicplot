@@ -153,20 +153,49 @@ Inside <b >`Task 2 (Making Wider Data) Folder` </b> it contains five files  rela
  <b><u>Files and its Explanations </u></b><br/>
 <ul>
 
-<li><b>`Task 2(Wider Data) Draft.R`</b> :This a draft file that contains the code i wrote for the creation of new columns (30 minute window).</li>
+<li><b>`Task 2(Wider Data) Draft.R`</b> :This a draft file that contains the code i wrote for the creation of new columns (30 minute window).
+<ul>
+
+<li><b>`15minData_Wider.csv`</b> :This is the csv formatted data that has BowShock with 30 minute window columns.
+</ul>
+</li>
 
 <li><b>`Task 2(Wider Data).Rmd ` </b>: This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task 2(Wider Data) Draft.R` </li>
 <li><b>`Task-2-Wider-Data-.html ` </b> : HTML knitted version of `Task 2(Wider Data).Rmd` </li>
 
 </ul>
+
 #### Task 3 (Exploratory Data Analysis)
 
-s
+Inside <b >`Task 3 (Exploratory Data Analysis) Folder` </b> it contains four files that is related to EDA of the newly created wider datset.  <br /><br />
+ <b><u>Files and its Explanations </u></b><br/>
+<ul>
+
+<li><b>`Draft (Analysis).R`</b> :This a draft file that contains the code i wrote for EDA of the new 15 minute window wider dataset (`Full_Data_Wider.rds`).   
+
+</li>
+
+<li><b>`Data Analysis.Rmd ` </b>: This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Draft (Analysis).R` </li>
+<li><b>`Data-Analysis ` </b> : HTML knitted version of `Data Analysis.Rmd` </li>
+
+</ul>
 
 
 #### Task 4 (Model Creation)
 
-s
+Inside <b >`Task 3 (Exploratory Data Analysis) Folder` </b> it contains four files that is related to EDA of the newly created wider datset.  <br /><br />
+ <b><u>Files and its Explanations </u></b><br/>
+<ul>
+
+<li><b>`Draft (Analysis).R`</b> :This a draft file that contains the code i wrote for EDA of the new 15 minute window wider dataset (`Full_Data_Wider.rds`).   
+
+</li>
+
+<li><b>`Data Analysis.Rmd ` </b>: This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Draft (Analysis).R` </li>
+<li><b>`Data-Analysis ` </b> : HTML knitted version of `Data Analysis.Rmd` </li>
+
+</ul>
+
 
 #### Task 5 (Complete ToDo List)
 
