@@ -178,7 +178,7 @@ Inside <b >`Task 3 (Exploratory Data Analysis) Folder` </b> it contains four fil
 </li>
 
 <li><b>`Data Analysis.Rmd ` </b>: This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Draft (Analysis).R` </li>
-<li><b>`Data-Analysis ` </b> : HTML knitted version of `Data Analysis.Rmd` </li>
+<li><b>`Data-Analysis.html` </b> : HTML knitted version of `Data Analysis.Rmd` </li>
 
 </ul>
 
@@ -189,24 +189,85 @@ Inside <b >`Task 4 (Model Creation) Folder` </b> it contains four files that is 
  <b><u>Files and its Explanations </u></b><br/>
 <ul>
 
-<li><b>`Draft (Analysis).R`</b> :This a draft file that contains the code i wrote for EDA of the new 15 minute window wider dataset (`Full_Data_Wider.rds`).   
+<li><b>`Task 4 (Model Creation)-Draft.R`</b> :This a draft file that contains the code i wrote to train a decision tree model by using the dataset (`input_dataset.rds`).<u>A failed attempt </u>   
 
 </li>
 
-<li><b>`Data Analysis.Rmd ` </b>: This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Draft (Analysis).R` </li>
-<li><b>`Data-Analysis ` </b> : HTML knitted version of `Data Analysis.Rmd` </li>
+<li><b>`Task 4 (Model Creation-1)-Draft.R ` </b>: This a draft file that contains the code i wrote to train two Random Forrest Models by using two different datasets that is derived from the `input_dataset.rds`. <br/>
+<b><u>Datsets Used </u></b><br/>
+<ul>
+<li>Full Dataset</li>
+<li>Randomly Chosen 500 NE points and remaining Events in the Dataset</li>
+</ul>
+</li>
+
+</li>
+
+<li><b>`Task 4 (Model Creation-2)-Draft.R ` </b>: This a draft file that contains the code i wrote to train two different Logistic regression Models by using a datasets that is derived from the `input_dataset.rds`. <br/>
+<b><u>Datsets Used </u></b><br/>
+<ul>
+<li>Randomly Chosen 500 NE points and remaining Events in the Dataset</li>
+</ul>
+</li>
+<b><u>Models Used </u></b><br/>
+<ul>
+<li>BS as 1 and All other events as 0</li>
+<li>MP as 1 and All other events as 0</li>
+</ul>
+</li>
+
+</li>
+
+
+<li><b>`Task 4 (Model Creation-3)--draft.R ` </b>: This a draft file that contains the code i wrote to train two different Logistic regression Models and one Random Forrest Model  by using a balanced datasets that is derived from the `input_dataset.rds`. <br/>
+<b><u>Datasets Used </u></b><br/>
+<ul>
+<li>Randomly Chosen 100 data points of each events from the Dataset</li>
+</ul>
+</li>
+<b><u>Models Used </u></b><br/>
+<ul>
+<li>BS as 1 and All other events as 0</li>
+<li>MP as 1 and All other events as 0</li>
+</ul>
+</li>
+
+</li>
+
+<li><b>`Task 4 (Model Creation-4)--draft.R ` </b>: This a draft file that contains another method  <br/>
+<b><u>Datasets Used </u></b><br/>
+<ul>
+<li>Randomly Chosen 100 data points of each events from the Dataset</li>
+</ul>
+</li>
+<b><u>Models Used </u></b><br/>
+<ul>
+<li>RF from the package `ranger`</li>
+<li>BS as 1 and All other events as 0</li>
+<li>MP as 1 and All other events as 0</li>
+</ul>
+</li>
+
+</li>
+
+<li><b>`Random Forrest.Rmd ` </b> :  This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task 4 (Model Creation-4)--draft.R` for random forrest model  </li>
+<li><b>`Logistic Regression Model.Rmd ` </b> :  This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task 4 (Model Creation-4)--draft.R` for Logistic Regression model  </li>
+<li><b>`Logistic-Regression--Model.html` </b> : HTML knitted version of `Logistic Regression Model.Rmd` </li>
+<li><b>`Random-Forrest.html` </b> : HTML knitted version of `Random Forrest.Rmd` </li>
+<li><b>`Model Selection.Rmd ` </b> :  This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task 4 (Model Creation-2)-Draft.R`  </li>
+<li><b>`Model-Trained.Rmd ` </b> :  This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task 4 (Model Creation-1)-Draft.R `  </li>  
+<li><b>`Model Trained.Rmd ` </b> :  This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task 4 (Model Creation-3)--draft.R`  </li>  
+<li><b>`Model-Selection.html` </b> : HTML knitted version of `Model Selection.Rmd` </li>
+<li><b>`Model-Trained.html` </b> : HTML knitted version of `Model-Trained.Rmd` </li>
 
 </ul>
 
 
 #### Task 5 (Complete ToDo List)
 
-s
+Working on it
 
 
 ### Thesis Report Files
 
-Hi there
-```{r}
-
-```
+Thesis Files will be available soon.
