@@ -138,14 +138,27 @@ Inside <b >`Task 2 (Data Creation 15 minutes) Folder` </b> it contains nine file
 </li>
 
 <li><b>`Exploratory Analysis on Bow Shock Data.R ` </b>: This a draft file that contains the code i wrote to do exploratory data Analysis on the Datasets i Created. </li>
-<li><b>`Exploratory Analysis.Rmd ` </b> : HTML knitted version of `Task.Rmd` </li>
+<li><b>`Exploratory Data Analysis.Rmd ` </b> :This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Exploratory Analysis on Bow Shock Data.R`   </li>
+<li><b>`Data Creation (15 min duration).Rmd `, `Data-Creation--15-min-duration-.Rmd` and `Data Creation -15 min duration.Rmd` </b> : This Rmd Files contains all the information including a brief description of each chunk of code that i wrote in `Task 2 Draft.R` </li>
+<li><b>`Exploratory-Data-Analysis.html` </b> : HTML knitted version of `Exploratory Data Analysis.Rmd` </li>
+<li><b>`Data-Creation--15-min-duration.html`and `Data-Creation--15-min-duration-.html` </b> : HTML knitted version of ``Data-Creation--15-min-duration-.Rmd` and `Data Creation -15 min duration.Rmd` </li>
 
 </ul>
 
 #### Task 2 (Making Wider Data)
 
-s
 
+Inside <b >`Task 2 (Making Wider Data) Folder` </b> it contains five files  related to creation of 30 minute window for every data points(about 49000 rows).  <br /><br />
+<b>NB:</b> It takes a good amount of time to process the complete dataset. There is a completed Dataset in this folder <br /><br />
+ <b><u>Files and its Explanations </u></b><br/>
+<ul>
+
+<li><b>`Task 2(Wider Data) Draft.R`</b> :This a draft file that contains the code i wrote for the creation of new columns (30 minute window).</li>
+
+<li><b>`Task 2(Wider Data).Rmd ` </b>: This Rmd File contains all the information including a brief description of each chunk of code that i wrote in `Task 2(Wider Data) Draft.R` </li>
+<li><b>`Task-2-Wider-Data-.html ` </b> : HTML knitted version of `Task 2(Wider Data).Rmd` </li>
+
+</ul>
 #### Task 3 (Exploratory Data Analysis)
 
 s
