@@ -2,7 +2,9 @@
 title: "Readme"
 author: "Mathews Philip Venattu"
 date: "02/07/2021"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -183,7 +185,7 @@ Inside <b >`Task 3 (Exploratory Data Analysis) Folder` </b> it contains four fil
 
 #### Task 4 (Model Creation)
 
-Inside <b >`Task 3 (Exploratory Data Analysis) Folder` </b> it contains four files that is related to EDA of the newly created wider datset.  <br /><br />
+Inside <b >`Task 4 (Model Creation) Folder` </b> it contains four files that is related to EDA of the newly created wider datset.  <br /><br />
  <b><u>Files and its Explanations </u></b><br/>
 <ul>
 
