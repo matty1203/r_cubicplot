@@ -1,0 +1,939 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.1)  5 JUL 2021 14:23
+entering extended mode
+**./Thesis_Report_Mathews.tex
+(Thesis_Report_Mathews.tex
+LaTeX2e <2021-06-01> patch level 1
+L3 programming layer <2021-06-18> (C:\Users\Mathews\AppData\Local\Programs\MiKT
+eX\tex/latex/base\article.cls
+Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count182
+\c@section=\count183
+\c@subsection=\count184
+\c@subsubsection=\count185
+\c@paragraph=\count186
+\c@subparagraph=\count187
+\c@figure=\count188
+\c@table=\count189
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.st
+y
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks16
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.st
+y
+Package: amsmath 2021/04/20 v2.17j AMS math features
+\@mathmargin=\skip49
+For additional information on amsmath, use the `?' option.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen139
+)) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen140
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count190
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count191
+\leftroot@=\count192
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count193
+\DOTSCASE@=\count194
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen141
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count195
+\c@MaxMatrixCols=\count196
+\dotsspace@=\muskip16
+\c@parentequation=\count197
+\dspbrk@lvl=\count198
+\tag@help=\toks18
+\row@=\count199
+\column@=\count266
+\maxfields@=\count267
+\andhelp@=\toks19
+\eqnshift@=\dimen142
+\alignsep@=\dimen143
+\tagshift@=\dimen144
+\tagwidth@=\dimen145
+\totwidth@=\dimen146
+\lineht@=\dimen147
+\@envbody=\toks20
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+)) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifluatex.s
+ty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
+2.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks22
+\inpenc@posthook=\toks23
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.s
+ty
+Package: microtype 2021/03/14 v2.8c Micro-typographical refinements (RS)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks24
+)
+\MT@toks=\toks25
+\MT@count=\count268
+LaTeX Info: Redefining \textls on input line 790.
+\MT@outer@kern=\dimen148
+LaTeX Info: Redefining \textmicrotypecontext on input line 1374.
+\MT@listname@count=\count269
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-p
+dftex.def
+File: microtype-pdftex.def 2021/03/14 v2.8c Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 915.
+LaTeX Info: Redefining \lslig on input line 915.
+\MT@outer@space=\skip52
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.c
+fg
+File: microtype.cfg 2021/03/14 v2.8c microtype main configuration file (RS)
+)) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.st
+y
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.s
+ty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkeys
+.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count270
+)) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cf
+g
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.d
+ef
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
+Package: xurl 2020/12/30 v 0.09a modify URL breaks
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+))
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
+Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcm
+ds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr
+.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefi
+nekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape
+.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmac
+ro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen149
+\Hy@linkcounter=\count271
+\Hy@pagecounter=\count272
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref-lan
+gpatches.def
+File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel la
+nguages
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.s
+ty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count273
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4073.
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4445.
+\c@Hy@tempcnt=\count274
+LaTeX Info: Redefining \url on input line 4804.
+\XeTeXLinkMargin=\dimen150
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintca
+lc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count275
+\Field@Width=\dimen151
+\Fld@charsize=\dimen152
+Package hyperref Info: Hyper figures OFF on input line 6076.
+Package hyperref Info: Link nesting OFF on input line 6081.
+Package hyperref Info: Hyper index ON on input line 6084.
+Package hyperref Info: backreferencing OFF on input line 6091.
+Package hyperref Info: Link coloring OFF on input line 6096.
+Package hyperref Info: Link coloring with OCG OFF on input line 6101.
+Package hyperref Info: PDF/A mode OFF on input line 6106.
+LaTeX Info: Redefining \ref on input line 6146.
+LaTeX Info: Redefining \pageref on input line 6150.
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count276
+\c@Item=\count277
+\c@Hfootnote=\count278
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2021-06-07 v7.00m Hyperref driver for pdfTeX
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.st
+y
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
+e
+with kernel methods
+)
+\Fld@listcount=\count279
+\c@bookmark@seq@number=\count280
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunf
+ilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniqu
+ecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip53
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-pdftex.d
+ef
+File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
+\BKM@id=\count281
+))
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count282
+\Gm@cntv=\count283
+\c@Gm@tempcnt=\count284
+\Gm@bindingoffset=\dimen153
+\Gm@wd@mp=\dimen154
+\Gm@odd@mp=\dimen155
+\Gm@even@mp=\dimen156
+\Gm@layoutwidth=\dimen157
+\Gm@layoutheight=\dimen158
+\Gm@layouthoffset=\dimen159
+\Gm@layoutvoffset=\dimen160
+\Gm@dimlist=\toks26
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg
+))
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvrb.sty
+Package: fancyvrb 2021/01/20 v3.7 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count285
+\FV@InFile=\read2
+\FV@TabBox=\box52
+\c@FancyVerbLine=\count286
+\FV@StepNumber=\count287
+\FV@OutFile=\write3
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/framed\framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip54
+\fb@frw=\dimen161
+\fb@frh=\dimen162
+\FrameRule=\dimen163
+\FrameSep=\dimen164
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics
+.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen165
+\Gin@req@width=\dimen166
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/grffile\grffile.sty
+Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legac
+y)
+Package grffile Info: This package is an empty stub for compatibility on input 
+line 40.
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.s
+ty
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen167
+\captionmargin@=\dimen168
+\captionwidth=\dimen169
+\caption@tempdima=\dimen170
+\caption@indent=\dimen171
+\caption@parindent=\dimen172
+\caption@hangindent=\dimen173
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count288
+\c@continuedfloat=\count289
+Package caption Info: hyperref package is loaded.
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/leading\leading.sty
+Package: leading 2008/12/11 v0.3 Define leading length
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count290
+\calc@Bcount=\count291
+\calc@Adimen=\dimen174
+\calc@Bdimen=\dimen175
+\calc@Askip=\skip55
+\calc@Bskip=\skip56
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count292
+\calc@Cskip=\skip57
+))
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-p
+dftex.def
+File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count293
+\l__pdf_internal_box=\box53
+) (Thesis_Report_Mathews.aux
+
+LaTeX Warning: Label `fig:zcat1' multiply defined.
+
+
+LaTeX Warning: Label `fig:zcat1' multiply defined.
+
+
+LaTeX Warning: Label `fig:zcat1' multiply defined.
+
+
+LaTeX Warning: Label `fig:zcat1' multiply defined.
+
+
+LaTeX Warning: Label `fig:zcat1' multiply defined.
+
+
+LaTeX Warning: Label `fig:zcat1' multiply defined.
+
+)
+\openout1 = `Thesis_Report_Mathews.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Info: Redefining \microtypecontext on input line 106.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 106.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.
+mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count294
+\scratchdimen=\dimen176
+\scratchbox=\box54
+\nofMPsegments=\count295
+\nofMParguments=\count296
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count297
+\MPscratchDim=\dimen177
+\MPnumerator=\count298
+\makeMPintoPDFobject=\count299
+\everyMPtoPDFconversion=\toks28
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf
+-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys
+.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package hyperref Info: Link coloring OFF on input line 106.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gett
+itlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count300
+)
+LaTeX Info: Redefining \ref on input line 106.
+LaTeX Info: Redefining \pageref on input line 106.
+LaTeX Info: Redefining \nameref on input line 106.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(108.12054pt, 418.25545pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=418.25545pt
+* \textheight=702.78308pt
+* \oddsidemargin=35.85056pt
+* \evensidemargin=35.85056pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+<logo.png, id=3, 1204.5pt x 677.53125pt>
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 114.
+(pdftex.def)             Requested size: 312.35393pt x 175.69908pt.
+[1
+
+{C:/Users/Mathews/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./logo.png>]
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 176.
+(pdftex.def)             Requested size: 312.35393pt x 175.69908pt.
+[2] (Thesis_Report_Mathews.toc
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 8
+.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 8
+.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+8.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+8.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 8.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 8.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 8.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 8.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cf
+g
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 8.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cf
+g
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+))
+\tf@toc=\write4
+\openout4 = `Thesis_Report_Mathews.toc'.
+
+[3] (Thesis_Report_Mathews.lot)
+\tf@lot=\write5
+\openout5 = `Thesis_Report_Mathews.lot'.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.193 \newpage
+               [1] (Thesis_Report_Mathews.lof)
+\tf@lof=\write6
+\openout6 = `Thesis_Report_Mathews.lof'.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.202 \newpage
+               [2]
+<Picture1.png, id=118, 817.25325pt x 329.43076pt>
+File: Picture1.png Graphic file (type png)
+<use Picture1.png>
+Package pdftex.def Info: Picture1.png  used on input line 225.
+(pdftex.def)             Requested size: 418.25266pt x 168.59558pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.262 
+       [3 <./Picture1.png>] [4] [5]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 382.
+See the caption package documentation for explanation.
+
+[6]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
+08.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
+410.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [7] [8]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 546.
+See the caption package documentation for explanation.
+
+[9]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf, id=161, 867.24
+pt x 289.08pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf Graphic fi
+le (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-7-1.pdf  used on input line 565.
+(pdftex.def)             Requested size: 418.25543pt x 139.41846pt.
+[10 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf>]
+<1.png, id=172, 1359.0775pt x 553.06625pt>
+File: 1.png Graphic file (type png)
+<use 1.png>
+Package pdftex.def Info: 1.png  used on input line 615.
+(pdftex.def)             Requested size: 431.7408pt x 175.69363pt.
+
+Overfull \hbox (13.48535pt too wide) in paragraph at lines 615--616
+ [][] 
+ []
+
+[11 <./1.png>]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 6
+34.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+<2.png, id=180, 1361.085pt x 554.07pt>
+File: 2.png Graphic file (type png)
+<use 2.png>
+Package pdftex.def Info: 2.png  used on input line 675.
+(pdftex.def)             Requested size: 431.58932pt x 175.69122pt.
+
+Overfull \hbox (13.33388pt too wide) in paragraph at lines 675--676
+ [][] 
+ []
+
+[12 <./2.png>]
+<3.png, id=188, 1356.06625pt x 548.0475pt>
+File: 3.png Graphic file (type png)
+<use 3.png>
+Package pdftex.def Info: 3.png  used on input line 694.
+(pdftex.def)             Requested size: 434.73636pt x 175.69655pt.
+
+Overfull \hbox (16.48091pt too wide) in paragraph at lines 694--695
+ [][] 
+ []
+
+[13 <./3.png>]
+<boy1.png, id=195, 1357.07pt x 545.03625pt>
+File: boy1.png Graphic file (type png)
+<use boy1.png>
+Package pdftex.def Info: boy1.png  used on input line 722.
+(pdftex.def)             Requested size: 437.46019pt x 175.6959pt.
+
+Overfull \hbox (19.20474pt too wide) in paragraph at lines 722--723
+ [][] 
+ []
+
+<boy2.png, id=196, 1363.0925pt x 542.025pt>
+File: boy2.png Graphic file (type png)
+<use boy2.png>
+Package pdftex.def Info: boy2.png  used on input line 738.
+(pdftex.def)             Requested size: 441.83507pt x 175.69287pt.
+
+Overfull \hbox (23.57962pt too wide) in paragraph at lines 738--739
+ [][] 
+ []
+
+[14 <./boy1.png> <./boy2.png>]
+<girl1.png, id=204, 1352.05125pt x 545.03625pt>
+File: girl1.png Graphic file (type png)
+<use girl1.png>
+Package pdftex.def Info: girl1.png  used on input line 759.
+(pdftex.def)             Requested size: 435.84236pt x 175.6959pt.
+
+Overfull \hbox (17.58691pt too wide) in paragraph at lines 759--760
+ [][] 
+ []
+
+<girl2.png, id=205, 1361.085pt x 554.07pt>
+File: girl2.png Graphic file (type png)
+<use girl2.png>
+Package pdftex.def Info: girl2.png  used on input line 774.
+(pdftex.def)             Requested size: 431.58932pt x 175.69122pt.
+
+Overfull \hbox (13.33388pt too wide) in paragraph at lines 774--775
+ [][] 
+ []
+
+[15 <./girl1.png> <./girl2.png>]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf, id=213, 867.2
+4pt x 325.215pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf Graphic f
+ile (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-17-1.pdf  used on input line 811.
+(pdftex.def)             Requested size: 418.25543pt x 156.84578pt.
+[16 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf>]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf, id=226, 867.2
+4pt x 325.215pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf Graphic f
+ile (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-18-1.pdf  used on input line 857.
+(pdftex.def)             Requested size: 418.25543pt x 156.84578pt.
+[17 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf>]
+<bam.png, id=237, 505.89pt x 361.35pt>
+File: bam.png Graphic file (type png)
+<use bam.png>
+Package pdftex.def Info: bam.png  used on input line 881.
+(pdftex.def)             Requested size: 245.97388pt x 175.69563pt.
+[18 <./bam.png>] [19]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1012.
+See the caption package documentation for explanation.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1024.
+See the caption package documentation for explanation.
+
+[20]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf, id=259, 867.2
+4pt x 325.215pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf Graphic f
+ile (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-21-1.pdf  used on input line 1070.
+(pdftex.def)             Requested size: 418.25543pt x 156.84578pt.
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf, id=260, 867.2
+4pt x 361.35pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf Graphic f
+ile (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-22-1.pdf  used on input line 1081.
+(pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
+[21 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf> <./Thes
+is_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf>]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf, id=275, 867.2
+4pt x 361.35pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf Graphic f
+ile (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-23-1.pdf  used on input line 1095.
+(pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
+[22 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf>] [23]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf, id=291, 867.2
+4pt x 361.35pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf Graphic f
+ile (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-26-1.pdf  used on input line 1158.
+(pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf, id=292, 867.2
+4pt x 361.35pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf Graphic f
+ile (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-27-1.pdf  used on input line 1166.
+(pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
+[24 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf> <./Thes
+is_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf>]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf, id=309, 1011.
+78pt x 361.35pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf Graphic f
+ile (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-28-1.pdf  used on input line 1186.
+(pdftex.def)             Requested size: 418.25983pt x 149.37851pt.
+[25 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf>] [26] [
+27]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1308.
+
+Underfull \vbox (badness 3907) detected at line 1360
+ []
+
+[28] [29] [30] [31] [32]
+Underfull \vbox (badness 1062) detected at line 1738
+ []
+
+[33]
+Underfull \vbox (badness 10000) detected at line 1763
+ []
+
+[34] [35] [36]
+Underfull \vbox (badness 10000) detected at line 1911
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1911
+ []
+
+[37]
+Overfull \vbox (1.97583pt too high) detected at line 1990
+ []
+
+[38] [39] [40] [41] [42] [43] (Thesis_Report_Mathews.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 14942 strings out of 478847
+ 236141 string characters out of 2847439
+ 587709 words of memory out of 3000000
+ 32340 multiletter control sequences out of 15000+600000
+ 451678 words of font info for 127 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 74i,8n,80p,663b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
+{C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
+{C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{
+C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc
+}{C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
+nc}{C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc
+}<C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.p
+fb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12
+.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi
+10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
+mi7.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
+mr10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/
+lmr12.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmr7.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmri10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+lm/lmsy10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/lm/lmsy7.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/lm/lmtk10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/lm/lmtt10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/lm/lmtti10.pfb>
+Output written on Thesis_Report_Mathews.pdf (46 pages, 1046014 bytes).
+PDF statistics:
+ 597 PDF objects out of 1000 (max. 8388607)
+ 127 named destinations out of 1000 (max. 500000)
+ 26904 words of extra memory for PDF output out of 29859 (max. 10000000)
+
+
+! pdflatex: major issue: So far, you have not checked for MiKTeX updates.

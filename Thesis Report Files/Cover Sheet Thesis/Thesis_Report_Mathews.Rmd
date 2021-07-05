@@ -30,7 +30,7 @@ bibliography: bibliography.bib
 \bigskip                % <!-- blank lines -->
 \bigskip
 
-\textbf{Predicting Ratings from the Reviews extracted from Google Play Store Apps} % <!-- make large text -->
+\textbf{Classification of bow shock and magnetopause event positions by using the Magnetic Field properties of Saturn} % <!-- make large text -->
 
 \bigskip                % <!-- blank lines -->
 \bigskip
@@ -52,7 +52,7 @@ degree of M.Sc. in Data Science and Analytics.}
 
 \large{Department of Mathematics and Statistics\\
 University: National University of Ireland, Maynooth.\\
-Date Submitted: 15th July, 2020}
+Date Submitted: 10th July, 2021}
 
 \end{center}              <!-- end center -->
 
@@ -62,7 +62,7 @@ Date Submitted: 15th July, 2020}
 
 \begin{center}
 
-\large{Abstract}
+\large{<b> Abstract</b>}
 
 \end{center}
 
