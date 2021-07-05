@@ -62,7 +62,7 @@ Date Submitted: 10th July, 2021}
 
 \begin{center}
 
-\large{<b> Abstract</b>}
+\large{AbstractS}
 
 \end{center}
 
