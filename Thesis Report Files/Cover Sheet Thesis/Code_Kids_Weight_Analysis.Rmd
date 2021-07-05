@@ -1,0 +1,1064 @@
+---
+title: "Kids Weight Change Analysis using GAM"
+author: "Sankhadip"
+date: "5/2/2020"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+**Calling required libraries and installing packages**
+
+```{r, eval=FALSE, echo=FALSE}
+
+# Uncomment and run this chunk if you don't have any of the libraries installed, as they aren't present in base R and hence require a # special installation. Itsadug package is not available in base R, if you don't have this package, install it from github. The code  
+# for installation is commented below. Please run it before knitting.
+
+# load the package devtools:
+# install the newest version from itsadug:
+# devtools::install_github("vr-vr/itsadug", build_vignettes=TRUE)
+
+# install.packages('Rcpp', dependencies = TRUE)
+# install.packages('ggplot2', dependencies = TRUE)
+# installing the package devtools from CRAN:
+# install.packages('devtools')
+
+```
+
+```{r, eval=T, echo=FALSE, warning=FALSE}
+
+suppressMessages(library(tidyverse))
+suppressMessages(library(ggplot2))
+suppressMessages(library(GGally))
+suppressMessages(library(lubridate))
+suppressMessages(library(readxl))
+suppressMessages(library(plotly))
+suppressMessages(library(lubridate))
+suppressMessages(library(plotly))
+suppressMessages(library(dplyr))
+suppressMessages(library(GGally))
+suppressMessages(library(scatterplot3d))
+suppressMessages(library(mgcv))
+suppressMessages(library(cowplot))
+suppressMessages(library(gganimate))
+suppressMessages(library(itsadug))
+suppressMessages(library(mgcViz))
+
+```
+
+**Reading the Data and Renaming the Variables.**
+
+```{r}
+
+WD <- getwd()
+if (!is.null(WD)) setwd(WD)
+
+e <- read_excel("fit_database_anthropometric_all.xlsx")
+#e <- read_excel("~/SharedFiles/ST606/2020/data/Exercise/fit_database_anthropometric_all.xlsx")
+
+#Dealing with NAs
+ena<-na.omit(e)
+
+#Renaming Variables(Renaming Column Names for easy code handling and Cleaning Data)
+names(ena)[names(ena)=='measurement date']<- 'measurement_date'
+names(ena)[names(ena)=='age (years)']<- 'age_years'
+names(ena)[names(ena)=='age bin']<- 'age_bin'
+names(ena)[length(ena)]<-"z_cat_WHO"
+names(ena)[9]<-"z_score_WHO"
+names(ena)[6]<-"height_cm"
+names(ena)[7]<-"weight_kg"
+
+#Removing "NA" Characters
+ena$observation <- 1:nrow(ena)
+x<-ena[ena$z_cat_WHO=="NA",]
+y<-x$observation
+ena<-ena[-y,]
+
+#Adding additional column
+ena$year <- year(ena$measurement_date)
+ena$ID <- as.factor(ena$ID)
+#Changing Data Types
+ena <- ena %>%
+  mutate(gender = as.factor(gender),
+         z_cat_WHO=as.factor(z_cat_WHO),
+         measurement_date=as.Date(measurement_date),
+         BMI = as.numeric(BMI),
+         z_score_WHO=as.numeric(z_score_WHO),
+         height_cm=as.numeric(height_cm),
+         weight_kg=as.numeric(weight_kg))
+
+```
+
+**Diving data as per Year**
+
+```{r}
+
+ena_2007 <- filter(ena, year(measurement_date) == 2007)
+ena_2008 <- filter(ena, year(measurement_date) == 2008)
+ena_2009 <- filter(ena, year(measurement_date) == 2009)
+ena_2010 <- filter(ena, year(measurement_date) == 2010)
+ena_2011 <- filter(ena, year(measurement_date) == 2011)
+ena_2012 <- filter(ena, year(measurement_date) == 2012)
+ena_2013 <- filter(ena, year(measurement_date) == 2013)
+ena_2014 <- filter(ena, year(measurement_date) == 2014)
+ena_2015 <- filter(ena, year(measurement_date) == 2015)
+ena_2016 <- filter(ena, year(measurement_date) == 2016)
+ena_2017 <- filter(ena, year(measurement_date) == 2017)
+ena_2018 <- filter(ena, year(measurement_date) == 2018)
+
+```
+
+**Checking only IDs whose observation has been taken continuously from 2007 to 2018**
+
+```{r}
+#kids data of 2007 whose obeservation were taken till the end of 2018 without any miss.
+a_07_08 <- subset(ena_2007, ID %in% ena_2008$ID)
+a_07_09 <- subset(a_07_08, ID %in% ena_2009$ID)
+a_07_10 <- subset(a_07_09, ID %in% ena_2010$ID)
+a_07_11 <- subset(a_07_10, ID %in% ena_2011$ID)
+a_07_12 <- subset(a_07_11, ID %in% ena_2012$ID)
+a_07_13 <- subset(a_07_12, ID %in% ena_2013$ID)
+a_07_14 <- subset(a_07_13, ID %in% ena_2014$ID)
+a_07_15 <- subset(a_07_14, ID %in% ena_2015$ID)
+a_07_16 <- subset(a_07_15, ID %in% ena_2016$ID)
+a_07_17 <- subset(a_07_16, ID %in% ena_2017$ID)
+a_07_18 <- subset(a_07_17, ID %in% ena_2018$ID)
+
+```
+
+**All observations of the kids (IDs) whose measurements were taken from 2007 to 2018 thoroughly.**
+
+```{r}
+
+a_unique_07<- subset(ena, ID %in% a_07_18$ID)
+
+#Adding New age column: e.g: if age is 6.7 when measurement taken, then take it as 6.5 else take 6. 
+a_unique_07$age_mod<-ifelse(round(a_unique_07$age_years)>a_unique_07$age_years, floor(a_unique_07$age_years)+0.5, floor(a_unique_07$age_years))
+
+```
+
+**Saving Dataset into Rdata file**
+
+```{r}
+
+#save(a_07_18, a_unique_07, ena, file = "~/ALL_THESIS/Thesis_Shiny/dataset.rdata")
+
+```
+
+**Calculating proportion changes of weight, height and BMI every year**
+
+```{r}
+
+a_unique_07_pct<-a_unique_07 %>%
+  group_by(ID) %>% 
+  dplyr::arrange(measurement_date, .by_group = TRUE) %>%
+  dplyr::mutate(pct_change_ht = (height_cm/lag(height_cm) - 1) * 100) %>% 
+  dplyr::mutate(pct_change_wt = (weight_kg/lag(weight_kg) - 1) * 100) %>%
+  dplyr::mutate(pct_change_bmi = (BMI/lag(BMI) - 1) * 100) %>%
+  dplyr::select(ID, measurement_date, height_cm, BMI, weight_kg,pct_change_ht,pct_change_wt,pct_change_bmi,gender)
+
+```
+
+**Weight Analysis**
+**Preliminary Comparison of boys and girls weights.**
+
+```{r}
+
+a_unique_07$is_boy <- as.factor(ifelse(a_unique_07$gender=='boy', "1", "0"))
+
+#Boys Weight (Filtering boys)
+a_unique_07_boys <- filter(a_unique_07, gender=="boy")
+
+b<-ggplot(a_unique_07_boys, aes(x=age_years, y=weight_kg, color=ID)) + 
+  geom_line() + theme(legend.position = "none") + 
+  ggtitle("Weight of all Boys ") +
+  xlab("Age (Years)") +
+  ylab("Weight (Kg)") +
+  theme(text = element_text(size=18,color = "Black", face = "bold"))+
+  theme(strip.text = element_text(size=16))
+
+ggplotly(b)
+
+#Girls Weight (Filtering girls)
+a_unique_07_girls <- filter(a_unique_07, gender=="girl")
+
+g<-ggplot(a_unique_07_girls, aes(x=age_years, y=weight_kg, color=ID)) + 
+  geom_line() +
+  theme(legend.position = "none")+ ggtitle("Weight of all Girls") +
+  xlab("Age (Years)") +
+  ylab("Weight (Kg)") +
+  theme(text = element_text(size=18,color = "Black", face = "bold"))+
+  theme(strip.text = element_text(size=16))
+ggplotly(g)
+
+plot_grid(b,g)
+
+```
+
+Visually we can say that the weight increase rate is more in boys as compared to girls.
+
+**Model Building (gam or bam)**
+
+There are two functions for implementing a GAMM model: gam() and bam(). There are largely similar. The most important difference is that bam() is optimized for big data sets.
+
+Smooths terms:
+  
+There are three different smooth functions are available for modeling a potentially nonlinear smooth or surface.
+s() can be used for modeling a 1-dimensional smooth or isotropic interactions which mean variables are measured in the same units and on the same scale).
+te() is used for modeling 2- or n-dimensional interaction surfaces of variables that are not isotropic and also includes ‘main’ effects.
+And for modeling 2- or n-dimensional interaction surfaces that do not include the ‘main effects’ ti() can be used.
+
+The parameters of smooth functions:
+The smooth functions have several parameters that could be set according to the change in parameter behavior. The most important and often-used parameters are listed here:
+  
+k: number of ‘knots’. This parameter determines the upper bound of the number of underlying base functions being used to build up the curve. Thus, this parameter constrains the wiggliness of a smooth, or - as a metaphor - the number of bow points of a curve. By default, the value of k for s() is around 9, and for te() and ti() 5 per dimension. Importantly, the value of k should be at most one less than the number of unique data points, otherwise, it will fit the density of that predictor.
+
+d: It is used for specifying that predictors in the interaction are on the same scale or dimension (only used in te() and ti()). For example, in te(Time, width, height, d=c(1,2)), with width and height reflecting the picture size measured in pixels, we specify that Time is on a different dimension than the next two variables. By default, the value would be d=c(1,1,1) in this case.
+
+bs: This specifies the type of underlying base function. For s() this defaults to “tp” (thin plate regression spline) and for te() and ti() this defaults to “cr” (cubic regression spline). For random intercepts and linear random slopes use bs=“re”, but for random smooths use bs=“fs”.
+
+**Different Model Building**
+
+**BOYS**
+**1. No Random Effect**
+
+```{r}
+
+model1_b <- bam(weight_kg ~ age_years
+                + height_cm,
+          data=a_unique_07_boys)
+summary(model1_b)
+gam.check(model1_b)
+
+```
+
+**2. Random intercepts Effect**
+
+```{r}
+
+model2_b <- bam(weight_kg ~ age_years
+                + height_cm
+                + s(ID, bs="re"),
+          data=a_unique_07_boys)
+#summary(model2_b)
+model2_b_1<-getViz(model2_b)
+print(plot(model2_b_1, allTerms = T), pages = 1)
+gam.check(model2_b)
+
+```
+
+**3. Random intercepts + slopes Effect**
+
+```{r}
+
+model3_b <- bam(weight_kg ~ age_years
+                + height_cm
+                + s(ID, bs="re")
+                + s(ID, age_years, bs="re"), family = 'Gamma',
+          data=a_unique_07_boys)
+#summary(model3_b)
+model3_b_1<-getViz(model3_b)
+print(plot(model3_b_1, allTerms = T), pages = 1)
+plot(model3_b)
+gam.check(model3_b)
+
+```
+
+**Comparing Models (Random intercepts Effect Vs Random intercepts + slopes Effect Model)**
+
+```{r}
+
+suppressMessages(library(itsadug))
+compareML(model2_b,model3_b)
+
+```
+
+**4. Smooths Effect**
+
+```{r}
+
+model4_b <- bam(weight_kg ~ age_years
+                + height_cm
+                + s(age_years, ID, bs="fs", m=1), family = Gamma(link = 'log'),
+          data=a_unique_07_boys)
+#summary(model4_b)
+
+model4_b_1<-getViz(model4_b)
+print(plot(model4_b_1, allTerms = T), pages = 1)
+gam.check(model4_b)
+
+#vis.gam(model4_b,theta=30,ticktype="detailed")
+#vis.gam(model4_b,theta=-45,ticktype="detailed",se=2)
+#vis.gam(model4_b,plot.type="contour")
+plot(model4_b$fitted.values,model4_b$residuals)
+plot(model4_b$fitted.values,model4_b$res)
+
+```
+
+**Model Comparison (Random intercepts + slopes Effect Vs Smooths Effect Model)**
+
+```{r}
+
+library(itsadug)
+compareML(model3_b, model4_b)
+
+```
+
+We can conclude that Model 4 explains boys weights closely as compared to other models.
+
+**Checking Auto Correlation Function**
+
+```{r}
+
+par(mfrow=c(1,3), cex=1.1)
+acf_resid(model2_b, split_pred="ID", main="ACF resid(model2)")
+acf_resid(model3_b, split_pred="ID", main="ACF resid(model3)")
+acf_resid(model4_b, split_pred="ID", main="ACF resid(model4)")
+
+```
+
+**GIRLS**
+**1. No Random Effect**
+
+```{r}
+
+model1_g <- bam(weight_kg ~ age_years
+                + height_cm,
+          data=a_unique_07_girls)
+summary(model1_g)
+gam.check(model1_g)
+
+```
+
+**2. Random Intercepts Effect**
+
+```{r}
+
+model2_g <- bam(weight_kg ~ age_years
+                + height_cm
+                + s(ID, bs="re"),
+          data=a_unique_07_girls)
+#summary(model2_g)
+model2_g_1<-getViz(model2_g)
+print(plot(model2_g_1, allTerms = T), pages = 1)
+gam.check(model2_g)
+
+```
+
+**3. Random intercepts + Slopes Effect**
+
+```{r}
+
+model3_g <- bam(weight_kg ~ age_years
+                + height_cm
+                + s(ID, bs="re")
+                + s(ID, age_years, bs="re"), family = 'Gamma',
+          data=a_unique_07_girls)
+#summary(model3_b)
+model3_g_1<-getViz(model3_g)
+print(plot(model2_g_1, allTerms = T), pages = 1)
+gam.check(model3_g)
+
+```
+
+**Comparing Models (Random intercepts effect Vs Random intercepts + slopes Effect Model)**
+
+```{r}
+
+compareML(model2_g,model3_g)
+
+```
+
+**4. Smooths Effect**
+
+```{r}
+
+model4_g <- bam(weight_kg ~ age_years
+                + height_cm
+                + s(age_years, ID, bs="fs", m=1), family = Gamma(link = 'log'),
+          data=a_unique_07_girls)
+#summary(model4_g)
+model4_g_1<-getViz(model4_g)
+print(plot(model4_g_1, allTerms = T), pages = 1)
+
+#vis.gam(model4_g,theta=30,ticktype="detailed")
+#vis.gam(model4_g,theta=-45,ticktype="detailed",se=2)
+#vis.gam(model4_g,plot.type="contour")
+
+```
+
+**Comparing Models (Random intercepts + slopes Effect Vs Smooths Effect Model)**
+
+```{r}
+
+compareML(model3_g, model4_g)
+
+```
+
+We can conclude that Model 4 explains girls weights closely.
+
+**Checking Auto Correlation Function**
+
+```{r}
+
+par(mfrow=c(1,3), cex=1.1)
+acf_resid(model2_g, split_pred="ID", main="ACF resid(model2)")
+acf_resid(model3_g, split_pred="ID", main="ACF resid(model3)")
+acf_resid(model4_g, split_pred="ID", main="ACF resid(model4)")
+
+```
+
+**Predicting/Analysing weights**
+**BOYS**
+
+```{r}
+
+#Weight Prediction using the model 
+a_unique_07_boys$pred_wt<-predict(model4_b,a_unique_07_boys, type='response')
+
+#Comparing Actual and Predicted weight for Boys
+b_act<-ggplot(a_unique_07_boys,aes(x=age_years, y=weight_kg, group=ID))+
+  geom_line()+ggtitle("Actual Weights (Boys)")+ xlab("Age(Years)") +
+  ylab("Weight (Kg)") + 
+  theme(text = element_text(size=16,color = "Black", face = "plain"))+
+  theme(strip.text = element_text(size=12))
+
+b_pred<-ggplot(a_unique_07_boys,aes(x=age_years, y=pred_wt, group=ID))+
+  geom_line()+ggtitle("Predicted Weights (Boys)")+ xlab("Age(Years)") +
+  ylab("Predicted Weights (Kg)") +  
+  theme(text = element_text(size=16,color = "Black", face = "plain"))+
+  theme(strip.text = element_text(size=12))
+
+plot_grid(b_act,b_pred)
+
+```
+
+**GIRLS**
+
+```{r}
+
+#Weight Prediction using the model 
+a_unique_07_girls$pred_wt<-predict(model4_g,a_unique_07_girls, type='response')
+
+#Comparing Actual and Predicted weight for Girls
+g_act<-ggplot(a_unique_07_girls,aes(x=age_years, y=weight_kg, group=ID))+
+  geom_line()+ggtitle("Actual Weights (Girls)") + xlab("Age(Years)") + 
+  ylab("Weight (Kg)") + 
+  theme(text = element_text(size=16,color = "Black", face = "plain"))+
+  theme(strip.text = element_text(size=12))
+
+g_pred<-ggplot(a_unique_07_girls,aes(x=age_years, y=pred_wt, group=ID))+
+  geom_line()+ggtitle("Predicted Weights (Girls)") + xlab("Age(Years)") + 
+  ylab("Predicted Weights (Kg)") + 
+  theme(text = element_text(size=16,color = "Black", face = "plain"))+
+  theme(strip.text = element_text(size=12))
+
+plot_grid(g_act,g_pred)
+
+```
+
+**Overall Weight Trend**
+
+```{r}
+
+#Checking overall Actual and predicted for Boys
+
+weight_mean_boy<-a_unique_07_boys %>% group_by(age_mod) %>% 
+  dplyr::summarise(wt_mean=mean(weight_kg),pred_wt_mean=mean(pred_wt))
+
+boy<-ggplot(weight_mean_boy)+
+  geom_line(aes(x=age_mod,y=wt_mean,color="wt_mean"))+
+  geom_line(aes(x=age_mod,y=pred_wt_mean,color="pred_wt_mean"))+
+  scale_colour_manual(name = "Legends", breaks = c("wt_mean", "pred_wt_mean"), labels = c( "Actual","Predicted"),
+                      values = c("blue", "red")) +
+  ggtitle("Overall Weight Curve (Boys)") +
+  xlab("Age (Years)") + ylab("Mean Weight (Kg)") +
+  theme(text = element_text(size=14,color = "Black", face = "plain"))+
+  theme(strip.text = element_text(size=10))
+
+#Checking overall Actual and predicted for Girls
+
+weight_mean_girl<-a_unique_07_girls %>% group_by(age_mod) %>% 
+  dplyr::summarise(wt_mean=mean(weight_kg),pred_wt_mean=mean(pred_wt))
+
+girl<-ggplot(weight_mean_girl)+
+  geom_line(aes(x=age_mod,y=wt_mean,color="wt_mean"))+
+  geom_line(aes(x=age_mod,y=pred_wt_mean,color="pred_wt_mean"))+
+  scale_colour_manual(name = "Legends", breaks = c("wt_mean", "pred_wt_mean"), labels = c( "Actual","Predicted"),
+                      values = c("blue", "red")) +
+  ggtitle("Overall Weight Curve (Girls)") +
+  xlab("Age (Years)") + ylab("Mean Weight (Kg)") +
+  theme(text = element_text(size=14,color = "Black", face = "plain"))+
+  theme(strip.text = element_text(size=10))
+
+#Comparing
+par(mfrow=c(1,2), cex=.1)
+#plot_grid(boy, girl, labels = c("Weight of Boys","Weight of girl"))
+prow_wt <- plot_grid( boy + theme(legend.position="none"),
+           girl + theme(legend.position="none"))
+legend_wt <- get_legend(boy)
+plot_grid(prow_wt, legend_wt, rel_widths = c(10,2))
+
+```
+
+**Validating Model Performance**
+
+```{r}
+
+#Creating Training and Test dataset
+set.seed(123)
+
+#For Boys:
+nb <- nrow(a_unique_07_boys)
+trainingRowsb <- sample(nb, 0.75*nb)
+
+#Model training data
+training_b <- a_unique_07_boys[trainingRowsb, ]
+
+#Test data
+test_b <- a_unique_07_boys[-trainingRowsb, ]
+
+#For Girls:
+ng <- nrow(a_unique_07_girls)
+trainingRowsg <- sample(ng, 0.75*ng)
+
+#Model training data
+training_g <- a_unique_07_girls[trainingRowsg, ]
+
+#Test data
+test_g <- a_unique_07_girls[-trainingRowsg, ]
+
+```
+
+**Checking training and test errors**
+
+```{r}
+
+#Finding training and test errors
+#Boys
+#Model-3
+model3_b_tr <- bam(weight_kg ~ age_years
+                + height_cm
+                + s(ID, bs="re")
+                + s(ID, age_years, bs="re"), family = 'Gamma',
+          data=training_b)
+
+training_b$pred1<-predict(model3_b_tr,training_b, type="response")
+mean((training_b$weight_kg-training_b$pred1)^2)
+
+test_b$pred1<-predict(model3_b_tr,test_b, type="response")
+mean((test_b$weight_kg-test_b$pred1)^2)
+
+#Model-4
+model4_b_tr <- bam(weight_kg ~ age_years
+                + height_cm
+                + s(age_years, ID, bs="fs", m=1), family = Gamma(link = 'log'),
+          data=training_b)
+
+training_b$pred2<-predict(model4_b_tr,training_b, type="response")
+mean((training_b$weight_kg-training_b$pred2)^2)
+
+test_b$pred2<-predict(model4_b_tr,test_b, type="response")
+mean((test_b$weight_kg-test_b$pred2)^2)
+
+#Finding training and test errors
+#Girls
+#Model-3
+model3_g_tr <- bam(weight_kg ~ age_years
+                + height_cm
+                + s(ID, bs="re")
+                + s(ID, age_years, bs="re"), family = 'Gamma',
+          data=training_g)
+
+training_g$pred1<-predict(model3_g_tr,training_g, type="response")
+mean((training_g$weight_kg-training_g$pred1)^2)
+
+test_g$pred1<-predict(model3_g_tr,test_g, type="response")
+mean((test_g$weight_kg-test_g$pred1)^2)
+
+#Model-4
+model4_g_tr <- bam(weight_kg ~ age_years
+                + height_cm
+                + s(age_years, ID, bs="fs", m=1), family = Gamma(link = 'log'),
+          data=training_g)
+
+training_g$pred2<-predict(model4_g_tr,training_g, type="response")
+mean((training_g$weight_kg-training_g$pred2)^2)
+
+test_g$pred2<-predict(model4_g_tr,test_g, type="response")
+mean((test_g$weight_kg-test_g$pred2)^2)
+
+```
+
+**K Fold Cross Validation**
+
+```{r}
+
+set.seed(123)
+
+#For Boys
+#CrossValidation taking 7 folds
+k<-7
+fold <- as.numeric(cut_number(1:nrow(a_unique_07_boys), k))
+
+#Taking Sample Fold
+fold <- sample(fold,length(fold))
+fsize <- table(fold)
+mse <- vector(length=k)
+
+#Checking Error for every K folds
+#Model-3
+for (i in 1:k){
+foldi <- a_unique_07_boys[fold==i,]
+foldOther <- a_unique_07_boys[fold!=i,]
+f<- bam(weight_kg ~ age_years
+                + height_cm
+                + s(ID, bs="re")
+                + s(ID, age_years, bs="re"), family = "Gamma",
+          data=foldOther)
+pred <- predict(f, foldi,type = 'response')
+mse[i] <- mean((pred - foldi$weight_kg)^2) # MSEi
+}
+
+#Mean Error for the Model-3
+boy_cv1<-mean(mse)
+boy_cv1
+
+k<-7
+fold <- as.numeric(cut_number(1:nrow(a_unique_07_boys), k))
+#Taking Sample Fold
+fold <- sample(fold,length(fold))
+fsize <- table(fold)
+mse <- vector(length=k)
+
+#Model-4
+for (i in 1:k){
+foldi <- a_unique_07_boys[fold==i,]
+foldOther <- a_unique_07_boys[fold!=i,]
+f<- bam(weight_kg ~ age_years
+                + height_cm
+                + s(age_years, ID, bs="fs", m=1), family = Gamma(link = 'log'),
+          data=foldOther)
+pred <- predict(f, foldi, type = 'response')
+mse[i] <- mean((pred - foldi$weight_kg)^2) # MSEi
+}
+
+#Mean Error for the Model-4
+boy_cv2<-mean(mse)
+boy_cv2
+
+```
+
+```{r}
+
+set.seed(123)
+#For Girls
+#CrossValidation taking 7 folds
+
+k<-7
+fold <- as.numeric(cut_number(1:nrow(a_unique_07_girls), k))
+#Taking Sample Fold
+fold <- sample(fold,length(fold))
+fsize <- table(fold)
+mse <- vector(length=k)
+#Checking Error for every K folds
+
+#Model-3
+for (i in 1:k){
+foldi <- a_unique_07_girls [fold==i,]
+foldOther <- a_unique_07_girls[fold!=i,]
+f<- bam(weight_kg ~ age_years
+                + height_cm
+                + s(ID, bs="re")
+                + s(ID, age_years, bs="re"), family = "Gamma",
+          data=foldOther)
+pred <- predict(f, foldi, type = 'response')
+mse[i] <- mean((pred - foldi$weight_kg)^2) # MSEi
+}
+#Mean Error for the Model-4
+girl_cv1<-mean(mse)
+girl_cv1
+
+
+#set.seed(123)
+#CrossValidation taking 7 folds
+k<-7
+fold <- as.numeric(cut_number(1:nrow(a_unique_07_girls), k))
+#Taking Sample Fold
+fold <- sample(fold,length(fold))
+fsize <- table(fold)
+mse <- vector(length=k)
+
+#Model-4
+for (i in 1:k){
+foldi <- a_unique_07_girls[fold==i,]
+foldOther <- a_unique_07_girls[fold!=i,]
+f<- bam(weight_kg ~ age_years
+                + height_cm
+                + s(age_years, ID, bs="fs", m=1), family = Gamma(link = 'log'),
+          data=foldOther)
+pred <- predict(f, foldi, type = 'response')
+mse[i] <- mean((pred - foldi$weight_kg)^2) # MSEi
+}
+#Mean Error for the Model-4
+girl_cv2<-mean(mse)
+girl_cv2
+
+```
+
+**Checking final model performance**
+
+```{r}
+
+plot(a_unique_07_boys$weight_kg, a_unique_07_boys$pred_wt,
+main = "Actual Vs Fitted Values",
+xlab = "Fitted Values",
+ylab = "Actual Values", cex.lab=1.3, cex.axis=1, cex.main=1.5, cex.sub=1.5)
+
+plot(model4_b$fitted.values, model4_b$residuals,
+main = "Residual Vs Fitted Values",
+xlab = "Fitted Values",
+ylab = "Residuals",cex.lab=1.3, cex.axis=1, cex.main=1.5, cex.sub=1.5)
+
+```
+
+**Checking Model fitting by using 1 predictor**
+
+As the model has 2 predictors, it is difficult or not appealing to visualize how it is fitting the data.
+Therefore 1 predictor has been used to show how the model is fitting the data.
+
+**BOYS**
+
+```{r}
+
+#BOYS
+#Model-2
+a <- bam(weight_kg ~ age_years
+                + s(ID, bs="re"),family = "Gamma",
+          data=training_b)
+#Model-3
+b <- bam(weight_kg ~ age_years
+                + s(ID, bs="re")
+                + s(ID, age_years, bs="re"),family = "Gamma",
+          data=training_b)
+
+#Model-4
+c<- bam(weight_kg ~ age_years
+                + s(age_years, ID, bs="fs", m=1),family = Gamma(link = 'log'),
+          data=training_b)
+
+```
+
+**Visualizing the data fitting by the models**
+
+```{r}
+
+par(mfrow=c(2,2), cex=1.1)
+u<-unique(test_b$ID)
+
+#Using Model-2
+v<-a_unique_07_boys %>% filter((ID) %in% u[1:4])
+
+vp<-predict(a,v,type = "response")
+ggplot(v, aes(x=age_years, y=weight_kg, color = ID))+ geom_point()+
+  geom_line(aes(y=vp)) + theme(legend.position = "None") +
+  facet_wrap(~ID) +theme(legend.position = "none")+ ggtitle("Random Intercept Effect(Model-2)")+
+  xlab("Age (Years)") +
+  ylab("Weight (Kg)") +
+  theme(text = element_text(size=16,color = "Black", face = "bold"))+
+  theme(strip.text = element_text(size=15))
+
+#Using Model-3
+w<-a_unique_07_boys %>% filter((ID) %in% u[1:4])
+wp<-predict(b,w,type = "response")
+ggplot(w, aes(x=age_years, y=weight_kg, color = ID))+ geom_point()+
+  geom_line(aes(y=wp)) + facet_wrap(~ID) + theme(legend.position = "None") +
+  ggtitle("Random Intercept & Slopes Effect(Model-3)")+
+  xlab("Age (Years)") +
+  ylab("Weight (Kg)") +
+  theme(text = element_text(size=16,color = "Black", face = "bold"))+
+  theme(strip.text = element_text(size=15))
+
+#Using Model-4
+z<-a_unique_07_boys %>% filter((ID) %in% u[1:4])
+zp<-predict(c,z,type = "response")
+ggplot(z, aes(x=age_years, y=weight_kg, color = ID))+ geom_point()+
+  geom_line(aes(y=zp)) + facet_wrap(~ID) + theme(legend.position = "None") +
+   ggtitle("Smooths Effect(Model-4)")+
+  xlab("Age (Years)") +
+  ylab("Weight (Kg)") +
+  theme(text = element_text(size=16,color = "Black", face = "bold"))+
+  theme(strip.text = element_text(size=15))
+
+
+```
+
+It can been seen that the Model with smooths effect did the best job in fitting the data for boys. Therefore, this model has been considered for analysis.
+
+**GIRLS**
+
+```{r}
+
+#Model-2
+m <- bam(weight_kg ~ age_years
+                + s(ID, bs="re"),family = "Gamma",
+          data=training_g)
+#Model-3
+n <- bam(weight_kg ~ age_years
+                + s(ID, bs="re")
+                + s(ID, age_years, bs="re"),family = "Gamma",
+          data=training_g)
+
+#Model-4
+o<- bam(weight_kg ~ age_years
+                + s(age_years, ID, bs="fs", m=1),family = Gamma(link = 'log'),
+          data=training_g)
+
+```
+
+**Visualizing the data fitting by the models**
+
+```{r}
+
+par(mfrow=c(2,2), cex=1.1)
+f<-unique(test_g$ID)
+
+#Using Model-2
+i<-a_unique_07_girls %>% filter((ID) %in% f[1:4])
+
+ip<-predict(m,i,type = "response")
+ggplot(i, aes(x=age_years, y=weight_kg, color = ID))+ geom_point()+
+  geom_line(aes(y=ip)) + theme(legend.position = "None") +
+  facet_wrap(~ID) +theme(legend.position = "none")+ ggtitle("Random Intercept Effect(Model-2)")+
+  xlab("Age (Years)") +
+  ylab("Weight (Kg)") +
+  theme(text = element_text(size=16,color = "Black", face = "bold"))+
+  theme(strip.text = element_text(size=15))
+
+#Using Model-3
+j<-a_unique_07_girls %>% filter((ID) %in% f[1:4])
+jp<-predict(n,j,type = "response")
+ggplot(j, aes(x=age_years, y=weight_kg, color = ID))+ geom_point()+
+  geom_line(aes(y=jp)) + facet_wrap(~ID) + theme(legend.position = "None") +
+  ggtitle("Random Intercept & Slopes Effect(Model-3)")+
+  xlab("Age (Years)") +
+  ylab("Weight (Kg)") +
+  theme(text = element_text(size=16,color = "Black", face = "bold"))+
+  theme(strip.text = element_text(size=15))
+
+#Using Model-4
+k<-a_unique_07_girls %>% filter((ID) %in% f[1:4])
+kp<-predict(o,k,type = "response")
+ggplot(k, aes(x=age_years, y=weight_kg, color = ID))+ geom_point()+
+  geom_line(aes(y=kp)) + facet_wrap(~ID) + theme(legend.position = "None") +
+   ggtitle("Smooths Effect(Model-4)")+
+  xlab("Age (Years)") +
+  ylab("Weight (Kg)") +
+  theme(text = element_text(size=16,color = "Black", face = "bold"))+
+  theme(strip.text = element_text(size=15))
+
+```
+
+It can been seen that the Model with smooths effect did the best job in fitting the data for girls. Therefore, this model has been considered for analysis.
+
+**Checking kids whose Weight Category changed**
+
+```{r}
+
+#Findng All Participant whose Z-cat changes
+ena_z<-ena%>%select(ID,z_cat_WHO)%>%distinct(ID,z_cat_WHO)%>%group_by(ID)%>%summarise(Count=n())%>%
+  filter(Count!=1)
+
+# Finding Participants whose z_cat changes (Data is throughout 2007-2018)
+unique_z <- subset(ena_z, ID %in% a_07_18$ID)
+nrow(unique_z)
+
+#Same code like above
+#ena_z %>% filter((ID) %in% a_07_18$ID)
+#nrow(ena_z %>% filter((ID) %in% a_07_18$ID))
+
+#All records for these IDs(Data is throughout 2007-2018)
+unique_z_07<-a_unique_07 %>% filter((ID) %in% unique_z$ID)
+nrow(unique_z_07)
+
+```
+
+**Visualizing the kids whose Z-Category Changes**
+
+```{r}
+
+#Visualizing the Ids(Data is throughout 2007-2018)
+ggplot(unique_z_07) +
+  geom_line(aes(x=age_years, y= z_score_WHO, color = ID)) +
+  geom_hline(yintercept=0.99999, linetype="dashed", color = "green")+
+  geom_hline(yintercept=-2, linetype="dashed", color = "green")+
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = -2, ymax = 0.99999, fill="green", alpha=0.15,      color = NA) + annotate(geom = "text", x=18, y=-0.5, label="Normal", color = " Black") +
+  
+  geom_hline(yintercept=-2.000001, linetype="dashed", color = "green")+
+  geom_hline(yintercept=-3, linetype="dashed", color = "yellow")+
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = -3, ymax = -1.99999, fill="yellow", alpha=0.3,   color = NA) + annotate(geom = "text", x=18, y=-2.5, label="Thin", color = " Black") +
+
+  geom_hline(yintercept=-3.000001, linetype="dashed", color = "yellow")+
+  geom_hline(yintercept=-Inf, linetype="dashed", color = "red")+
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin=-3.000001, ymax=-Inf,   fill="red", alpha=0.15,     color = NA) + annotate(geom = "text", x=18, y=-3.3, label="Severely Thin", color = " Black") +
+  
+  geom_hline(yintercept=1, linetype="dashed", color = "green")+
+  geom_hline(yintercept=1.99999, linetype="dashed", color = "yellow")+
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 1, ymax = 1.99999, fill="yellow", alpha=0.3,     color = NA) + annotate(geom = "text", x=18, y=1.5, label="Overweight", color = " Black") +
+  
+  geom_hline(yintercept=2, linetype="dashed", color = "yellow")+
+  geom_hline(yintercept=Inf, linetype="dashed", color = "red")+
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin=2, ymax=Inf, fill="red", alpha=0.15, color = NA) +
+  annotate(geom = "text", x=18, y=2.5, label="Obese", color = " Black") +
+  ggtitle("Changes in Weight and Category with Age")
+
+
+```
+
+For visualizing this Shiny is preferred and Shinny app is created for this.
+
+**Weight change for other Kids**
+
+```{r, eval= FALSE}
+
+#Rest all Ids
+all_ids<-ena %>% filter(!(ID) %in% unique_z$ID)
+
+#Visualizing the Ids(Data is not throughout 2007-2018)
+ggplot(all_ids) +
+  geom_line(aes(x=age_years, y= z_score_WHO, color = ID)) +
+  geom_hline(yintercept=0.99999, linetype="dashed", color = "green")+
+  geom_hline(yintercept=-2, linetype="dashed", color = "green")+
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = -2, ymax = 0.99999, fill="green", alpha=0.15,      color = NA) + annotate(geom = "text", x=18, y=-0.5, label="Normal", color = " Black") +
+  
+  geom_hline(yintercept=-2.000001, linetype="dashed", color = "green")+
+  geom_hline(yintercept=-3, linetype="dashed", color = "yellow")+
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = -3, ymax = -1.99999, fill="yellow", alpha=0.3,   color = NA) + annotate(geom = "text", x=18, y=-2.5, label="Thin", color = " Black") +
+
+  geom_hline(yintercept=-3.000001, linetype="dashed", color = "yellow")+
+  geom_hline(yintercept=-Inf, linetype="dashed", color = "red")+
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin=-3.000001, ymax=-Inf,   fill="red", alpha=0.15,     color = NA) + annotate(geom = "text", x=18, y=-3.3, label="Severely Thin", color = " Black") +
+  
+  geom_hline(yintercept=1, linetype="dashed", color = "green")+
+  geom_hline(yintercept=1.99999, linetype="dashed", color = "yellow")+
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 1, ymax = 1.99999, fill="yellow", alpha=0.3,     color = NA) + annotate(geom = "text", x=18, y=1.5, label="Overweight", color = " Black") +
+  
+  geom_hline(yintercept=2, linetype="dashed", color = "yellow")+
+  geom_hline(yintercept=Inf, linetype="dashed", color = "red")+
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin=2, ymax=Inf, fill="red", alpha=0.15, color = NA) +
+  annotate(geom = "text", x=18, y=2.5, label="Obese", color = " Black") +
+  
+  ggtitle("Changes in Weight and Category with Age")
+  
+```
+
+**Checking the age range when kids are most like to divert from normal weight category**
+**BOYS**
+
+```{r}
+
+#Checking counts of all weight categories each year for boys
+
+zcat_boy<-a_unique_07_boys %>% group_by(age_mod, z_cat_WHO) %>%
+  dplyr::summarise(count=n())
+
+#a_unique_07_boys %>% group_by(age_mod, z_cat_WHO)%>%filter((z_cat_WHO)%in% c('obese','overweight','thin','severely thin'))%>%  dplyr::summarise(count=n())
+
+#Filtering only abnormal categories(obese, overweight, thin and severelythin boys)
+abnorm_boy<-zcat_boy %>% filter((z_cat_WHO)%in% c( 'obese', 'overweight','thin','severely thin'))
+
+#Columns for each abnormal categories
+zcat_boy_long<-abnorm_boy %>% pivot_wider(names_from = z_cat_WHO, values_from = count)
+
+#Changing NA to 0
+zcat_boy_long <- replace(zcat_boy_long, is.na(zcat_boy_long), 0)
+
+#Adding new Column for total abnormal category count each year
+zcat_boy_long$total<-zcat_boy_long$obese + zcat_boy_long$overweight + zcat_boy_long$thin + zcat_boy_long$`severely thin`
+
+#Changing 0 to NA
+zcat_boy_long <- replace(zcat_boy_long, zcat_boy_long == 0, NA)
+
+#Visualizing no of obese, overweight, thin and severely thin count with age.
+q<-ggplot(zcat_boy_long)+
+  geom_line(aes(x=age_mod, y= obese, colour = "obese")) +
+  geom_line(aes(x=age_mod, y= overweight, colour = "overweight"))+
+  geom_line(aes(x=age_mod, y= thin, colour = "thin")) +
+  geom_line(aes(x=age_mod, y=`severely thin`, colour = "`severely thin`")) +
+  scale_colour_manual(name = "Legends", breaks = c("obese", "overweight",  "thin", "severely thin"), 
+                      values = c("red", "blue", "green", "pink")) +
+  ggtitle("BMI Category Counts (Boys)") +
+  xlab("Age") + ylab("Counts") + ylim(0,20) +
+  theme(text = element_text(size=16,color = "Black", face = "plain"))+
+  theme(strip.text = element_text(size=12))
+
+#Visualizing total count of abnormality with age.
+total_ab_boys <- ggplot(zcat_boy_long)+
+  geom_line(aes(x=age_mod, y= total), color = 'blue') +
+  xlab("Age") + ylab("Counts") + ylim(0,35) +
+  ggtitle("Count of BMI abnormalities (Boys)") +
+  theme(text = element_text(size=16,color = "Black", face = "plain"))+
+  theme(strip.text = element_text(size=12))
+
+```
+
+**GIRLS**
+
+```{r}
+
+#Checking counts of all weight categories each year for boys
+zcat_girl<-a_unique_07_girls %>% group_by(age_mod, z_cat_WHO) %>%
+  dplyr::summarise(count=n())
+
+#a_unique_07_boys %>% group_by(age_mod, z_cat_WHO)%>%filter((z_cat_WHO)%in% c('obese','overweight','thin','severely thin'))%>%  dplyr::summarise(count=n())
+
+#Filtering only abnormal categories(obese, overweight, thin and severelythin boys)
+abnorm_girl<-zcat_girl %>% filter((z_cat_WHO)%in% c( 'obese', 'overweight','thin','severely thin'))
+
+#Columns for each abnormal categories
+zcat_girl_long<-abnorm_girl %>% pivot_wider(names_from = z_cat_WHO, values_from = count)
+
+#Changing NA to 0
+zcat_girl_long <- replace(zcat_girl_long, is.na(zcat_girl_long), 0)
+
+#Adding new Column for total abnormal category count each year
+zcat_girl_long$total<- zcat_girl_long$obese + zcat_girl_long$overweight + zcat_girl_long$thin
+
+#Changing 0 to NA
+zcat_girl_long <- replace(zcat_girl_long, zcat_girl_long == 0, NA)
+
+#Visualizing no of obese, overweight, thin and severely thin count with age.
+r<-ggplot(zcat_girl_long)+
+  geom_line(aes(x=age_mod, y= obese, colour = "obese")) +
+  geom_line(aes(x=age_mod, y= overweight, colour = "overweight"))+
+  geom_line(aes(x=age_mod, y= thin, colour = "thin")) +
+  scale_colour_manual(name = "Legends", breaks = c("obese", "overweight",  "thin", "severely thin"), 
+                      values = c("red", "blue", "green", "pink")) +
+  ggtitle("BMI Category Counts (Girls)") +
+  xlab("Age") + ylab("Counts") + ylim(0,20) +
+  theme(text = element_text(size=16,color = "Black", face = "plain"))+
+  theme(strip.text = element_text(size=12))
+
+#Visualizing total count of abnormality with age.
+total_ab_girls <- ggplot(zcat_girl_long)+
+  geom_line(aes(x=age_mod, y= total), color = "red") +
+  xlab("Age") + ylab("Counts") + ylim(0,35) +
+  ggtitle("Count of BMI abnormalities (Girls)") +
+  theme(text = element_text(size=16,color = "Black", face = "plain"))+
+  theme(strip.text = element_text(size=12))
+
+```
+
+**Comparing Boys and Girls abnormal weight categories**
+
+```{r}
+
+prow <- plot_grid( q + theme(legend.position="none"),
+           r + theme(legend.position="none"))
+legend <- get_legend(i)
+plot_grid( prow, legend, rel_widths = c(8,1))
+
+#Comparing overall weight abnormalities of Boys and Girls
+plot_grid(total_ab_boys, total_ab_girls)
+
+```
