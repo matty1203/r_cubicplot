@@ -62,14 +62,14 @@ Date Submitted: 10th July, 2021}
 
 \begin{center}
 
-\large{AbstractS}
+\large{Abstract}
 
 \end{center}
 
 \bigskip
 
 
-Google Play Store is now one of the most appealing and user-friendly platforms for Android apps among all the mobile app distribution platforms. Every day, a large number of new Android apps are added to this platform. Developers are always attempting to make their new apps effective through competent individual or team effort. This platform is becoming increasingly competitive, making it difficult for developers to maintain their market position. However, reviews provided in the apps helps companies understand the CSI (Customer Satisfaction Index) based on the rating provided while logging reviews for the apps. This helps companies understand the pain area or the success rate of the apps.
+Cassini-Huygens Space Research mission was a joint collaboration of NASA, ESA and Italian Space agency to study about the planet Saturn and its system that includes its Rings and Natural Satellites. During its life span of about 20 years the spacecraft orbited the planet Saturn for 13 years and also frequently changed its shape and tilt. Because of this frequent changes in the orbital trajectory of spacecraft, it passed multiple times through the boundaries of Bowshock and Magnetopause at different latitude, longitude and phases of Solar Cycle. In this Project, based on the Magnetic Field data collected during the year 2005 from MAG (Magnetometer) instrument attached to the spacecraft was used to Classify the different boundary crossings of CASSINI  Spacecraft. MAG (Magnetometer)in cassini recorded the strength and direction of the Magnetic field around the spacecraft. By Classifying the  Exploratory Data Analysis and Different Machine learning techniques were applied in this project on the cleaned dataset to classify different events. 
 
 ```{r, include=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="h!", fig.align="center", out.height="25%"}
   knitr::include_graphics("logo.jpg")
