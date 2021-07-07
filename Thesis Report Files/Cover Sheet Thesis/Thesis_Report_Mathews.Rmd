@@ -72,7 +72,7 @@ Date Submitted: 10th July, 2021}
 Cassini-Huygens Space Research mission was a joint collaboration of NASA, ESA and Italian Space agency to study about the planet Saturn and its system that includes its Rings and Natural Satellites. During its life span of about 20 years the spacecraft orbited the planet Saturn for 13 years and also frequently changed its shape and tilt. Because of this frequent changes in the orbital trajectory of spacecraft, it passed multiple times through the boundaries of Bowshock and Magnetopause at different latitude, longitude and phases of Solar Cycle. In this Project, based on the Magnetic Field data collected during the year 2005 from MAG (Magnetometer) instrument attached to the spacecraft was used to Classify the different boundary crossings of CASSINI  Spacecraft. MAG (Magnetometer)in Cassini recorded the strength and direction of the Magnetic field around the spacecraft. Different Statistical models were used for the classification and those models were carefully examined to get more insights about magnetic field properties during different events. In this project, different trial and error approaches were taken to create a training dataset that gives better test accuracy on test dataset.  
 
 ```{r, include=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="h!", fig.align="center", out.height="25%"}
-  knitr::include_graphics("logo.jpg")
+  #knitr::include_graphics("logo.jpg")
 ```
 
 
@@ -96,9 +96,7 @@ Cassini-Huygens Space Research mission was a joint collaboration of NASA, ESA an
 
 # Introduction{#intro}
 
-The technological revolution gave us the power to track kid's appropriate growth with the age and helps to choose essential food habits and induce exercise habits in daily routine for ideal development. Growth refers to both mental maturation and physical development. Mental and physical development of kids depends on many factors like height, weight, type of food consumed, pulse, blood pressure, exercise duration, sleep time, etc. Out of these mentioned factors few can't be controlled which are mostly natural and genetic. 
-
-Weight can be partially controllable and plays a significant role in children's growth. Therefore, the weight has been considered as one of the most important factors which need to be monitored for the proper growth of the children. In this report, a general weight change trend with the increase in age has been created and analyzed to find out any anomalies in the growth for both boys and girls separately.
+All other planets in the solar system has magnetic field like earth. Some of the planets like Uranus, Saturn, Jupiter and Neptune has large magnetic field than earth. Magnetosphere of an astronomical object is the area surrounding that object where its Magneticfield is present.The magnetosphere of a planet has the following structure it has a bowshock, magnetosheat, Magnetopause and magnetotali
 
 \bigskip                 <!-- blank lines -->
 \bigskip
