@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.1)  5 JUL 2021 15:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.1)  12 JUL 2021 16:02
 entering extended mode
 **./Thesis_Report_Mathews.tex
 (Thesis_Report_Mathews.tex
@@ -591,11 +591,7 @@ Package pdftex.def Info: logo.png  used on input line 114.
 (pdftex.def)             Requested size: 312.35393pt x 175.69908pt.
 [1
 
-{C:/Users/Mathews/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./logo.png>]
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 184.
-(pdftex.def)             Requested size: 312.35393pt x 175.69908pt.
+{C:/Users/Mathews/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./logo.png>] 
 [2] (Thesis_Report_Mathews.toc
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 8
 .
@@ -648,7 +644,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.201 \newpage
+l.199 \newpage
                [1] (Thesis_Report_Mathews.lof)
 \tf@lof=\write6
 \openout6 = `Thesis_Report_Mathews.lof'.
@@ -657,38 +653,38 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.210 \newpage
+l.208 \newpage
                [2]
 <Picture1.png, id=118, 817.25325pt x 329.43076pt>
 File: Picture1.png Graphic file (type png)
 <use Picture1.png>
-Package pdftex.def Info: Picture1.png  used on input line 233.
+Package pdftex.def Info: Picture1.png  used on input line 242.
 (pdftex.def)             Requested size: 418.25266pt x 168.59558pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.270 
+l.265 
        [3 <./Picture1.png>] [4] [5]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 390.
+(caption)                particular \caption on input line 381.
 See the caption package documentation for explanation.
 
 [6]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
-16.
+07.
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-418.
+409.
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [7] [8]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 554.
+(caption)                particular \caption on input line 545.
 See the caption package documentation for explanation.
 
 [9]
@@ -698,32 +694,32 @@ File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf Graphic fi
 le (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--7-1.pdf  used on input line 573.
+-7-1.pdf  used on input line 564.
 (pdftex.def)             Requested size: 418.25543pt x 139.41846pt.
 [10 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf>]
 <1.png, id=172, 1359.0775pt x 553.06625pt>
 File: 1.png Graphic file (type png)
 <use 1.png>
-Package pdftex.def Info: 1.png  used on input line 623.
+Package pdftex.def Info: 1.png  used on input line 614.
 (pdftex.def)             Requested size: 431.7408pt x 175.69363pt.
 
-Overfull \hbox (13.48535pt too wide) in paragraph at lines 623--624
+Overfull \hbox (13.48535pt too wide) in paragraph at lines 614--615
  [][] 
  []
 
 [11 <./1.png>]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 6
-42.
+33.
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 <2.png, id=180, 1361.085pt x 554.07pt>
 File: 2.png Graphic file (type png)
 <use 2.png>
-Package pdftex.def Info: 2.png  used on input line 683.
+Package pdftex.def Info: 2.png  used on input line 674.
 (pdftex.def)             Requested size: 431.58932pt x 175.69122pt.
 
-Overfull \hbox (13.33388pt too wide) in paragraph at lines 683--684
+Overfull \hbox (13.33388pt too wide) in paragraph at lines 674--675
  [][] 
  []
 
@@ -731,10 +727,10 @@ Overfull \hbox (13.33388pt too wide) in paragraph at lines 683--684
 <3.png, id=188, 1356.06625pt x 548.0475pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
-Package pdftex.def Info: 3.png  used on input line 702.
+Package pdftex.def Info: 3.png  used on input line 693.
 (pdftex.def)             Requested size: 434.73636pt x 175.69655pt.
 
-Overfull \hbox (16.48091pt too wide) in paragraph at lines 702--703
+Overfull \hbox (16.48091pt too wide) in paragraph at lines 693--694
  [][] 
  []
 
@@ -742,20 +738,20 @@ Overfull \hbox (16.48091pt too wide) in paragraph at lines 702--703
 <boy1.png, id=195, 1357.07pt x 545.03625pt>
 File: boy1.png Graphic file (type png)
 <use boy1.png>
-Package pdftex.def Info: boy1.png  used on input line 730.
+Package pdftex.def Info: boy1.png  used on input line 721.
 (pdftex.def)             Requested size: 437.46019pt x 175.6959pt.
 
-Overfull \hbox (19.20474pt too wide) in paragraph at lines 730--731
+Overfull \hbox (19.20474pt too wide) in paragraph at lines 721--722
  [][] 
  []
 
 <boy2.png, id=196, 1363.0925pt x 542.025pt>
 File: boy2.png Graphic file (type png)
 <use boy2.png>
-Package pdftex.def Info: boy2.png  used on input line 746.
+Package pdftex.def Info: boy2.png  used on input line 737.
 (pdftex.def)             Requested size: 441.83507pt x 175.69287pt.
 
-Overfull \hbox (23.57962pt too wide) in paragraph at lines 746--747
+Overfull \hbox (23.57962pt too wide) in paragraph at lines 737--738
  [][] 
  []
 
@@ -763,20 +759,20 @@ Overfull \hbox (23.57962pt too wide) in paragraph at lines 746--747
 <girl1.png, id=204, 1352.05125pt x 545.03625pt>
 File: girl1.png Graphic file (type png)
 <use girl1.png>
-Package pdftex.def Info: girl1.png  used on input line 767.
+Package pdftex.def Info: girl1.png  used on input line 758.
 (pdftex.def)             Requested size: 435.84236pt x 175.6959pt.
 
-Overfull \hbox (17.58691pt too wide) in paragraph at lines 767--768
+Overfull \hbox (17.58691pt too wide) in paragraph at lines 758--759
  [][] 
  []
 
 <girl2.png, id=205, 1361.085pt x 554.07pt>
 File: girl2.png Graphic file (type png)
 <use girl2.png>
-Package pdftex.def Info: girl2.png  used on input line 782.
+Package pdftex.def Info: girl2.png  used on input line 773.
 (pdftex.def)             Requested size: 431.58932pt x 175.69122pt.
 
-Overfull \hbox (13.33388pt too wide) in paragraph at lines 782--783
+Overfull \hbox (13.33388pt too wide) in paragraph at lines 773--774
  [][] 
  []
 
@@ -787,7 +783,7 @@ File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf Graphic f
 ile (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--17-1.pdf  used on input line 819.
+-17-1.pdf  used on input line 810.
 (pdftex.def)             Requested size: 418.25543pt x 156.84578pt.
 [16 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf>]
 <Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf, id=226, 867.2
@@ -796,23 +792,23 @@ File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf Graphic f
 ile (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--18-1.pdf  used on input line 865.
+-18-1.pdf  used on input line 856.
 (pdftex.def)             Requested size: 418.25543pt x 156.84578pt.
 [17 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf>]
 <bam.png, id=237, 505.89pt x 361.35pt>
 File: bam.png Graphic file (type png)
 <use bam.png>
-Package pdftex.def Info: bam.png  used on input line 889.
+Package pdftex.def Info: bam.png  used on input line 880.
 (pdftex.def)             Requested size: 245.97388pt x 175.69563pt.
 [18 <./bam.png>] [19]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1020.
+(caption)                particular \caption on input line 1011.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1032.
+(caption)                particular \caption on input line 1023.
 See the caption package documentation for explanation.
 
 [20]
@@ -822,7 +818,7 @@ File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf Graphic f
 ile (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--21-1.pdf  used on input line 1078.
+-21-1.pdf  used on input line 1069.
 (pdftex.def)             Requested size: 418.25543pt x 156.84578pt.
 <Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf, id=260, 867.2
 4pt x 361.35pt>
@@ -830,7 +826,7 @@ File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf Graphic f
 ile (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--22-1.pdf  used on input line 1089.
+-22-1.pdf  used on input line 1080.
 (pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
 [21 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf> <./Thes
 is_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf>]
@@ -840,7 +836,7 @@ File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf Graphic f
 ile (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--23-1.pdf  used on input line 1103.
+-23-1.pdf  used on input line 1094.
 (pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
 [22 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf>] [23]
 <Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf, id=291, 867.2
@@ -849,7 +845,7 @@ File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf Graphic f
 ile (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--26-1.pdf  used on input line 1166.
+-26-1.pdf  used on input line 1157.
 (pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
 <Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf, id=292, 867.2
 4pt x 361.35pt>
@@ -857,7 +853,7 @@ File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf Graphic f
 ile (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--27-1.pdf  used on input line 1174.
+-27-1.pdf  used on input line 1165.
 (pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
 [24 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf> <./Thes
 is_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf>]
@@ -867,34 +863,34 @@ File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf Graphic f
 ile (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--28-1.pdf  used on input line 1194.
+-28-1.pdf  used on input line 1185.
 (pdftex.def)             Requested size: 418.25983pt x 149.37851pt.
 [25 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf>] [26] [
 27]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1316.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1300.
 
-Underfull \vbox (badness 3907) detected at line 1368
+Underfull \vbox (badness 3907) detected at line 1352
  []
 
 [28] [29] [30] [31] [32]
-Underfull \vbox (badness 1062) detected at line 1746
+Underfull \vbox (badness 1062) detected at line 1730
  []
 
 [33]
-Underfull \vbox (badness 10000) detected at line 1771
+Underfull \vbox (badness 10000) detected at line 1755
  []
 
 [34] [35] [36]
-Underfull \vbox (badness 10000) detected at line 1919
+Underfull \vbox (badness 10000) detected at line 1903
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1919
+Underfull \vbox (badness 10000) detected at line 1903
  []
 
 [37]
-Overfull \vbox (1.97583pt too high) detected at line 1998
+Overfull \vbox (1.97583pt too high) detected at line 1982
  []
 
 [38] [39] [40] [41] [42] [43] (Thesis_Report_Mathews.aux)
@@ -903,11 +899,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14942 strings out of 478847
- 236141 string characters out of 2847439
- 587709 words of memory out of 3000000
+ 14944 strings out of 478847
+ 236157 string characters out of 2847439
+ 584637 words of memory out of 3000000
  32340 multiletter control sequences out of 15000+600000
- 451678 words of font info for 127 fonts, out of 8000000 for 9000
+ 451855 words of font info for 129 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,8n,80p,663b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
@@ -929,11 +925,9 @@ c/lm/lmsy7.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/lm/lmtk10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/lm/lmtt10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/lm/lmtti10.pfb>
-Output written on Thesis_Report_Mathews.pdf (46 pages, 1046453 bytes).
+Output written on Thesis_Report_Mathews.pdf (46 pages, 1045783 bytes).
 PDF statistics:
- 597 PDF objects out of 1000 (max. 8388607)
- 127 named destinations out of 1000 (max. 500000)
+ 589 PDF objects out of 1000 (max. 8388607)
+ 125 named destinations out of 1000 (max. 500000)
  26904 words of extra memory for PDF output out of 29859 (max. 10000000)
 
-
-! pdflatex: major issue: So far, you have not checked for MiKTeX updates.
