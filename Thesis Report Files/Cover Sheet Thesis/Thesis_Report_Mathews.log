@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.1)  12 JUL 2021 16:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.1)  19 JUL 2021 15:24
 entering extended mode
 **./Thesis_Report_Mathews.tex
 (Thesis_Report_Mathews.tex
@@ -593,40 +593,40 @@ Package pdftex.def Info: logo.png  used on input line 114.
 
 {C:/Users/Mathews/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./logo.png>] 
 [2] (Thesis_Report_Mathews.toc
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 8
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 6
 .
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 8
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
 .
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-8.
+6.
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-8.
+6.
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 8.
+(Font)              <10> on input line 6.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 8.
+(Font)              <7> on input line 6.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 8.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 8.
+(Font)              <5> on input line 6.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cf
 g
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 8.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cf
@@ -655,7 +655,7 @@ been already used, duplicate ignored
                    \relax 
 l.208 \newpage
                [2]
-<Picture1.png, id=118, 817.25325pt x 329.43076pt>
+<Picture1.png, id=128, 817.25325pt x 329.43076pt>
 File: Picture1.png Graphic file (type png)
 <use Picture1.png>
 Package pdftex.def Info: Picture1.png  used on input line 242.
@@ -666,268 +666,490 @@ been already used, duplicate ignored
                    \relax 
 l.265 
        [3 <./Picture1.png>] [4] [5]
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 381.
-See the caption package documentation for explanation.
-
-[6]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
-07.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
+78.
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-409.
-(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
-File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [7] [8]
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 545.
-See the caption package documentation for explanation.
-
-[9]
-<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf, id=161, 867.24
-pt x 289.08pt>
-File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf Graphic fi
-le (type pdf)
-<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--7-1.pdf  used on input line 564.
-(pdftex.def)             Requested size: 418.25543pt x 139.41846pt.
-[10 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-7-1.pdf>]
-<1.png, id=172, 1359.0775pt x 553.06625pt>
-File: 1.png Graphic file (type png)
-<use 1.png>
-Package pdftex.def Info: 1.png  used on input line 614.
-(pdftex.def)             Requested size: 431.7408pt x 175.69363pt.
-
-Overfull \hbox (13.48535pt too wide) in paragraph at lines 614--615
- [][] 
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 396--396
+[]\T1/lmtt/m/n/10 ## $ year_cross    <int> 2005, 2005, 2005, 2005, 2005, 2005, 
+2005, 2005, 2005,...[] 
  []
 
-[11 <./1.png>]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 6
-33.
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 396--396
+[]\T1/lmtt/m/n/10 ## $ doy_cross     <int> 3, 4, 4, 4, 6, 15, 22, 24, 24, 24, 2
+7, 27, 42, 42, 42...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 396--396
+[]\T1/lmtt/m/n/10 ## $ doyfrac_cross <dbl> 3.794445, 4.106945, 4.241667, 4.9000
+00, 6.484028, 15....[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 396--396
+[]\T1/lmtt/m/n/10 ## $ hour_cross    <int> 19, 2, 5, 21, 11, 17, 19, 3, 6, 14, 
+16, 16, 7, 8, 19,...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 396--396
+[]\T1/lmtt/m/n/10 ## $ minute_cross  <int> 4, 34, 48, 36, 37, 20, 50, 1, 55, 22
+, 1, 13, 52, 22, ...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 396--396
+[]\T1/lmtt/m/n/10 ## $ type_cross    <chr> "BS", "BS", "BS", "BS", "DG", "DG", 
+"MP", "BS", "BS",...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 396--396
+[]\T1/lmtt/m/n/10 ## $ dirn_cross    <chr> "I", "O", "I", "O", "S_SW", "E_SP", 
+"O", "O", "I", "O...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 396--396
+[]\T1/lmtt/m/n/10 ## $ xcrosslist    <dbl> 22.840, 23.150, 23.280, 23.880, 25.0
+44, 7.750, -1.200...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 396--396
+[]\T1/lmtt/m/n/10 ## $ ycrosslist    <dbl> -52.74, -52.18, -51.93, -50.62, -46.
+84, 2.44, -44.41,...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 396--396
+[]\T1/lmtt/m/n/10 ## $ zcrosslist    <dbl> 5.54, 5.74, 5.82, 6.22, 7.12, 3.79, 
+-4.69, -3.85, -3....[] 
+ []
+
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
+03.
 (C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-<2.png, id=180, 1361.085pt x 554.07pt>
+) [6]
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ X              <int> 411138, 411139, 411140, 411141, 411
+142, 411143, 4111...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ Timestamp.UTC. <chr> "01/01/2005 00:00:30.000", "01/01/2
+005 00:00:30.000"...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ DOY.UTC.       <chr> "2005-001", "2005-001", "2005-001",
+ "2005-001", "200...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ SCET.s.        <dbl> 1104537630, 1104537630, 1104537690,
+ 1104537750, 1104...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ deltaTime.s.   <dbl> 60, 0, 60, 60, 60, 60, 60, 60, 60, 
+60, 60, 60, 60, 6...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ X_KG.km.       <dbl> -3583775, -3584179, -3584723, -3584
+968, -3584868, -3...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ Y_KG.km.       <dbl> -94231.023, -76627.055, -43428.027,
+ -8284.628, 26895...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ Z_KG.km.       <dbl> -255420.7, -255418.2, -255413.5, -2
+55408.5, -255403....[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ BTotal.nT.     <dbl> 0.4469750, 0.4498453, 0.4486538, 0.
+4455171, 0.441104...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ BX_KRTP.nT.    <dbl> 0.2975732, 0.3047569, 0.3070252, 0.
+2960059, 0.300877...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ BY_KRTP.nT.    <dbl> 0.11034938, 0.12523502, 0.12184002,
+ 0.12933519, 0.12...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 502--502
+[]\T1/lmtt/m/n/10 ## $ BZ_KRTP.nT.    <dbl> -0.3143709, -0.3055858, -0.3030233,
+ -0.3062884, -0.2...[] 
+ []
+
+[7]
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ X              <int> 494525, 494526, 494527, 494528, 494
+529, 494530, 4945...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ Timestamp.UTC. <chr> "01/01/2005 00:00:30.000", "01/01/2
+005 00:00:30.000"...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ DOY.UTC.       <chr> "2005-001", "2005-001", "2005-001",
+ "2005-001", "200...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ deltaTime.s.   <dbl> 60, 0, 60, 60, 60, 60, 60, 60, 60, 
+60, 60, 60, 60, 6...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ X_KSM.km.      <dbl> 1171585, 1171614, 1171670, 1171729,
+ 1171787, 1171846...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ Y_KSM.km.      <dbl> -3390681, -3390665, -3390635, -3390
+603, -3390571, -3...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ Z_KSM.km.      <dbl> 219621.2, 219636.3, 219664.8, 21969
+5.0, 219725.3, 21...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ BTotal.nT.     <dbl> 0.4469750, 0.4498453, 0.4486538, 0.
+4455171, 0.441104...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ BX_KSM.nT.     <dbl> -0.13606475, -0.12058760, -0.118861
+04, -0.12252847, ...[] 
+ []
+
+[8]
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ BY_KSM.nT.     <dbl> -0.3754122, -0.3783377, -0.3798774,
+ -0.3700427, -0.3...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ BZ_KSM.nT.     <dbl> -0.2002696, -0.2103865, -0.2061500,
+ -0.2149763, -0.2...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ TimeStamp      <dttm> 2005-01-01 00:00:00, 2005-01-01 00
+:00:00, 2005-01-0...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ date           <date> 2005-01-01, 2005-01-01, 2005-01-01
+, 2005-01-01, 200...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ type_cross     <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA,
+ NA, NA, NA, NA, ...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ dirn_cross     <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA,
+ NA, NA, NA, NA, ...[] 
+ []
+
+
+Overfull \hbox (6.99332pt too wide) in paragraph at lines 592--592
+[]\T1/lmtt/m/n/10 ## $ time           <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA,
+ NA, NA, NA, NA, ...[] 
+ []
+
+[9] [10]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 694.
+See the caption package documentation for explanation.
+
+[11]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-10-1.pdf, id=189, 867.2
+4pt x 289.08pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-10-1.pdf Graphic f
+ile (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-10-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-10-1.pdf  used on input line 713.
+(pdftex.def)             Requested size: 418.25543pt x 139.41846pt.
+[12 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-10-1.pdf>]
+<1.png, id=199, 1359.0775pt x 553.06625pt>
+File: 1.png Graphic file (type png)
+<use 1.png>
+Package pdftex.def Info: 1.png  used on input line 763.
+(pdftex.def)             Requested size: 431.7408pt x 175.69363pt.
+
+Overfull \hbox (13.48535pt too wide) in paragraph at lines 763--764
+ [][] 
+ []
+
+[13 <./1.png>]
+<2.png, id=207, 1361.085pt x 554.07pt>
 File: 2.png Graphic file (type png)
 <use 2.png>
-Package pdftex.def Info: 2.png  used on input line 674.
+Package pdftex.def Info: 2.png  used on input line 823.
 (pdftex.def)             Requested size: 431.58932pt x 175.69122pt.
 
-Overfull \hbox (13.33388pt too wide) in paragraph at lines 674--675
+Overfull \hbox (13.33388pt too wide) in paragraph at lines 823--824
  [][] 
  []
 
-[12 <./2.png>]
-<3.png, id=188, 1356.06625pt x 548.0475pt>
+[14 <./2.png>]
+<3.png, id=214, 1356.06625pt x 548.0475pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
-Package pdftex.def Info: 3.png  used on input line 693.
+Package pdftex.def Info: 3.png  used on input line 842.
 (pdftex.def)             Requested size: 434.73636pt x 175.69655pt.
 
-Overfull \hbox (16.48091pt too wide) in paragraph at lines 693--694
+Overfull \hbox (16.48091pt too wide) in paragraph at lines 842--843
  [][] 
  []
 
-[13 <./3.png>]
-<boy1.png, id=195, 1357.07pt x 545.03625pt>
+[15 <./3.png>]
+<boy1.png, id=221, 1357.07pt x 545.03625pt>
 File: boy1.png Graphic file (type png)
 <use boy1.png>
-Package pdftex.def Info: boy1.png  used on input line 721.
+Package pdftex.def Info: boy1.png  used on input line 870.
 (pdftex.def)             Requested size: 437.46019pt x 175.6959pt.
 
-Overfull \hbox (19.20474pt too wide) in paragraph at lines 721--722
+Overfull \hbox (19.20474pt too wide) in paragraph at lines 870--871
  [][] 
  []
 
-<boy2.png, id=196, 1363.0925pt x 542.025pt>
+<boy2.png, id=222, 1363.0925pt x 542.025pt>
 File: boy2.png Graphic file (type png)
 <use boy2.png>
-Package pdftex.def Info: boy2.png  used on input line 737.
+Package pdftex.def Info: boy2.png  used on input line 886.
 (pdftex.def)             Requested size: 441.83507pt x 175.69287pt.
 
-Overfull \hbox (23.57962pt too wide) in paragraph at lines 737--738
+Overfull \hbox (23.57962pt too wide) in paragraph at lines 886--887
  [][] 
  []
 
-[14 <./boy1.png> <./boy2.png>]
-<girl1.png, id=204, 1352.05125pt x 545.03625pt>
+[16 <./boy1.png> <./boy2.png>]
+<girl1.png, id=231, 1352.05125pt x 545.03625pt>
 File: girl1.png Graphic file (type png)
 <use girl1.png>
-Package pdftex.def Info: girl1.png  used on input line 758.
+Package pdftex.def Info: girl1.png  used on input line 907.
 (pdftex.def)             Requested size: 435.84236pt x 175.6959pt.
 
-Overfull \hbox (17.58691pt too wide) in paragraph at lines 758--759
+Overfull \hbox (17.58691pt too wide) in paragraph at lines 907--908
  [][] 
  []
 
-<girl2.png, id=205, 1361.085pt x 554.07pt>
+<girl2.png, id=232, 1361.085pt x 554.07pt>
 File: girl2.png Graphic file (type png)
 <use girl2.png>
-Package pdftex.def Info: girl2.png  used on input line 773.
+Package pdftex.def Info: girl2.png  used on input line 922.
 (pdftex.def)             Requested size: 431.58932pt x 175.69122pt.
 
-Overfull \hbox (13.33388pt too wide) in paragraph at lines 773--774
+Overfull \hbox (13.33388pt too wide) in paragraph at lines 922--923
  [][] 
  []
 
-[15 <./girl1.png> <./girl2.png>]
-<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf, id=213, 867.2
+[17 <./girl1.png> <./girl2.png>]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-20-1.pdf, id=240, 867.2
 4pt x 325.215pt>
-File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf Graphic f
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-20-1.pdf Graphic f
 ile (type pdf)
-<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf>
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-20-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--17-1.pdf  used on input line 810.
+-20-1.pdf  used on input line 959.
 (pdftex.def)             Requested size: 418.25543pt x 156.84578pt.
-[16 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-17-1.pdf>]
-<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf, id=226, 867.2
-4pt x 325.215pt>
-File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf Graphic f
-ile (type pdf)
-<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf>
-Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--18-1.pdf  used on input line 856.
-(pdftex.def)             Requested size: 418.25543pt x 156.84578pt.
-[17 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-18-1.pdf>]
-<bam.png, id=237, 505.89pt x 361.35pt>
-File: bam.png Graphic file (type png)
-<use bam.png>
-Package pdftex.def Info: bam.png  used on input line 880.
-(pdftex.def)             Requested size: 245.97388pt x 175.69563pt.
-[18 <./bam.png>] [19]
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1011.
-See the caption package documentation for explanation.
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1023.
-See the caption package documentation for explanation.
-
-[20]
-<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf, id=259, 867.2
+[18 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-20-1.pdf>]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf, id=252, 867.2
 4pt x 325.215pt>
 File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf Graphic f
 ile (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--21-1.pdf  used on input line 1069.
+-21-1.pdf  used on input line 1005.
 (pdftex.def)             Requested size: 418.25543pt x 156.84578pt.
-<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf, id=260, 867.2
-4pt x 361.35pt>
-File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf Graphic f
+[19 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf>]
+<bam.png, id=263, 505.89pt x 361.35pt>
+File: bam.png Graphic file (type png)
+<use bam.png>
+Package pdftex.def Info: bam.png  used on input line 1029.
+(pdftex.def)             Requested size: 245.97388pt x 175.69563pt.
+[20 <./bam.png>] [21]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1160.
+See the caption package documentation for explanation.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1172.
+See the caption package documentation for explanation.
+
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
+1194.
+(C:\Users\Mathews\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [22]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-24-1.pdf, id=287, 867.2
+4pt x 325.215pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-24-1.pdf Graphic f
 ile (type pdf)
-<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf>
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-24-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--22-1.pdf  used on input line 1080.
-(pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
-[21 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-21-1.pdf> <./Thes
-is_Report_Mathews_files/figure-latex/unnamed-chunk-22-1.pdf>]
-<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf, id=275, 867.2
+-24-1.pdf  used on input line 1218.
+(pdftex.def)             Requested size: 418.25543pt x 156.84578pt.
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-25-1.pdf, id=288, 867.2
 4pt x 361.35pt>
-File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf Graphic f
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-25-1.pdf Graphic f
 ile (type pdf)
-<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf>
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-25-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--23-1.pdf  used on input line 1094.
+-25-1.pdf  used on input line 1229.
 (pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
-[22 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-23-1.pdf>] [23]
-<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf, id=291, 867.2
+[23 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-24-1.pdf> <./Thes
+is_Report_Mathews_files/figure-latex/unnamed-chunk-25-1.pdf>]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf, id=303, 867.2
 4pt x 361.35pt>
 File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf Graphic f
 ile (type pdf)
 <use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--26-1.pdf  used on input line 1157.
+-26-1.pdf  used on input line 1243.
 (pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
-<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf, id=292, 867.2
+[24 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf>] [25]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-29-1.pdf, id=318, 867.2
 4pt x 361.35pt>
-File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf Graphic f
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-29-1.pdf Graphic f
 ile (type pdf)
-<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf>
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-29-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--27-1.pdf  used on input line 1165.
+-29-1.pdf  used on input line 1306.
 (pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
-[24 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-26-1.pdf> <./Thes
-is_Report_Mathews_files/figure-latex/unnamed-chunk-27-1.pdf>]
-<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf, id=309, 1011.
-78pt x 361.35pt>
-File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf Graphic f
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-30-1.pdf, id=319, 867.2
+4pt x 361.35pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-30-1.pdf Graphic f
 ile (type pdf)
-<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf>
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-30-1.pdf>
 Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
--28-1.pdf  used on input line 1185.
+-30-1.pdf  used on input line 1314.
+(pdftex.def)             Requested size: 418.25543pt x 174.27309pt.
+[26 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-29-1.pdf> <./Thes
+is_Report_Mathews_files/figure-latex/unnamed-chunk-30-1.pdf>]
+<Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-31-1.pdf, id=336, 1011.
+78pt x 361.35pt>
+File: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-31-1.pdf Graphic f
+ile (type pdf)
+<use Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-31-1.pdf>
+Package pdftex.def Info: Thesis_Report_Mathews_files/figure-latex/unnamed-chunk
+-31-1.pdf  used on input line 1334.
 (pdftex.def)             Requested size: 418.25983pt x 149.37851pt.
-[25 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-28-1.pdf>] [26] [
-27]
+[27 <./Thesis_Report_Mathews_files/figure-latex/unnamed-chunk-31-1.pdf>] [28] [
+29]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1300.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1427.
 
-Underfull \vbox (badness 3907) detected at line 1352
+Underfull \vbox (badness 3907) detected at line 1479
  []
 
-[28] [29] [30] [31] [32]
-Underfull \vbox (badness 1062) detected at line 1730
+[30] [31] [32] [33] [34]
+Underfull \vbox (badness 1062) detected at line 1857
  []
 
-[33]
-Underfull \vbox (badness 10000) detected at line 1755
+[35]
+Underfull \vbox (badness 10000) detected at line 1882
  []
 
-[34] [35] [36]
-Underfull \vbox (badness 10000) detected at line 1903
+[36] [37] [38]
+Underfull \vbox (badness 10000) detected at line 2030
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1903
+Underfull \vbox (badness 10000) detected at line 2030
  []
 
-[37]
-Overfull \vbox (1.97583pt too high) detected at line 1982
+[39]
+Overfull \vbox (1.97583pt too high) detected at line 2109
  []
 
-[38] [39] [40] [41] [42] [43] (Thesis_Report_Mathews.aux)
+[40] [41] [42] [43] [44] [45] (Thesis_Report_Mathews.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14944 strings out of 478847
- 236157 string characters out of 2847439
- 584637 words of memory out of 3000000
- 32340 multiletter control sequences out of 15000+600000
- 451855 words of font info for 129 fonts, out of 8000000 for 9000
+ 14966 strings out of 478847
+ 236646 string characters out of 2847439
+ 581862 words of memory out of 3000000
+ 32352 multiletter control sequences out of 15000+600000
+ 451960 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,8n,80p,663b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 74i,8n,80p,711b,481s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
 {C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{
 C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc
+}{C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{
+C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc
 }{C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
-nc}{C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc
-}<C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.p
-fb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12
-.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi
-10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
-mi7.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
-mr10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/
-lmr12.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
-/lmr7.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
-/lmri10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-lm/lmsy10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/lm/lmsy7.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/lm/lmtk10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/lm/lmtt10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/lm/lmtti10.pfb>
-Output written on Thesis_Report_Mathews.pdf (46 pages, 1045783 bytes).
+nc}<C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10
+.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx
+12.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
+ex10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/
+lmmi10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
+m/lmmi7.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+lm/lmr10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/lm/lmr12.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/lm/lmr7.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/lm/lmri10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/lm/lmsy10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/lm/lmsy7.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/lm/lmtk10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/lm/lmtt10.pfb><C:/Users/Mathews/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/lm/lmtti10.pfb>
+Output written on Thesis_Report_Mathews.pdf (48 pages, 1058459 bytes).
 PDF statistics:
- 589 PDF objects out of 1000 (max. 8388607)
- 125 named destinations out of 1000 (max. 500000)
- 26904 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 626 PDF objects out of 1000 (max. 8388607)
+ 133 named destinations out of 1000 (max. 500000)
+ 26952 words of extra memory for PDF output out of 29859 (max. 10000000)
 
