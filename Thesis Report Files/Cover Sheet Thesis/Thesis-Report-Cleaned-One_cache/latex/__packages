@@ -12,3 +12,5 @@ stringr
 forcats
 nlme
 mgcv
+lattice
+caret

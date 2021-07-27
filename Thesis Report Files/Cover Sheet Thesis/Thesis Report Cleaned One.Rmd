@@ -98,7 +98,10 @@ All planets in our solar system have magnetic field like earth. Some of the plan
 
 \bigskip                 <!-- blank lines -->
 \bigskip
+```{r, echo=FALSE, message=FALSE,out.width="60%",out.height="30%",fig.cap="Diagram of Planetary Magnetosphere",  fig.pos="h!", fig.align="center"}
+ knitr::include_graphics("Magnetosphere Diagram.jpg")
 
+```
 
 \bigskip                 <!-- blank lines -->
 \bigskip
@@ -388,15 +391,11 @@ From this stacked Bar plot, we can see that 50% of both the Bow Shock and Magnet
 
 Before Model development Significance of each variable must be evaluated so, that we can remove the un necessary variables which will leads to over fitting of models. To find the variable I have used two Logistic Regression Models summary and a RandomForrest Variable Importance function. 
 
-## Logistic Regression Model: Bow Shock vs Other Events
-
-In this model I tried to predict the Bow shock events by using different derived datasets. Since the datasets are highly imbalanced It is important to sample equal number of classes from datasets to train the Logistic Regression model. Before splitting into training and Test Dataset, A new variable called `event_occured` was created and all Bow Shock events were stored as 1 and all the rest of the events as 0 in the `events_occured` variable.
-
-### Train and Test Dataset
+__Train and Test Dataset__
   
-  Since the Dataset is a highly imbalanced one with 90% of the data has the class `No Events Occurred`. It is crucial to train the model with a balanced dataset so, for that we sampled 100 datapoints of each class by using `sample_n()` function. All other datapoints were chosen as Test Dataset for this model.
+  Since the Dataset is a highly imbalanced one with 90% of the data has the class `No Events Occurred`. It is crucial to train the model with a balanced dataset so, for that we sampled 100 datapoints of each class by using `sample_n()` function for Dataset 4 and 300 `NE` Points were chosen instead of 100 for the model with Dataset 3.  All other datapoints were chosen as Test Dataset for this model.
   
-### Standardizing  the Train and Test Dataset
+__Standardizing  the Train and Test Dataset__
   
   Standardizing is a techniques used in the Machine Learning. The main aim of Normalization is to make all the numeric columns in the dataset to a common scale.All the numeric variables in the train dataset was Normalized by using the `scale()` function. The standard deviation and mean of each variable of train dataset was stored separately. The test dataset was then Standardized by using the standard deviation and Means that were stored before for each variable. For Standardizing I have used the below formula:
 
@@ -405,6 +404,12 @@ In this model I tried to predict the Bow shock events by using different derived
 \end{equation}
 
 In this formula mu represents the mean and sigma represents the standard deviation of that variable in the train dataset. By standardizing features we are centering the datapoints to zero and making the standard deviation of value 1.
+
+
+## Logistic Regression Model: Bow Shock vs Other Events
+
+In this model I tried to predict the Bow shock events by using different derived datasets. Since the datasets are highly imbalanced It is important to sample equal number of classes from datasets to train the Logistic Regression model. Before splitting into training and Test Dataset, A new variable called `event_occured` was created and all Bow Shock events were stored as 1 and all the rest of the events as 0 in the `events_occured` variable.
+
 
 ### Results
 
@@ -416,8 +421,8 @@ Models were trained with different derived datasets and later compared the resul
 \hline
 Dataset Used & Significant Predictors & Total Predictors\\ \hline
 Dataset 3 & 218  & 218 \\ \hline
-Dataset 4 & 14  & 24 \\ \hline
-Dataset 3 without Lead Variables & 12 & 203 \\ \hline
+Dataset 4 & 14  & 25 \\ \hline
+Dataset 3 without Lead Variables & 107 & 107 \\ \hline
 \end{tabular}
 \end{center}
 
@@ -427,9 +432,9 @@ Dataset 3 without Lead Variables & 12 & 203 \\ \hline
 
 __Summary of Dataset 3__ 
 
-From this dataset we have sampled 300 NE points, 100 Bow shock data points and 100 Magnetopause Data points for the train data.  The Table shown below is the confusion matrix.
+From Dataset 3 we have sampled 300 NE points, 100 Bow shock data points and 100 Magnetopause Data points for the train data because there are 218 predictors in this dataset.  The Table shown below is the confusion matrix.
 
-```{r , echo=FALSE, message=FALSE}
+```{r , echo=FALSE, message=FALSE, warning=FALSE}
 copy_data<-raw_data_4
 t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
 copy_data<-t
@@ -504,15 +509,16 @@ conf_mat
 
 ```
 
-From the matrix we can clearly see that the accuracy is about `r conf_mat$overall['Accuracy']` . Eventhough it gives better accuracy the sensitivity of the Model is very low. Accuracy is the percentage of datapoints that are classified correctly but in the case of the Sensitivity which is number of exact positive predictions divided by the total number of positive in this model the sensitivity gives a value that explains about Bow Shock which are correctly classified .   `r conf_mat$byClass['Sensitivity']` is the sensitivity of the model. 
+From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . Eventhough it gives better accuracy the sensitivity of the Model is very low. Accuracy is the percentage of datapoints that are classified correctly but in the case of the Sensitivity which is number of exact positive predictions divided by the total number of positive in this model the sensitivity gives a value that explains about Bow Shock events that are correctly classified .   `r round(conf_mat$byClass['Sensitivity'] * 100,1)` is the sensitivity of the above model So, `r round(conf_mat$byClass['Sensitivity'] * 100,1)` out of 100 Bow Shock events were classified correctly through this model. 
  
 
 \newpage
 
 __Summary of Dataset 4 : Average and Standard Deviation Data__ 
 
-In this 
-```{r , echo=FALSE, message=FALSE}
+In the case of this dataset there are only 24 predictors so, the train dataset contains 100 NE points, 100 BS Points and 100 MP points which was sampled from the Dataset 4. The table Shown below is the Confusion matrix of the model with this dataset.
+
+```{r , echo=FALSE, message=FALSE,warning=FALSE}
 
 data_avg<-readRDS("./Data/dataset_version_2/Average_SD_Data.rds", refhook = NULL)
 copy_data<-data_avg
@@ -580,6 +586,348 @@ cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
 conf_mat<-confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,positive='1')
 conf_mat
 ```
+
+From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . Eventhough it gives better accuracy than the Model with Dataset 3 but still the sensitivity of the Model is similar to that of the Dataset 3 Logistic Regression Model. `r round(conf_mat$byClass['Sensitivity']*100,1)`% of the Bow Shock boundaries were classified correctly. But when compared to Model that was trained with Dataset 3, The `NE` points were classified more accurately in this model.The specificity of this model is `r round(conf_mat$byClass['Specificity']*100,1)`% which means the `r round(conf_mat$byClass['Specificity']*100,1)`% of the NE Points were classified correctly through this model.
+
+\newpage
+
+
+__Summary of Dataset 3 : Without Lead Variables__ 
+
+In this dataset there are only 107 predictors which means half of the variables are removed so, the train dataset contains 100 NE points, 100 BS Points and 100 MP points which was sampled from the Dataset 4. The table Shown below is the Confusion matrix of the model with this dataset.
+
+```{r , echo=FALSE, message=FALSE,warning=FALSE}
+
+
+copy_data<-raw_data_4[,1:107]
+t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
+copy_data<-t
+copy_data$type_cross<-factor(copy_data$type_cross)
+copy_data$id<-seq.int(nrow(copy_data))
+
+cassini.train_unscaled<-copy_data%>% filter(type_cross=='NE')%>%sample_n(100) %>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross %>% table()
+cassini.train_unscaled$type_cross<-as.factor(cassini.train_unscaled$type_cross)
+cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
+cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
+cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
+## Scaling the data
+
+cassini.train_scaled<-cassini.train_unscaled%>%mutate_if(is.numeric,scale)
+means <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), mean)
+sds <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), sd)
+means <- matrix(unlist(means), ncol = 107, byrow = FALSE)
+sds <- matrix(unlist(sds), ncol = 107, byrow = FALSE)
+
+
+## Normalizing the TEST DATASET
+
+
+cassini.test_scaled<-dplyr::select(cassini.test_unscaled,-c(type_cross,dirn_cross))
+
+for(col in c(1:dim(cassini.test_scaled)[2])){
+  temp<-(cassini.test_scaled[,col]-means[1,col])/sds[1,col]
+  cassini.test_scaled[,col]<-as.matrix(temp)
+  temp<-NULL
+}
+cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
+cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
+
+
+## Logistic Regression Model 1 (Average)
+
+
+new_trainData<-cassini.train_scaled
+new_testData<-cassini.test_scaled
+
+### BS as 1 and all other events as 0
+
+## Removing dirn_cross and creating new variable `new_trainData`.
+
+#### Training Data
+
+cassini.logTrain<-new_trainData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='MP',0,1))
+cassini.logTrain$event_occured<-as.factor(cassini.logTrain$event_occured)
+cassini.logTrain <- dplyr::select(cassini.logTrain,-c(type_cross))
+
+#### Test Data
+
+cassini.logTest<-new_testData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='MP',0,1))
+cassini.logTest$event_occured<-as.factor(cassini.logTest$event_occured)
+cassini.logTest <- dplyr::select(cassini.logTest,-c(type_cross))
+
+#### Model 1 Training and Confusion Matrix
+
+LOGModel2<- glm(event_occured ~ ., family = "binomial", data = cassini.logTrain)
+cassini.logTest$prob=predict(LOGModel2,cassini.logTest,type="response")
+cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
+conf_mat<-confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,positive='1')
+conf_mat
+```
+
+From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . It gives better accuracy and sensitivity than the Model with the Dataset 3 Logistic Regression Model. `r round(conf_mat$byClass['Sensitivity']*100,1)`% of the Bow Shock boundaries were classified correctly. But when compared to Model that was trained with Dataset 3, All other Classes except Bow Shock  were classified more accurately in this model.The specificity of this model is `r round(conf_mat$byClass['Specificity']*100,1)`% which means the `r round(conf_mat$byClass['Specificity']*100,1)`% of the NE Points were classified correctly through this model.
+
+\newpage
+
+
+## Logistic Regression Model: Magneto Pause vs Other Events
+
+Unlike the previous model which classifies Bow Shock events and All other Events, This model classify Magneto Pause and all other events by using different derived datasets. Since the datasets are highly imbalanced It is important to sample equal number of classes from datasets to train the Logistic Regression model. Before splitting into training and Test Dataset, A new variable called `event_occured` was created and all Magneto Pause events were stored as 1 and all the rest of the events as 0 in that newly created variable.
+
+
+### Results
+
+Models were trained with different derived datasets and later compared the results.Table Shown below contains the information regarding the datasets used and count of Variables that are significant. A brief summary of models trained with different dataset was explained in the coming pages.
+
+\begin{center}
+\captionof{table}{Logistic Regression : Magneto Pause Vs Other Events Results Table}
+\begin{tabular}{|l|l|l|}
+\hline
+Dataset Used & Significant Predictors & Total Predictors\\ \hline
+Dataset 3 & 218  & 218 \\ \hline
+Dataset 4 & 25  & 25 \\ \hline
+Dataset 3 without Lead Variables & 107 & 107 \\ \hline
+\end{tabular}
+\end{center}
+
+
+
+__Summary of Dataset 3__ 
+
+From Dataset 3  I have sampled 300 NE points, 100 Bow shock data points and 100 Magnetopause Data points for the train data because there are 218 predictors in this dataset.  The Table shown below is the confusion matrix.
+
+```{r , echo=FALSE, message=FALSE, warning=FALSE}
+copy_data<-raw_data_4
+t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
+copy_data<-t
+copy_data$type_cross<-factor(copy_data$type_cross)
+copy_data$id<-seq.int(nrow(copy_data))
+
+
+cassini.train_unscaled<-copy_data%>% filter(type_cross=='NE')%>%sample_n(300) %>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross %>% table()
+cassini.train_unscaled$type_cross<-as.factor(cassini.train_unscaled$type_cross)
+cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
+cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
+cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
+
+
+
+
+
+## Scaling the data
+
+cassini.train_scaled<-cassini.train_unscaled%>%mutate_if(is.numeric,scale)
+means <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), mean)
+sds <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), sd)
+means <- matrix(unlist(means), ncol = 217, byrow = FALSE)
+sds <- matrix(unlist(sds), ncol = 217, byrow = FALSE)
+
+
+## Normalizing the TEST DATASET
+
+
+cassini.test_scaled<-dplyr::select(cassini.test_unscaled,-c(type_cross,dirn_cross))
+
+for(col in c(1:dim(cassini.test_scaled)[2])){
+  temp<-(cassini.test_scaled[,col]-means[1,col])/sds[1,col]
+  cassini.test_scaled[,col]<-as.matrix(temp)
+  temp<-NULL
+}
+cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
+cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
+
+
+## Logistic Regression Model 1
+
+### BS as 1 and all other events as 0
+
+## Removing dirn_cross and creating new variable `new_trainData`.
+
+new_trainData<-dplyr::select(cassini.train_scaled,-dirn_cross)
+new_testData<-dplyr::select(cassini.test_scaled,-c(dirn_cross))
+
+#### Training Data
+
+cassini.logTrain<-new_trainData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='BS',0,1))
+cassini.logTrain$event_occured<-as.factor(cassini.logTrain$event_occured)
+cassini.logTrain <- dplyr::select(cassini.logTrain,-c(type_cross))
+
+#### Test Data
+
+cassini.logTest<-new_testData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='BS',0,1))
+cassini.logTest$event_occured<-as.factor(cassini.logTest$event_occured)
+cassini.logTest <- dplyr::select(cassini.logTest,-c(type_cross))
+
+
+
+#### Model 1 Training and Confusion Matrix
+
+LOGModel1<- glm(event_occured ~ ., family = "binomial", data = cassini.logTrain)
+cassini.logTest$prob=predict(LOGModel1,cassini.logTest,type="response")
+cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
+conf_mat<-confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,positive='1')
+conf_mat
+
+```
+
+From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . Eventhough it gives a better accuracy value the sensitivity of the Model is very low. Accuracy is the percentage of datapoints that are classified correctly but in the case of the Sensitivity which is number of exact positive predictions divided by the total number of positive in this model the sensitivity gives a value that explains about Bow Shock events that are correctly classified .   `r round(conf_mat$byClass['Sensitivity'] * 100,1)`% is the sensitivity of the above model So, `r round(conf_mat$byClass['Sensitivity'] * 100)` out of 100 Bow Shock events were classified correctly through this model. When Comparing with the Logistic Regression Model that was used for Classifying the Bow Shock and Rest of the Events, this Logistic regression model was able to classify the Magneto Pause events more efficiently by using Dataset 3.
+ 
+
+
+__Summary of Dataset 4 : Average and Standard Deviation Data__ 
+
+In the case of this dataset there are only 24 predictors so, the train dataset can sample 100 NE points, 100 BS Points and 100 MP points which is sampled  from the Dataset 4. The table Shown below is the Confusion matrix of the model with this dataset.
+
+```{r , echo=FALSE, message=FALSE,warning=FALSE}
+
+data_avg<-readRDS("./Data/dataset_version_2/Average_SD_Data.rds", refhook = NULL)
+copy_data<-data_avg
+t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
+copy_data<-t
+copy_data$type_cross<-factor(copy_data$type_cross)
+copy_data$id<-seq.int(nrow(copy_data))
+
+cassini.train_unscaled<-copy_data%>% filter(type_cross=='NE')%>%sample_n(100) %>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross %>% table()
+cassini.train_unscaled$type_cross<-as.factor(cassini.train_unscaled$type_cross)
+cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
+cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
+cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
+## Scaling the data
+
+cassini.train_scaled<-cassini.train_unscaled%>%mutate_if(is.numeric,scale)
+means <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), mean)
+sds <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), sd)
+means <- matrix(unlist(means), ncol = 23, byrow = FALSE)
+sds <- matrix(unlist(sds), ncol = 23, byrow = FALSE)
+
+
+## Normalizing the TEST DATASET
+
+
+cassini.test_scaled<-dplyr::select(cassini.test_unscaled,-c(type_cross,dirn_cross))
+
+for(col in c(1:dim(cassini.test_scaled)[2])){
+  temp<-(cassini.test_scaled[,col]-means[1,col])/sds[1,col]
+  cassini.test_scaled[,col]<-as.matrix(temp)
+  temp<-NULL
+}
+cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
+cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
+
+
+## Logistic Regression Model 1 (Average)
+
+
+new_trainData<-cassini.train_scaled
+new_testData<-cassini.test_scaled
+
+### BS as 1 and all other events as 0
+
+## Removing dirn_cross and creating new variable `new_trainData`.
+
+#### Training Data
+
+cassini.logTrain<-new_trainData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='BS',0,1))
+cassini.logTrain$event_occured<-as.factor(cassini.logTrain$event_occured)
+cassini.logTrain <- dplyr::select(cassini.logTrain,-c(type_cross))
+
+#### Test Data
+
+cassini.logTest<-new_testData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='BS',0,1))
+cassini.logTest$event_occured<-as.factor(cassini.logTest$event_occured)
+cassini.logTest <- dplyr::select(cassini.logTest,-c(type_cross))
+
+#### Model 1 Training and Confusion Matrix
+
+LOGModel2<- glm(event_occured ~ ., family = "binomial", data = cassini.logTrain)
+cassini.logTest$prob=predict(LOGModel2,cassini.logTest,type="response")
+cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
+conf_mat<-confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,positive='1')
+conf_mat
+```
+
+From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . Eventhough it gives better accuracy than the Model above with Dataset 3 but still the sensitivity of the Model is similar to that of  Logistic Regression Model which classifies Magnetopause Events by using the Dataset 3. `r round(conf_mat$byClass['Sensitivity']*100,1)`% of the Bow Shock boundaries were classified correctly. But when compared to Model that was trained with Dataset 3, The `NE` points were classified more accurately in this model.The specificity of this model is `r round(conf_mat$byClass['Specificity']*100,1)`% which means the `r round(conf_mat$byClass['Specificity']*100,1)`% of the NE Points were classified correctly through this model.
+
+
+__Summary of Dataset 3 : Without Lead Variables__ 
+
+In this dataset there are only 107 predictors which means half of the varibales are removed so, the train dataset contains 100 NE points, 100 BS Points and 100 MP points from the Dataset 4. The table Shown below is the Confusion matrix of the model with this dataset.
+
+```{r , echo=FALSE, message=FALSE,warning=FALSE}
+
+
+copy_data<-raw_data_4[,1:107]
+t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
+copy_data<-t
+copy_data$type_cross<-factor(copy_data$type_cross)
+copy_data$id<-seq.int(nrow(copy_data))
+
+cassini.train_unscaled<-copy_data%>% filter(type_cross=='NE')%>%sample_n(100) %>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross %>% table()
+cassini.train_unscaled$type_cross<-as.factor(cassini.train_unscaled$type_cross)
+cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
+cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
+cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
+## Scaling the data
+
+cassini.train_scaled<-cassini.train_unscaled%>%mutate_if(is.numeric,scale)
+means <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), mean)
+sds <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), sd)
+means <- matrix(unlist(means), ncol = 107, byrow = FALSE)
+sds <- matrix(unlist(sds), ncol = 107, byrow = FALSE)
+
+
+## Normalizing the TEST DATASET
+
+
+cassini.test_scaled<-dplyr::select(cassini.test_unscaled,-c(type_cross,dirn_cross))
+
+for(col in c(1:dim(cassini.test_scaled)[2])){
+  temp<-(cassini.test_scaled[,col]-means[1,col])/sds[1,col]
+  cassini.test_scaled[,col]<-as.matrix(temp)
+  temp<-NULL
+}
+cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
+cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
+
+
+## Logistic Regression Model 1 (Average)
+
+
+new_trainData<-cassini.train_scaled
+new_testData<-cassini.test_scaled
+
+### BS as 1 and all other events as 0
+
+## Removing dirn_cross and creating new variable `new_trainData`.
+
+#### Training Data
+
+cassini.logTrain<-new_trainData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='BS',0,1))
+cassini.logTrain$event_occured<-as.factor(cassini.logTrain$event_occured)
+cassini.logTrain <- dplyr::select(cassini.logTrain,-c(type_cross))
+
+#### Test Data
+
+cassini.logTest<-new_testData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='BS',0,1))
+cassini.logTest$event_occured<-as.factor(cassini.logTest$event_occured)
+cassini.logTest <- dplyr::select(cassini.logTest,-c(type_cross))
+
+#### Model 1 Training and Confusion Matrix
+
+LOGModel2<- glm(event_occured ~ ., family = "binomial", data = cassini.logTrain)
+cassini.logTest$prob=predict(LOGModel2,cassini.logTest,type="response")
+cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
+conf_mat<-confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,positive='1')
+conf_mat
+```
+
+From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . It gives better accuracy and sensitivity than the Model with the Dataset 3 Logistic Regression Model. `r round(conf_mat$byClass['Sensitivity']*100,1)`% of the Bow Shock boundaries were classified correctly. But when compared to Model that was trained with Dataset 3, All other Classes except Bow Shock  were classified more accurately in this model.The specificity of this model is `r round(conf_mat$byClass['Specificity']*100,1)`% which means the `r round(conf_mat$byClass['Specificity']*100,1)`% of the NE Points were classified correctly through this model.
+
+\newpage
+
 
 # References
 <div id="refs"></div>
