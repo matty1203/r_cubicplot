@@ -2,6 +2,7 @@
 output:
   pdf_document:
     number_sections: yes
+    fig_caption: yes
   html_document:
     df_print: paged
 geometry: left=3.8cm,right=2.5cm,top=2.5cm,bottom=2.5cm
@@ -120,11 +121,13 @@ Both the Bow shock and magneto pause models can be used as a significant tool wh
 
 \newpage
 
-# Data
+# Datasets
 
 Cassini Spacecraft orbited around the Saturn for about 9 years.During this period the spacecraft transmitted valuable information regarding Saturn  like the magnetic field strength, position at which it was measured to earth. Magnetometer and CAPS are the main instruments that were used for measuring the magnetic field strength and Kinetic Energy of particles at each point. For this project, I am only considering the data that was recorded during the year 2005 by the spacecraft. Mainly two datasets were used in this project to make a final combined useful dataset, first dataset contains a list of Bow Shock and Magneto pause event crossings that occurred during the year 2005 (Jackman et. al,2019). The second dataset contains the information regarding the position of spacecraft and the vector data of Magnetic field strength. 
 
-## Dataset 1: Magnetopause And Bowshock Crossing List 
+## Raw Datasets 
+
+### Dataset 1: Magnetopause And Bowshock Crossing List 
 
 This dataset only contains the data of the year 2005 and that was originally developed by compiling two datasets that are posted in the MAPSView webpage (http://mapskp.cesr.fr/BSMP/index.php) which contains the Bow Shock and Magnetopause event crossings between 2004 day 179 and 2007 day 349 (H.J. McAndrews, S.J. Kanani, A. Masters, and J.C. Cutler) through visual identification of CAPS and MAG data. The second list of data has the magnetopause crossings during the year 2004 to October 2010 and May 2012 to February 2013 [6]. 
 
@@ -167,7 +170,7 @@ glimpse(raw_data_1)
   
 For an inbound the first event that will occur is a Bow Shock and later followed by Magnetopause. But in the case of an outbound direction the first event that occur will be a Magnetopause and later followed by a Bow Shock. Region of sampling at the start of any data gap will have a S_SW, S_SH and S_SP direction type and Region of sampling at the end of data gap E_SW, E_SH and E_SP. Dimension of this dataset is (480,10).
 
-## Dataset 2: Magnetometer Dataset
+### Dataset 2: Magnetometer Dataset
 
 In this dataset it contains the magnetometer data of Cassini Spacecraft during the year 2005.
 Time difference between each Data points is one minute which means each data point represents the data of a particular minute. The data in this dataset are provided in the KSM (Kronocentric Solar Magnetospheric) Coordinate system which is a kind of Saturn centred Coordinate system where direction of X is from Saturn to the Sun	and X-Z plane of the Coordinate system contains the Saturn centred axis of Magnetic Dipole ‘M’. 
@@ -197,16 +200,49 @@ Some of the relevant variables in the dataset are:
 
 This dataset contains 494683 rows and 12 columns.
 
-## Dataset 3: Combined Data Of Dataset 1 And Dataset 2
+ 
+## Derived Datasets
+
+This section contains the information regarding all the datasets that were derived from the Raw Datasets.
+
+### Dataset 3: Combined Data Of Dataset 1 And Dataset 2
 
 This is a newly created dataset by merging dataset 1 and dataset 2 So, that we can understand the Magnetic field properties during the events like Magnetopause and Bow Shock.  For merging the two datasets I used date and time as the key. To format the date in Dataset 1 I used the `doy_cross` variable in each row adding to “2004-12-31” date. By doing so it will generate a date with respect to the reference date.  In dataset 2 the variable `Timestamp.UTC.` is in string format inorder to convert it into a data format I used `as.POSIXct()` function with `format="%d/%m/%Y %H:%M"`. Later I have converted the ` Timestamp.UTC.` variable into a new format and which is then stored in the `date` variable. Two new variables are also created in the Dataset 2 known as `hour_cross` and `minute_cross`. `left_join()` function was used for merging the two datasets by using the variables `date`,`hour_cross` and `minute_cross` which is common on dataset 1 and dataset 2. In the newly created dataset it contains all the variables of dataset 1 and dataset 2. The dimesnsion of the newly created dataset is 494683 rows and 19 columns. Some of the variables are removed from the dataset because we know that dataset 1 has very less number of datapoints when compared to dataset 2 So, it is better remove the variables like `xcrosslist`, `ycrosslist`, `zcrosslist`, `year_cross`, `doy_cross`,`SCET.s.`, `doyfrac_cross`, `hour_cross` and `minute_cross` from the merged dataset. Data manipulations and Visualizations were done on this newly created dataset.
 
   
 ```{r, echo=FALSE, message=FALSE , warning=FALSE}
 raw_data_3<-readRDS('./Data/dataset_version_0/joined_data.rds', refhook = NULL)
+raw_data_4<-readRDS('./Data/dataset_version_2/input_datasetFinal.rds', refhook = NULL)
+raw_data_5<-readRDS('./Data/dataset_version_2/Average_SD_Data.rds', refhook = NULL)
 glimpse(raw_data_3%>%select(-c(xcrosslist,zcrosslist,ycrosslist,year_cross,doy_cross,doyfrac_cross,hour_cross,minute_cross,'SCET.s.')))
 ```
  After removing some of the variables, now the modified dataset hass 494683 rows and 16 columns.
+ 
+### Dataset 4: Average and Standard Deviation Dataset
+
+This dataset was created after the exploratory  data analysis done on `Dataset 3`. From the results of those analysis Standard deviation and Average value of the Total Magnetic field 15 minutes before and 15 minutes after of an event occurred data point are showing some pattern. 
+
+```{r, echo=FALSE, message=FALSE , warning=FALSE}
+glimpse(raw_data_5)
+```
+**Some of the Variables are**
+
+* `Avg_Lag_Bx.`: This is the Average of all the `Bx` values that were recorded 15 minutes before each datapoint.
+*	`Avg_Lag_By`:  This is the Average of all the `By` values that were recorded 15 minutes before each datapoint.
+*	`Avg_Lag_Bz`:  This is the Average of all the `Bz` values that were recorded 15 minutes before each datapoint.
+*	`Avg_Lag_BTot`: This is the Average of all the `BTot` values that were recorded 15 minutes before each datapoint .
+*	`SD_Lag_Bx.` : This is the Standard Deviation of all the `Bx` values that were recorded 15 minutes before each datapoint.
+*	`SD_Lag_By` :This is the Standard Deviation of all the `By` values that were recorded 15 minutes before each datapoint.
+*	`SD_Lag_Bz`: This is the Standard Deviation of all the `Bz` values that were recorded 15 minutes before each datapoint.
+*	`SD_Lag_BTot.`: This is the Standard Deviation of all the `BTot` values that were recorded 15 minutes before each datapoint.
+* `Avg_Lead_Bx.`: This is the Average of all the `Bx` values that were recorded 15 minutes after each datapoint.
+*	`Avg_Lead_By`:  This is the Average of all the `By` values that were recorded 15 minutes after each datapoint.
+*	`Avg_Lead_Bz`:  This is the Average of all the `Bz` values that were recorded 15 minutes after each datapoint.
+*	`Avg_Lead_BTot`: This is the Average of all the `BTot` values that were recorded 15 minutes after each datapoint.
+*	`SD_Lead_Bx.` : This is the Standard Deviation of all the `Bx` values that were recorded 15 minutes after each datapoint.
+*	`SD_Lead_By` :This is the Standard Deviation of all the `By` values that were recorded 15 minutes after each datapoint.
+*	`SD_Lead_Bz`: This is the Standard Deviation of all the `Bz` values that were recorded 15 minutes after each datapoint.
+*	`SD_Lead_BTot.`: This is the Standard Deviation of all the `BTot` values that were recorded 15 minutes after each datapoint.
  
 \newpage
 
@@ -222,11 +258,10 @@ suppressMessages(library(plotly))
 suppressMessages(library(dplyr))
 suppressMessages(library(tidyverse))
 suppressMessages(library(mgcv))
+suppressMessages(library(caret))
+
 WD <- getwd()
 if (!is.null(WD)) setwd(WD)
-load('dataset.rdata')
-#load('~/dataset.rdata')
-data.frame(ena)[1:5,]
 
 ```
 
@@ -252,7 +287,7 @@ Inorder to understand the inbound and outbound boundary crossings. From [1] It i
 
 
 
-```{r, echo=FALSE, message=FALSE, fig.width= 12, fig.height=3,fig.cap="Line Graph of Total Magnetic Field Strength between 72 and 74th day of the year 2005"}
+```{r, echo=FALSE, message=FALSE, fig.width= 12, fig.height=3,fig.cap="Line Graph of Total Magnetic Field Strength between 72 and 74th day of the year 2005", cache=TRUE}
 
 d1<-as.Date(72,origin="2005-01-01")
 d2<-as.Date(73,origin="2005-01-01")
@@ -300,11 +335,251 @@ ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
 
 From the above figure we can clearly see that first boundary crossed by the spacecraft was Bow shock and later followed by the Magnetopause. There are very large fluctuations during when it crossed the Bow Shock boundary but in the case of Magnetopause region the total magnetic field strength was kind of constant.
 
+
 ## Trajectory of Spacecraft
 
-It is crucial to analyze the effect of Position of Spacecraft in predicting the event based on this dataset.
+It is crucial to analyze the effect of Positions of Spacecraft in predicting the events based on this dataset So, that we can understand the significance of that variable.
+
+```{r, echo=FALSE, message=FALSE,out.width="60%",out.height="30%",fig.cap="Boundary Crossing points on the Trajectory of Cassini Space craft",  fig.pos="h!", fig.align="center"}
+ knitr::include_graphics("Cassini Spacecraft Trajectory.png")
+
+```
+
+From the above plot we can clearly say that the Bow Shock events are in the Outermost orbit on which the spacecraft traveled and all the Magnetopause boundary crossings are in the tail of those orbits. Most of the Bow Shock boundary crossing events has high `X_KSM.km.` value which is greater than 500000 when compared to other events. The `Y_KSM.km.` value for Bow Shock events mostly lies in between 0 and \(-2\times10^{-3}\). The plot also gives information about the range of `X_KSM.km.` and `Y_KSM.km.` when 90% of boundary crossing happened which is (\(0, 11\times10^{5}\))  and (\(-2\times10^{6} , 0\)).
  
+## Examining the Data Imbalance 
+
+It is always important to check whether the given data is balanced or not. If it is not balanced that means there is a large number of particular class and fewer data points for all other classes of data. This imbalance will makes the model that we wants to train  biased to that set of data. 
+
+```{r,  echo=FALSE, message=FALSE}
+raw_data_4 %>% select("type_cross") %>% table()
+
+```
+
+\begin{center}
+\captionof{table}{Number of Datapoints in each Boundary Class }
+\begin{tabular}{|l|l|}
+\hline
+Event Class & Count\\ \hline
+SCAS (unreliable)  & 2 \\ \hline
+Data Gap  & 15 \\ \hline
+Magnetopause  & 203 \\ \hline
+Bow Shock & 245  \\ \hline 
+No Events Occurred  & 494127 \\ \hline
+Total &  494592   \\ \hline
+\end{tabular}
+\end{center}
+
+From the above table, it is clear that 90% of the data points are in the No Events Occurred Class and there are only very few data in the Bowshock and Magnetopause class. So a method must be adopted to prepare the training dataset for model training. Since there are only a very few data points which are in DG and SCAS class So, we can remove those data points because both classes gives unreliable data.
+
+## Proportion of Direction of Cross in Different Classes
+
+The `dirn_type` variable explains at which direction the spacecraft was moving when it took the measurements. To get more insights on which direction did the most boundary crossings were recorded. 
+
+```{r, echo=FALSE, message=FALSE,,fig.height=4, fig.cap="Proportion of different directions on each Class "}
+ggplot(data = raw_data_4) + geom_bar(mapping = aes(x = type_cross, fill=dirn_cross) , position = "fill")
+```
+
+From this stacked Bar plot, we can see that 50% of both the Bow Shock and Magnetopause events are recorded during Inbound and remaining 50% during the Outbound of the Spacecraft. But for all No events Occurred class the direction of cross is Unknown. All other directions like starting from Magnetosheath, Starting from solar wind, starting from Magnetosphere etc are in SCAS and Datagap class. All datapoints with SCAS class are unreliable data and SCAS data was recorded during when the spacecraft starts with Magnetosheath and Ends with Solar wind. All the data points that were recorded when spacecraft was in the End of Magnetosheath, Starts with solar wind, End of Magnetosphere, End of Magnetosphere and starts with Magnetosphere are in Data Gap class. Since the direction of cross of all `NE` data points are Unknown or not available So, it is better to remove `dirn_cross`.
+
 \newpage
+
+# Significance of Predictors
+
+Before Model development Significance of each variable must be evaluated so, that we can remove the un necessary variables which will leads to over fitting of models. To find the variable I have used two Logistic Regression Models summary and a RandomForrest Variable Importance function. 
+
+## Logistic Regression Model: Bow Shock vs Other Events
+
+In this model I tried to predict the Bow shock events by using different derived datasets. Since the datasets are highly imbalanced It is important to sample equal number of classes from datasets to train the Logistic Regression model. Before splitting into training and Test Dataset, A new variable called `event_occured` was created and all Bow Shock events were stored as 1 and all the rest of the events as 0 in the `events_occured` variable.
+
+### Train and Test Dataset
+  
+  Since the Dataset is a highly imbalanced one with 90% of the data has the class `No Events Occurred`. It is crucial to train the model with a balanced dataset so, for that we sampled 100 datapoints of each class by using `sample_n()` function. All other datapoints were chosen as Test Dataset for this model.
+  
+### Standardizing  the Train and Test Dataset
+  
+  Standardizing is a techniques used in the Machine Learning. The main aim of Normalization is to make all the numeric columns in the dataset to a common scale.All the numeric variables in the train dataset was Normalized by using the `scale()` function. The standard deviation and mean of each variable of train dataset was stored separately. The test dataset was then Standardized by using the standard deviation and Means that were stored before for each variable. For Standardizing I have used the below formula:
+
+\begin{equation}
+ 	X^{'} = \frac{(X - \mu)}{\sigma}
+\end{equation}
+
+In this formula mu represents the mean and sigma represents the standard deviation of that variable in the train dataset. By standardizing features we are centering the datapoints to zero and making the standard deviation of value 1.
+
+### Results
+
+Models were trained with different derived datasets and later compared the results.Table Shown below contains the information regarding the datasets used and count of Variables that are significant.
+
+\begin{center}
+\captionof{table}{Logistic Regression : Bow Shock Vs Other Events Results Table}
+\begin{tabular}{|l|l|l|}
+\hline
+Dataset Used & Significant Predictors & Total Predictors\\ \hline
+Dataset 3 & 218  & 218 \\ \hline
+Dataset 4 & 14  & 24 \\ \hline
+Dataset 3 without Lead Variables & 12 & 203 \\ \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+
+
+__Summary of Dataset 3__ 
+
+From this dataset we have sampled 300 NE points, 100 Bow shock data points and 100 Magnetopause Data points for the train data.  The Table shown below is the confusion matrix.
+
+```{r , echo=FALSE, message=FALSE}
+copy_data<-raw_data_4
+t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
+copy_data<-t
+copy_data$type_cross<-factor(copy_data$type_cross)
+copy_data$id<-seq.int(nrow(copy_data))
+
+
+cassini.train_unscaled<-copy_data%>% filter(type_cross=='NE')%>%sample_n(300) %>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross %>% table()
+cassini.train_unscaled$type_cross<-as.factor(cassini.train_unscaled$type_cross)
+cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
+cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
+cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
+
+
+
+
+
+## Scaling the data
+
+cassini.train_scaled<-cassini.train_unscaled%>%mutate_if(is.numeric,scale)
+means <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), mean)
+sds <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), sd)
+means <- matrix(unlist(means), ncol = 217, byrow = FALSE)
+sds <- matrix(unlist(sds), ncol = 217, byrow = FALSE)
+
+
+## Normalizing the TEST DATASET
+
+
+cassini.test_scaled<-dplyr::select(cassini.test_unscaled,-c(type_cross,dirn_cross))
+
+for(col in c(1:dim(cassini.test_scaled)[2])){
+  temp<-(cassini.test_scaled[,col]-means[1,col])/sds[1,col]
+  cassini.test_scaled[,col]<-as.matrix(temp)
+  temp<-NULL
+}
+cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
+cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
+
+
+## Logistic Regression Model 1
+
+### BS as 1 and all other events as 0
+
+## Removing dirn_cross and creating new variable `new_trainData`.
+
+new_trainData<-dplyr::select(cassini.train_scaled,-dirn_cross)
+new_testData<-dplyr::select(cassini.test_scaled,-c(dirn_cross))
+
+#### Training Data
+
+cassini.logTrain<-new_trainData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='MP',0,1))
+cassini.logTrain$event_occured<-as.factor(cassini.logTrain$event_occured)
+cassini.logTrain <- dplyr::select(cassini.logTrain,-c(type_cross))
+
+#### Test Data
+
+cassini.logTest<-new_testData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='MP',0,1))
+cassini.logTest$event_occured<-as.factor(cassini.logTest$event_occured)
+cassini.logTest <- dplyr::select(cassini.logTest,-c(type_cross))
+
+
+
+#### Model 1 Training and Confusion Matrix
+
+LOGModel1<- glm(event_occured ~ ., family = "binomial", data = cassini.logTrain)
+cassini.logTest$prob=predict(LOGModel1,cassini.logTest,type="response")
+cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
+conf_mat<-confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,positive='1')
+conf_mat
+
+```
+
+From the matrix we can clearly see that the accuracy is about `r conf_mat$overall['Accuracy']` . Eventhough it gives better accuracy the sensitivity of the Model is very low. Accuracy is the percentage of datapoints that are classified correctly but in the case of the Sensitivity which is number of exact positive predictions divided by the total number of positive in this model the sensitivity gives a value that explains about Bow Shock which are correctly classified .   `r conf_mat$byClass['Sensitivity']` is the sensitivity of the model. 
+ 
+
+\newpage
+
+__Summary of Dataset 4 : Average and Standard Deviation Data__ 
+
+In this 
+```{r , echo=FALSE, message=FALSE}
+
+data_avg<-readRDS("./Data/dataset_version_2/Average_SD_Data.rds", refhook = NULL)
+copy_data<-data_avg
+t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
+copy_data<-t
+copy_data$type_cross<-factor(copy_data$type_cross)
+copy_data$id<-seq.int(nrow(copy_data))
+
+cassini.train_unscaled<-copy_data%>% filter(type_cross=='NE')%>%sample_n(100) %>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross %>% table()
+cassini.train_unscaled$type_cross<-as.factor(cassini.train_unscaled$type_cross)
+cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
+cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
+cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
+## Scaling the data
+
+cassini.train_scaled<-cassini.train_unscaled%>%mutate_if(is.numeric,scale)
+means <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), mean)
+sds <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), sd)
+means <- matrix(unlist(means), ncol = 23, byrow = FALSE)
+sds <- matrix(unlist(sds), ncol = 23, byrow = FALSE)
+
+
+## Normalizing the TEST DATASET
+
+
+cassini.test_scaled<-dplyr::select(cassini.test_unscaled,-c(type_cross,dirn_cross))
+
+for(col in c(1:dim(cassini.test_scaled)[2])){
+  temp<-(cassini.test_scaled[,col]-means[1,col])/sds[1,col]
+  cassini.test_scaled[,col]<-as.matrix(temp)
+  temp<-NULL
+}
+cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
+cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
+
+
+## Logistic Regression Model 1 (Average)
+
+
+new_trainData<-cassini.train_scaled
+new_testData<-cassini.test_scaled
+
+### BS as 1 and all other events as 0
+
+## Removing dirn_cross and creating new variable `new_trainData`.
+
+#### Training Data
+
+cassini.logTrain<-new_trainData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='MP',0,1))
+cassini.logTrain$event_occured<-as.factor(cassini.logTrain$event_occured)
+cassini.logTrain <- dplyr::select(cassini.logTrain,-c(type_cross))
+
+#### Test Data
+
+cassini.logTest<-new_testData%>%mutate(event_occured=ifelse(type_cross=='NE'|type_cross=='MP',0,1))
+cassini.logTest$event_occured<-as.factor(cassini.logTest$event_occured)
+cassini.logTest <- dplyr::select(cassini.logTest,-c(type_cross))
+
+#### Model 1 Training and Confusion Matrix
+
+LOGModel2<- glm(event_occured ~ ., family = "binomial", data = cassini.logTrain)
+cassini.logTest$prob=predict(LOGModel2,cassini.logTest,type="response")
+cassini.logTest$pred <- factor(ifelse(cassini.logTest$prob < .8, 0,1))
+conf_mat<-confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,positive='1')
+conf_mat
+```
 
 # References
 <div id="refs"></div>

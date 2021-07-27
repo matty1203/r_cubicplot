@@ -25,7 +25,7 @@ Creating indexes for dataset and removing the datapoints that contains `DG` and 
 
 ```{r }
 
-data_wider<-readRDS("/Users/kat/Desktop/r_cubicplot/Task 4 (Model Creation)/input_dataset.rds", refhook = NULL)
+data_wider<-readRDS("./Data/dataset_version_2/input_dataset.rds", refhook = NULL)
 data_wider %>% glimpse()
 copy_data<-data_wider
 copy_data<-dplyr::select(data_wider, !ends_with("15")) # add 16

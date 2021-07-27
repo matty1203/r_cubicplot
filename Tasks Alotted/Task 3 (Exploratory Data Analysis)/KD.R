@@ -5,11 +5,14 @@ library(matrixStats)
 a <-readRDS('Full_Data_Wider.rds', refhook = NULL)
 glimpse(a)
 a %>% select("type_cross") %>% table()
+
 a %>% select(starts_with("BTot_KSM")) %>% rowMeans() %>%head()
 a <- a %>% mutate(BTotmean = rowMeans(select(., starts_with("BTot_KSM"))), BTotsd =rowSds(as.matrix(select(., starts_with("BTot_KSM")))))
+
 a %>% filter(!is.na(type_cross))%>% 
   ggplot(aes(x=BTotmean, y=BTotsd))+
   geom_point()+facet_wrap(~type_cross)
+
 a %>% filter(!is.na(type_cross))%>% 
   ggplot(aes(x=BTotmean, y=BTotsd, col =type_cross))+
   geom_point()
