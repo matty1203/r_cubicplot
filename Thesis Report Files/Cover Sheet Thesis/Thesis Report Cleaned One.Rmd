@@ -31,12 +31,12 @@ bibliography: bibliography.bib
 \bigskip                % <!-- blank lines -->
 \bigskip
 
-\textbf{Classification of bow shock and magnetopause event positions by using the Magnetic Field properties of Saturn} % <!-- make large text -->
+\textbf{Classification of bow shock and Magnetopause event positions by using the Magnetic Field properties of Saturn} % <!-- make large text -->
 
 \bigskip                % <!-- blank lines -->
 \bigskip
 
-\Large{A thesis submitted in fulfillment of the requirement for the \\
+\Large{A thesis submitted in partial fulfillment of the requirement for the \\
 degree of M.Sc. in Data Science and Analytics.}
 
 \bigskip                % <!-- blank lines -->
@@ -70,8 +70,7 @@ Date Submitted: 10th July, 2021}
 \bigskip
 
 
-Cassini-Huygens Space Research mission was a joint collaboration of NASA, ESA and Italian Space agency to study about the planet Saturn and its system that includes its Rings and Natural Satellites. During its life span of about 20 years the spacecraft orbited the planet Saturn for 13 years and also frequently changed its shape and tilt. Because of this frequent changes in the orbital trajectory of spacecraft, it passed multiple times through the boundaries of Bowshock and Magnetopause at different latitude, longitude and phases of Solar Cycle. In this Project, based on the Magnetic Field data collected during the year 2005 from MAG (Magnetometer) instrument attached to the spacecraft was used to Classify the different boundary crossings of CASSINI  Spacecraft. MAG (Magnetometer)in Cassini recorded the strength and direction of the Magnetic field around the spacecraft. Different Statistical models were used for the classification and those models were carefully examined to get more insights about magnetic field properties during different events. In this project, different trial and error approaches were taken to create a training dataset that gives better test accuracy on test dataset.  
-
+Cassini-Huygens Space Research mission was a joint collaboration of NASA, ESA and Italian Space agency to study about the planet Saturn and its system that includes its Rings and Natural Satellites. During its life span of about 20 years the spacecraft orbited the planet Saturn for 13 years and also frequently changed its shape and tilt. Because of this frequent changes in the orbital trajectory of spacecraft, it passed multiple times through the boundaries of Bowshock and Magnetopause at different latitude, longitude and phases of Solar Cycle. In this Project, we use the Magnetic Field data collected during the year 2005 from MAG (Magnetometer) instrument attached to the spacecraft to develop a classification model for detecting the Magnetopause and bow shock boundaries at saturn . MAG (Magnetometer)in Cassini recorded the strength and direction of the Magnetic field around the spacecraft while it was orbiting the planet Saturn. 
 
 
 
@@ -94,7 +93,7 @@ Cassini-Huygens Space Research mission was a joint collaboration of NASA, ESA an
 
 # Introduction{#intro}
 
-All planets in our solar system have magnetic field like earth. Some of the planets like Uranus, Saturn, Jupiter, and Neptune has large magnetic field than earth. Magnetosphere of an astronomical object is the area surrounding that object where its Magnetic field is present. Like all other planets Saturn also has the similar magnetosphere structure - it has a Bow shock, Magneto sheath, Magneto pause and Magneto tail. Among this structure bow shock is the point at which the Magnetosphere of the Saturn interacts with the solar wind that in turn suddenly reduces its speed and pressure. Magneto pause is the boundary between Saturn’s Magnetic field and Solar wind. The magneto sheath exists between the bow shock and the magneto pause, an area of shocked solar wind that is significantly influenced by the changes that occur within the bow shock and whose features can impact the interaction across the magneto pause. The dynamic pressure of Solar wind usually determines boundary and position of Magneto pause and Bow shock [2]. The Cassini Huygens Mission is a joint NASA/ESA/ASI project to make a detailed survey of the ringed planet Saturn and its natural satellites. Cassini spacecraft recorded magnetic field and plasma condition of the environment during its insertion to Saturn’s orbit by using the Cassini Magnetometer (MAG), Plasma Spectrometer (CAPS). The magnetic field strength pattern clearly shows some “overshoot” and “foot” when the spacecraft passed through the boundaries of Magnetopause, Bow shock and Magneto sheath [3]. The Magnetometer (MAG) which continuously acquired magnetic field data that is associated with the Plasma Environment and internal source of Saturn are essential to study about the interaction between solar wind and Magnetosphere of Saturn.
+All planets in our solar system have magnetic field like earth. Some of the planets like Uranus, Saturn, Jupiter, and Neptune has large magnetic field than earth. Magnetosphere of an astronomical object is the area surrounding that object where its Magnetic field is present. Like all other planets Saturn also has the similar magnetosphere structure - it has a Bow shock, Magnetosheath, Magnetopause and Magneto tail. Among this structure bow shock is the point at which the Magnetosphere of the Saturn interacts with the solar wind that in turn suddenly reduces its speed and pressure. Magnetopause is the boundary between Saturn’s Magnetic field and Solar wind. The Magnetosheath exists between the bow shock and the Magnetopause, an area of shocked solar wind that is significantly influenced by the changes that occur within the bow shock and whose features can impact the interaction across the Magnetopause. The dynamic pressure of Solar wind usually determines boundary and position of Magnetopause and Bow shock [2]. The Cassini Huygens Mission is a joint NASA/ESA/ASI project to make a detailed survey of the ringed planet Saturn and its natural satellites. Cassini spacecraft recorded magnetic field and plasma condition of the environment during its insertion to Saturn’s orbit by using the Cassini Magnetometer (MAG), Plasma Spectrometer (CAPS). The magnetic field strength pattern clearly shows some “overshoot” and “foot” when the spacecraft passed through the boundaries of Magnetopause, Bow shock and Magnetosheath [3]. The Magnetometer (MAG) which continuously acquired magnetic field data that is associated with the Plasma Environment and internal source of Saturn are essential to study about the interaction between solar wind and Magnetosphere of Saturn.
 
 \bigskip                 <!-- blank lines -->
 \bigskip
@@ -105,34 +104,35 @@ All planets in our solar system have magnetic field like earth. Some of the plan
 
 \bigskip                 <!-- blank lines -->
 \bigskip
+####Explain the figure here
 
-Magnetosphere of Saturn act as an obstacle to the Solar wind far away from the planet and the magnetopause of the planet Saturn lies in 20 Rs (Radius of Saturn=60330 km). So, the Solar wind which interact with the magnetosphere is decelerated by the bow shock and the physical properties of the plasma (@sergis2013). The magneto disk pressure, which inflates the equatorial magnetosphere considerably more than the high-latitude magnetosphere, affects the geometry of the magnetopause boundary itself, resulting in clear polar flattening [5]. In the case of Earth, basic pressure balance is due to the interaction between upstream solar wind flow against magnetic pressure from the magnetosphere and this helps to draw the approximate location of magnetopause boundary but when it comes to Saturn we must consider the influence of the natural satellite Enceladus, which serves as a huge internal plasma source. The pressure related with the super thermal component of this internally produced plasma serves to inflate the magnetosphere considerably beyond what a basic magnetic pressure calculation would predict [6]. So even in a steady solar wind conditions, Due to the internal plasma mentioned above the magneto pause boundary of Saturn may move significantly. 
+Magnetosphere of Saturn act as an obstacle to the Solar wind far away from the planet and the Magnetopause of the planet Saturn lies in 20 Rs (Radius of Saturn=60330 km). So, the Solar wind which interact with the magnetosphere is decelerated by the bow shock and the physical properties of the plasma (@sergis2013). The magneto disk pressure, which inflates the equatorial magnetosphere considerably more than the high-latitude magnetosphere, affects the geometry of the Magnetopause boundary itself, resulting in clear polar flattening [5]. In the case of Earth, basic pressure balance is due to the interaction between upstream solar wind flow against magnetic pressure from the magnetosphere and this helps to draw the approximate location of Magnetopause boundary but when it comes to Saturn we must consider the influence of the natural satellite Enceladus, which serves as a huge internal plasma source. The pressure related with the super thermal component of this internally produced plasma serves to inflate the magnetosphere considerably beyond what a basic magnetic pressure calculation would predict [6]. So even in a steady solar wind conditions, Due to the internal plasma mentioned above the Magnetopause boundary of Saturn may move significantly. 
 
 Lots of studies were done based on the data acquired from the Cassini Spacecraft instruments. (@sergis2013) they chose intervals between 2004 and 2011 when the spacecraft was travelling through the magnetic sheath and used the data recorded to explore different properties like plasma, energetic particle, magnetic field density, temperature etc. They concentrated more on the presence of W+s ions (water group) and explained the ejection of energetic ions as a function of pitch angle and energy which shows the often flow of heavy energetic ions from bow shock. Analysis of CAPS (Cassini Plasma Spectrometer) by Burkholder et. al [8] shown the significant ion flow differences prenoon and post noon, and apart from the magnetic field data was used to illustrate the rotation of IMF (Inter Planetary Magnetic Field) vector.
 
-Based on literature survey, I got information regarding the different variables in the dataset like Magnetic field, direction of cross, position of the spacecraft etc. In this project we are only considering the bow shock and magnetopause crossing of the spacecraft during the year 2005. This report explains about the entire project with different sections like Background, Dataset explanation,	Data Manipulation, Data Visualization, Models trained to classify the type of crossings, R code used, summary of the results and conclusion. Background section explains about the different terms used and current approaches done by others for classification. In Dataset explanation section it explains about each variable and the different datasets that were used for this project. Data Manipulation section gives a detailed explanation about the transformations and imputations done on the dataset. New dataset made after data manipulation is explained visually on the data visualization section. There are different models tried to achieve better results each model that are used for this project is explained on this part of the report. Remaining portions explains about the code and its results.
+ In this project we are considering the bow shock and Magnetopause crossing of the spacecraft during the year 2005. This report explains about the entire project with different sections like Background, Dataset explanation,	Data Manipulation, Data Visualization, Models trained to classify the type of crossings, R code used, summary of the results and conclusion. Background section explains about the different terms used and current approaches done by others for classification. In Dataset explanation section it explains about each variable and the different datasets that were used for this project. Data Manipulation section gives a detailed explanation about the transformations and imputations done on the dataset. New dataset made after data manipulation is explained visually on the data visualization section. There are different models tried to achieve better results each model that are used for this project is explained on this part of the report. Remaining portions explains about the code and its results.
 
 
 \newpage
 
 # Background
 
-In the early days, Scientists have very less information regarding the Planet Saturn and its magnetosphere because as we all know that the magnetic fields are invisible, and it needs to be studied from inside. Cassini Huygens mission was a great opportunity for the science world to explore the planet and its behaviour. This mission helped to study the magnetic field and the flow of different gases under the influence of the magnetic field which affects the auroras of Saturn. This mission given some powerful insights about the atmosphere and the surrounding of Planet Saturn. By comparing Saturn with the similar exoplanets will give information regarding the evolution of the Solar System. Different studies were done based on the data gathered from the Cassini spacecraft. Based on this data [9] demonstrated that polar flattening of the magnetopause causes shorter streamline pathways over the poles, resulting in a higher-pressure gradient, which twists the field. This in turn leads to different conditions at the magnetopause when compared to those predicated based on axisymmetric assumptions. From 2004 day 299 through 2012 day 151, a substantial data was compiled by [10] of magneto sheath measurements was collected using data from CAPS, MAG, and MIMI. This data collection enables researchers to investigate things like local temporal dependence of magneto sheath parameters. They also demonstrated a new method for estimating upstream solar wind speed using the same	 magneto sheath parameters. [11] used the MAG data for research which provides a broad picture of low-frequency waves in Saturn's magnetosphere, which has crucial consequences for how magnetospheric energy leaks.
+In the early days, scientists have very less information regarding the Planet Saturn and its magnetosphere because as we all know that the magnetic fields are invisible, and it needs to be studied from inside. Cassini Huygens mission was a great opportunity for the science world to explore the planet and its behavior. This mission helped to study the magnetic field and the flow of different gases under the influence of the magnetic field which affects the auroras of Saturn. This mission given some powerful insights about the atmosphere and the surrounding of Planet Saturn. By comparing Saturn with the similar exoplanets will give information regarding the evolution of the Solar System. Different studies were done based on the data gathered from the Cassini spacecraft. Based on this data [9] demonstrated that polar flattening of the Magnetopause causes shorter streamline pathways over the poles, resulting in a higher-pressure gradient, which twists the field. This in turn leads to different conditions at the Magnetopause when compared to those predicated based on axisymmetric assumptions. From 2004 day 299 through 2012 day 151, a substantial data was compiled by [10] of Magnetosheath measurements was collected using data from CAPS, MAG, and MIMI. This data collection enables researchers to investigate things like local temporal dependence of Magnetosheath parameters. They also demonstrated a new method for estimating upstream solar wind speed using the same	 Magnetosheath parameters. [11] used the MAG data for research which provides a broad picture of low-frequency waves in Saturn's magnetosphere, which has crucial consequences for how magnetospheric energy leaks.
 
-Both the Bow shock and magneto pause models can be used as a significant tool which gives insights about the solar upstream conditions and its dynamic pressure at which they are associated. All the data associated with Cassini uses KSM coordinate system and this system is Saturn centred where the x -axis is towards the sun [13]. Orbital tour of Cassini around Saturn which started in the month of July 2004 during that time the spacecraft crossed 100 Bow Shock boundaries. A study done by [12] On 11th and 12th of April 2005, Cassini magnetometer readings were made during a typical sequence of Cassini bow shock crossings. The spacecraft began and finished the period downstream of the shock in the magneto sheath solar wind, with two trips into the upstream solar wind, each separated by two shock crossings. The presence of obvious shock ramps and a constant upstream field indicates that these are quasi-perpendicular crossings. During this time magnetic field strength values recorded by the magnetometer were so high. In this report I analysed the magnetometer and position data of Cassini spacecraft during the year 2005 to classify the Magnetopause and Bow Shock events.
+Both the Bow shock and Magnetopause models can be used as a significant tool which gives insights about the solar upstream conditions and its dynamic pressure at which they are associated. All the data associated with Cassini uses KSM coordinate system and this system is Saturn centred where the x -axis is towards the sun [13]. Orbital tour of Cassini around Saturn which started in the month of July 2004 during that time the spacecraft crossed 100 Bow Shock boundaries. A study done by [12] On 11th and 12th of April 2005, Cassini magnetometer readings were made during a typical sequence of Cassini bow shock crossings. The spacecraft began and finished the period downstream of the shock in the Magnetosheath solar wind, with two trips into the upstream solar wind, each separated by two shock crossings. The presence of obvious shock ramps and a constant upstream field indicates that these are quasi-perpendicular crossings. During this time magnetic field strength values recorded by the magnetometer were so high. In this report I analysed the magnetometer and position data of Cassini spacecraft during the year 2005 to classify the Magnetopause and Bow Shock events.
 
 
 \newpage
 
 # Datasets
 
-Cassini Spacecraft orbited around the Saturn for about 9 years.During this period the spacecraft transmitted valuable information regarding Saturn  like the magnetic field strength, position at which it was measured to earth. Magnetometer and CAPS are the main instruments that were used for measuring the magnetic field strength and Kinetic Energy of particles at each point. For this project, I am only considering the data that was recorded during the year 2005 by the spacecraft. Mainly two datasets were used in this project to make a final combined useful dataset, first dataset contains a list of Bow Shock and Magneto pause event crossings that occurred during the year 2005 (Jackman et. al,2019). The second dataset contains the information regarding the position of spacecraft and the vector data of Magnetic field strength. 
+Cassini Spacecraft orbited around the Saturn for about 9 years.During this period the spacecraft transmitted valuable information regarding Saturn  like the magnetic field strength, position at which it was measured to earth. Magnetometer and CAPS are the main instruments that were used for measuring the magnetic field strength and Kinetic Energy of particles at each point. For this project, I am only considering the data that was recorded during the year 2005 by the spacecraft. Mainly two datasets were used in this project to make a final combined useful dataset, first dataset contains a list of Bow Shock and Magnetopause event crossings that occurred during the year 2005 (Jackman et. al,2019). The second dataset contains the information regarding the position of spacecraft and the vector data of Magnetic field strength. 
 
 ## Raw Datasets 
 
 ### Dataset 1: Magnetopause And Bowshock Crossing List 
 
-This dataset only contains the data of the year 2005 and that was originally developed by compiling two datasets that are posted in the MAPSView webpage (http://mapskp.cesr.fr/BSMP/index.php) which contains the Bow Shock and Magnetopause event crossings between 2004 day 179 and 2007 day 349 (H.J. McAndrews, S.J. Kanani, A. Masters, and J.C. Cutler) through visual identification of CAPS and MAG data. The second list of data has the magnetopause crossings during the year 2004 to October 2010 and May 2012 to February 2013 [6]. 
+This dataset only contains the data of the year 2005 and that was originally developed by compiling two datasets that are posted in the MAPSView webpage (http://mapskp.cesr.fr/BSMP/index.php) which contains the Bow Shock and Magnetopause event crossings between 2004 day 179 and 2007 day 349 (H.J. McAndrews, S.J. Kanani, A. Masters, and J.C. Cutler) through visual identification of CAPS and MAG data. The second list of data has the Magnetopause crossings during the year 2004 to October 2010 and May 2012 to February 2013 [6]. 
 
 This dataset contains seven variables: `year_cross`, `doy_cross`, `doyfrac_cross`, `hour_cross`, `minute_cross`, `type_cross`, `dirn_cross`, `xcrosslist`, `ycrosslist`, `zcrosslist`
 
@@ -147,7 +147,7 @@ suppressMessages(library(mgcv))
 WD <- getwd()
 if (!is.null(WD)) setwd(WD)
 raw_data_1<-readRDS('./Data/dataset_version_0/Full_Cassini_Master_MP_BS_CMJ_revised2005.rds', refhook = NULL)
-glimpse(raw_data_1)
+
 ```
 <b><u>Variable Description</u></b>
 
@@ -165,10 +165,10 @@ glimpse(raw_data_1)
     +	**in**: Inbound means the spacecraft is moving towards the planet.
     +	**out**: Outbound means the spacecraft is moving away from the plant.
     +	**S_SW**: Starts with the solar wind is the region at which spacecraft recorded values at the start of solar wind.
-    +	**S_SH**: Starts with Magneto sheath is the region at which spacecraft recorded values at the start of magneto sheath.
+    +	**S_SH**: Starts with Magnetosheath is the region at which spacecraft recorded values at the start of Magnetosheath.
     +	**S_SP**: Starts with Magnetosphere is the region at which spacecraft recorded values at the start of magnetosphere.
     +	**E_SW**: Ends with the solar wind is the region at which spacecraft recorded values at the end of solar wind.
-    +	**E_SH**: Ends with Magneto sheath is the region at which spacecraft recorded values at end start of magneto sheath.
+    +	**E_SH**: Ends with Magnetosheath is the region at which spacecraft recorded values at end start of Magnetosheath.
     +	**E_SP**: Ends with Magnetosphere is the region at which spacecraft recorded values at the end of magnetosphere.
   
 For an inbound the first event that will occur is a Bow Shock and later followed by Magnetopause. But in the case of an outbound direction the first event that occur will be a Magnetopause and later followed by a Bow Shock. Region of sampling at the start of any data gap will have a S_SW, S_SH and S_SP direction type and Region of sampling at the end of data gap E_SW, E_SH and E_SP. Dimension of this dataset is (480,10).
@@ -182,7 +182,7 @@ Time difference between each Data points is one minute which means each data poi
 ```{r, echo=FALSE, message=FALSE , warning=FALSE}
 
 raw_data_2<-readRDS('./Data/dataset_version_0/Cass_data2005.rds', refhook = NULL)
-glimpse(raw_data_2)
+
 ```
 
 Some of the relevant variables in the dataset are:
@@ -217,7 +217,7 @@ This is a newly created dataset by merging dataset 1 and dataset 2 So, that we c
 raw_data_3<-readRDS('./Data/dataset_version_0/joined_data.rds', refhook = NULL)
 raw_data_4<-readRDS('./Data/dataset_version_2/input_datasetFinal.rds', refhook = NULL)
 raw_data_5<-readRDS('./Data/dataset_version_2/Average_SD_Data.rds', refhook = NULL)
-glimpse(raw_data_3%>%select(-c(xcrosslist,zcrosslist,ycrosslist,year_cross,doy_cross,doyfrac_cross,hour_cross,minute_cross,'SCET.s.')))
+
 ```
  After removing some of the variables, now the modified dataset hass 494683 rows and 16 columns.
  
@@ -225,9 +225,7 @@ glimpse(raw_data_3%>%select(-c(xcrosslist,zcrosslist,ycrosslist,year_cross,doy_c
 
 This dataset was created after the exploratory  data analysis done on `Dataset 3`. From the results of those analysis Standard deviation and Average value of the Total Magnetic field 15 minutes before and 15 minutes after of an event occurred data point are showing some pattern. 
 
-```{r, echo=FALSE, message=FALSE , warning=FALSE}
-glimpse(raw_data_5)
-```
+
 **Some of the Variables are**
 
 * `Avg_Lag_Bx.`: This is the Average of all the `Bx` values that were recorded 15 minutes before each datapoint.
@@ -286,7 +284,7 @@ For `dirn_cross` variable, which represents the direction at which spacecraft is
 
 The dataset contains the records of more than 490000 magnetometer readings with labels of type of crossing, Magnetic filed strength values of fifteen minutes before and after of a datapoint and position of the spacecraft at which the data was recorded. The orbits of the spacecraft covered almost all local hours and gave sufficient dayside coverage. Before getting into further analysis its important to understand whether the data is imbalanced or not.The dataset contains enough datapoints  for training different models. Understanding the each variables on data is required before training the Models for classifying the events. Eventhough dataset contains 
 
-Inorder to understand the inbound and outbound boundary crossings. From [1] It is stated that from 72th day to 74th day of the year 2005 Cassini Spacecraft was in Outbound on the dawn flank. Figure shown below is the Line graph of Total Magnetic Field recorded during the period of 72 to 74th day of the year 2005. In the Figure below the blue dotted line represents the point at which spacecraft crossed Bow Shock boundary and the red dotted line represents the Magnetopause.
+To understand the inbound and outbound boundary crossings. From [1] It is stated that from 72th day to 74th day of the year 2005 Cassini Spacecraft was in Outbound on the dawn flank. Figure shown below is the Line graph of Total Magnetic Field recorded during the period of 72 to 74th day of the year 2005. In the Figure below the blue dotted line represents the point at which spacecraft crossed Bow Shock boundary and the red dotted line represents the Magnetopause.
 
 
 
@@ -313,7 +311,7 @@ ggplot(data=temp, aes(x=TimeStamp , y=abs(BTotal.nT.))) +
 
 From the above figure we can clearly see that when the spacecraft approached the Bow Shock boundary there is a large value fluctuation of total magnetic field but when it comes to Magnetopause event there are only small value fluctuations. Since this data was recorded during the Outbound, the first boundary that was crossed by the spacecraft was Magnetopause and later followed by the Bowshock Boundaries.
 
-During the Inbound prenoon of Cassini Spacecraft which is between 136th and 138th day of the year 2005, the spacecraft observed some clean bow shock crossings on 136th day and followed by the Magnetopause Crossings on 137th daya of the year 2005. Figure Shown below is the Magneticfield data between those days and the events like Bow Shock and Magneto pause are marked with blue and red color respectively.
+During the Inbound prenoon of Cassini Spacecraft which is between 136th and 138th day of the year 2005, the spacecraft observed some clean bow shock crossings on 136th day and followed by the Magnetopause Crossings on 137th daya of the year 2005. Figure Shown below is the Magneticfield data between those days and the events like Bow Shock and Magnetopause are marked with blue and red color respectively.
 
 ```{r, echo=FALSE, message=FALSE, fig.width= 12, fig.height=3,fig.cap="Line Graph of Total Magnetic Field Strength between 136 and 138th day of the year 2005"}
 
@@ -389,11 +387,12 @@ From this stacked Bar plot, we can see that 50% of both the Bow Shock and Magnet
 
 # Significance of Predictors
 
-Before Model development Significance of each variable must be evaluated so, that we can remove the un necessary variables which will leads to over fitting of models. To find the variable I have used two Logistic Regression Models summary and a RandomForrest Variable Importance function. 
+Before Model development Significance of each variable must be evaluated so, that we can remove the un necessary variables which will leads to over fitting of models. To find the variable I have used two Logistic Regression Models. Logistic regression Models can be fit to the data by using the maximum likelihood technique. The `family` of the models used was set to `binomial` because we are   
+trying to classify two classes.
 
 __Train and Test Dataset__
   
-  Since the Dataset is a highly imbalanced one with 90% of the data has the class `No Events Occurred`. It is crucial to train the model with a balanced dataset so, for that we sampled 100 datapoints of each class by using `sample_n()` function for Dataset 4 and 300 `NE` Points were chosen instead of 100 for the model with Dataset 3.  All other datapoints were chosen as Test Dataset for this model.
+  Since the Dataset is a highly imbalanced one with 90% of the data has the class `No Events Occurred`. It is crucial to train the model with a balanced dataset so, for that we sampled 100 datapoints of each class by using `sample_n()` function for Dataset 4 and 300 `NE` Points were chosen instead of 100 for the model with Dataset 3 because If predictor count is nearly as big as total data points then the linear regression is too flexible and overfits the data.All other datapoints were chosen as Test Dataset for this model.
   
 __Standardizing  the Train and Test Dataset__
   
@@ -413,7 +412,7 @@ In this model I tried to predict the Bow shock events by using different derived
 
 ### Results
 
-Models were trained with different derived datasets and later compared the results.Table Shown below contains the information regarding the datasets used and count of Variables that are significant.
+Models were trained with different derived datasets and later compared the results.Table 2 Shown below contains the information regarding the datasets used and count of Variables that are significant which is extracted from the summary of the model. From the results of Models that were trained with different datasets, Table 2 indicates that all the predictor variables are significant  
 
 \begin{center}
 \captionof{table}{Logistic Regression : Bow Shock Vs Other Events Results Table}
@@ -421,18 +420,16 @@ Models were trained with different derived datasets and later compared the resul
 \hline
 Dataset Used & Significant Predictors & Total Predictors\\ \hline
 Dataset 3 & 218  & 218 \\ \hline
-Dataset 4 & 14  & 25 \\ \hline
+Dataset 4 & 25  & 25 \\ \hline
 Dataset 3 without Lead Variables & 107 & 107 \\ \hline
 \end{tabular}
 \end{center}
 
-\newpage
-
-
+Eventhough the all the predictor variables are significant for all the datasets  when it comes to accuracy and recall value each model gives different values.
 
 __Summary of Dataset 3__ 
 
-From Dataset 3 we have sampled 300 NE points, 100 Bow shock data points and 100 Magnetopause Data points for the train data because there are 218 predictors in this dataset.  The Table shown below is the confusion matrix.
+From Dataset 3 we have sampled 300 NE points, 100 Bow shock data points and 100 Magnetopause Data points for the train data because there are 218 predictors in this dataset and If predictor count is nearly as big as total data points then the linear regression is too flexible and overfits the data. The Table shown below is the confusion matrix.
 
 ```{r , echo=FALSE, message=FALSE, warning=FALSE}
 copy_data<-raw_data_4
@@ -511,8 +508,6 @@ conf_mat
 
 From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . Eventhough it gives better accuracy the sensitivity of the Model is very low. Accuracy is the percentage of datapoints that are classified correctly but in the case of the Sensitivity which is number of exact positive predictions divided by the total number of positive in this model the sensitivity gives a value that explains about Bow Shock events that are correctly classified .   `r round(conf_mat$byClass['Sensitivity'] * 100,1)` is the sensitivity of the above model So, `r round(conf_mat$byClass['Sensitivity'] * 100,1)` out of 100 Bow Shock events were classified correctly through this model. 
  
-
-\newpage
 
 __Summary of Dataset 4 : Average and Standard Deviation Data__ 
 
@@ -669,10 +664,9 @@ From the matrix we can clearly see that the accuracy is about `r round(conf_mat$
 
 \newpage
 
+## Logistic Regression Model: Magnetopause vs Other Events
 
-## Logistic Regression Model: Magneto Pause vs Other Events
-
-Unlike the previous model which classifies Bow Shock events and All other Events, This model classify Magneto Pause and all other events by using different derived datasets. Since the datasets are highly imbalanced It is important to sample equal number of classes from datasets to train the Logistic Regression model. Before splitting into training and Test Dataset, A new variable called `event_occured` was created and all Magneto Pause events were stored as 1 and all the rest of the events as 0 in that newly created variable.
+Unlike the previous model which classifies Bow Shock events and All other Events, This model classify Magnetopause and all other events by using different derived datasets. Since the datasets are highly imbalanced It is important to sample equal number of classes from datasets to train the Logistic Regression model. Before splitting into training and Test Dataset, A new variable called `event_occured` was created and all Magnetopause events were stored as 1 and all the rest of the events as 0 in that newly created variable.
 
 
 ### Results
@@ -680,7 +674,7 @@ Unlike the previous model which classifies Bow Shock events and All other Events
 Models were trained with different derived datasets and later compared the results.Table Shown below contains the information regarding the datasets used and count of Variables that are significant. A brief summary of models trained with different dataset was explained in the coming pages.
 
 \begin{center}
-\captionof{table}{Logistic Regression : Magneto Pause Vs Other Events Results Table}
+\captionof{table}{Logistic Regression : Magnetopause Vs Other Events Results Table}
 \begin{tabular}{|l|l|l|}
 \hline
 Dataset Used & Significant Predictors & Total Predictors\\ \hline
@@ -694,7 +688,7 @@ Dataset 3 without Lead Variables & 107 & 107 \\ \hline
 
 __Summary of Dataset 3__ 
 
-From Dataset 3  I have sampled 300 NE points, 100 Bow shock data points and 100 Magnetopause Data points for the train data because there are 218 predictors in this dataset.  The Table shown below is the confusion matrix.
+From Dataset 3  I have sampled 300 NE points, 100 Bow shock data points and 100 Magnetopause Data points for the train data because there are 218 predictors in this dataset and If predictor count is nearly as big as total data points then the linear regression is too flexible and overfits the data.The Table shown below is the confusion matrix.
 
 ```{r , echo=FALSE, message=FALSE, warning=FALSE}
 copy_data<-raw_data_4
@@ -771,7 +765,7 @@ conf_mat
 
 ```
 
-From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . Eventhough it gives a better accuracy value the sensitivity of the Model is very low. Accuracy is the percentage of datapoints that are classified correctly but in the case of the Sensitivity which is number of exact positive predictions divided by the total number of positive in this model the sensitivity gives a value that explains about Bow Shock events that are correctly classified .   `r round(conf_mat$byClass['Sensitivity'] * 100,1)`% is the sensitivity of the above model So, `r round(conf_mat$byClass['Sensitivity'] * 100)` out of 100 Bow Shock events were classified correctly through this model. When Comparing with the Logistic Regression Model that was used for Classifying the Bow Shock and Rest of the Events, this Logistic regression model was able to classify the Magneto Pause events more efficiently by using Dataset 3.
+From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . Eventhough it gives a better accuracy value the sensitivity of the Model is very low. Accuracy is the percentage of datapoints that are classified correctly but in the case of the Sensitivity which is number of exact positive predictions divided by the total number of positive in this model the sensitivity gives a value that explains about Bow Shock events that are correctly classified .   `r round(conf_mat$byClass['Sensitivity'] * 100,1)`% is the sensitivity of the above model So, `r round(conf_mat$byClass['Sensitivity'] * 100)` out of 100 Bow Shock events were classified correctly through this model. When Comparing with the Logistic Regression Model that was used for Classifying the Bow Shock and Rest of the Events, this Logistic regression model was able to classify the Magnetopause events more efficiently by using Dataset 3.
  
 
 
@@ -848,7 +842,7 @@ conf_mat<-confusionMatrix(cassini.logTest$pred, cassini.logTest$event_occured,po
 conf_mat
 ```
 
-From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . Eventhough it gives better accuracy than the Model above with Dataset 3 but still the sensitivity of the Model is similar to that of  Logistic Regression Model which classifies Magnetopause Events by using the Dataset 3. `r round(conf_mat$byClass['Sensitivity']*100,1)`% of the Bow Shock boundaries were classified correctly. But when compared to Model that was trained with Dataset 3, The `NE` points were classified more accurately in this model.The specificity of this model is `r round(conf_mat$byClass['Specificity']*100,1)`% which means the `r round(conf_mat$byClass['Specificity']*100,1)`% of the NE Points were classified correctly through this model.
+From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . Eventhough it gives better accuracy than the Model above with Dataset 3 but still the sensitivity of the Model is similar to that of  Logistic Regression Model which classifies Magnetopause Events by using the Dataset3.  `r round(conf_mat$byClass['Sensitivity']*100,1)`% of the Bow Shock boundaries were classified correctly. But when compared to Model that was trained with Dataset 3, The `NE` points were classified more accurately in this model.The specificity of this model is `r round(conf_mat$byClass['Specificity']*100,1)`% which means the `r round(conf_mat$byClass['Specificity']*100,1)`% of the NE Points were classified correctly through this model.
 
 
 __Summary of Dataset 3 : Without Lead Variables__ 
@@ -927,6 +921,95 @@ conf_mat
 From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . It gives better accuracy and sensitivity than the Model with the Dataset 3 Logistic Regression Model. `r round(conf_mat$byClass['Sensitivity']*100,1)`% of the Bow Shock boundaries were classified correctly. But when compared to Model that was trained with Dataset 3, All other Classes except Bow Shock  were classified more accurately in this model.The specificity of this model is `r round(conf_mat$byClass['Specificity']*100,1)`% which means the `r round(conf_mat$byClass['Specificity']*100,1)`% of the NE Points were classified correctly through this model.
 
 \newpage
+
+# Classification Model Development
+
+This section explains about the Model that was Developed for the classification of different Boundaries based on the Magnetometer data and the analysis that were done before. In the Predictor Significance section we found that Dataset 4(Average Dataset) performed better when compared to the other datasets. In this section we will compare the results of Models trained with different datasets and conclude which model can be used to address the problem statement. The model with high sensitivity value and accuracy will be considered as the Best Model. Because sensitivity value of each class will tell us the percentage of each class that was correctly classified. 
+
+## Random Forest Model 
+
+This section explains about the three Random forest Models that were trained by using three different datasets. The model will be selected based on lowest classification error rate especially when it comes to  Magnetopause and Bow Shock event Classification. Several Methods can be used for classifying the boundaries by using these kind of datasets, but in this project we are going to use random forest model. Random Forest Model is a Supervised Learning algorithm where it builds an ensemble of decision trees. Random forest produces great results by handling large datasets with higher dimensionality. Additional randomness will be added to the model by the random Forest algorithm, while growing the trees. It looks for the best predictor among a random set of predictors which will generally  results in a better model.  
+
+### Setting up Random Forest Model
+
+In this project i have used the `ranger()` package because it provides a faster implementation of random forest and also easy to tune the hyper parameters.Here the model uses following configuration:
+
+*   `num.trees` was set to 500. `num_trees` will determine how many trees the algorithm builds before it takes the voting or averages of the prediction. Higher the number of trees will usually gives better performance but makes the computation a lot slower.
+*   `verbose` which shows the computation status and Estimated runtime was set to TRUE
+*   `importance`  was set to `impurity` which will give the variable importance. impurity measures the Gini Index for the classification. 
+
+
+### Train and Test Dataset
+  
+  Like we discussed in Section 5 the dataset is a highly imbalanced one with 90% of the data has the class `No Events Occurred`. It is important to train the model with a balanced dataset so, for that we sampled 100 datapoints of each class by using `sample_n()` function for Dataset 4.Both the train and test dataset was standardized by using the same technique that was discussed in the section 6.
+
+### Results 
+
+__Summary of Dataset 3__ 
+
+From Dataset 3  I have sampled 300 NE points, 100 Bow shock data points and 100 Magnetopause Data points for the train data because there are 218 predictors in this dataset and If predictor count is nearly as big as total data points then the linear regression is too flexible and overfits the data.The Table shown below is the confusion matrix.
+
+```{r , echo=FALSE, message=FALSE, warning=FALSE}
+copy_data<-raw_data_4
+t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
+copy_data<-t
+copy_data$type_cross<-factor(copy_data$type_cross)
+copy_data$id<-seq.int(nrow(copy_data))
+  
+
+cassini.train_unscaled<-copy_data%>% filter(type_cross=='NE')%>%sample_n(300) %>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross %>% table()
+cassini.train_unscaled$type_cross<-as.factor(cassini.train_unscaled$type_cross)
+cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
+cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
+cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
+
+
+
+
+
+## Scaling the data
+
+cassini.train_scaled<-cassini.train_unscaled%>%mutate_if(is.numeric,scale)
+means <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), mean)
+sds <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), sd)
+means <- matrix(unlist(means), ncol = 217, byrow = FALSE)
+sds <- matrix(unlist(sds), ncol = 217, byrow = FALSE)
+
+
+## Normalizing the TEST DATASET
+
+
+cassini.test_scaled<-dplyr::select(cassini.test_unscaled,-c(type_cross,dirn_cross))
+
+for(col in c(1:dim(cassini.test_scaled)[2])){
+  temp<-(cassini.test_scaled[,col]-means[1,col])/sds[1,col]
+  cassini.test_scaled[,col]<-as.matrix(temp)
+  temp<-NULL
+}
+cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
+cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
+
+
+## Logistic Regression Model 1
+
+### BS as 1 and all other events as 0
+
+## Removing dirn_cross and creating new variable `new_trainData`.
+
+new_trainData<-dplyr::select(cassini.train_scaled,-dirn_cross)
+new_testData<-dplyr::select(cassini.test_scaled,-c(dirn_cross))
+
+
+#### Random Forrest Model Training and Confusion Matrix
+
+cassini.rfmodel <- ranger(type_cross ~ ., data = cassini.train_scaled)
+cassini.test_scaled$pred<-predict(cassini.rfmodel,data = cassini.test_scaled)$predictions
+confusionMatrix(cassini.test_scaled$pred, cassini.test_scaled$type_cross)
+
+```
+
+
 
 
 # References

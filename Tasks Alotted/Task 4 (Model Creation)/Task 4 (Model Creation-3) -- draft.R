@@ -7,7 +7,7 @@ library(matrixStats)
 library(MASS)
 
 
-data_wider<-readRDS('./Data/input_dataset.rds', refhook = NULL)
+data_wider<-readRDS('input_datasetFinal.rds', refhook = NULL)
 copy_data<-data_wider
 copy_data<-dplyr::select(data_wider, !ends_with("15"))
 t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
