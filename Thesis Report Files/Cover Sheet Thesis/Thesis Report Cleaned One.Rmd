@@ -144,6 +144,7 @@ suppressMessages(library(plotly))
 suppressMessages(library(dplyr))
 suppressMessages(library(tidyverse))
 suppressMessages(library(mgcv))
+suppressMessages(library(ranger))
 WD <- getwd()
 if (!is.null(WD)) setwd(WD)
 raw_data_1<-readRDS('./Data/dataset_version_0/Full_Cassini_Master_MP_BS_CMJ_revised2005.rds', refhook = NULL)
@@ -952,7 +953,7 @@ From Dataset 3  I have sampled 300 NE points, 100 Bow shock data points and 100 
 ```{r , echo=FALSE, message=FALSE, warning=FALSE}
 copy_data<-raw_data_4
 t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
-copy_data<-t
+copy_data<-t[!is.na(t$X_KSM16), ]
 copy_data$type_cross<-factor(copy_data$type_cross)
 copy_data$id<-seq.int(nrow(copy_data))
   
@@ -1003,12 +1004,73 @@ new_testData<-dplyr::select(cassini.test_scaled,-c(dirn_cross))
 
 #### Random Forrest Model Training and Confusion Matrix
 
-cassini.rfmodel <- ranger(type_cross ~ ., data = cassini.train_scaled)
-cassini.test_scaled$pred<-predict(cassini.rfmodel,data = cassini.test_scaled)$predictions
-confusionMatrix(cassini.test_scaled$pred, cassini.test_scaled$type_cross)
+cassini.rfmodel <- ranger(type_cross ~ ., data = new_trainData)
+new_testData$pred<-predict(cassini.rfmodel,data = new_testData)$predictions
+confusionMatrix(new_testData$pred, new_testData$type_cross)
 
 ```
 
+__Summary of Dataset 4 : Average and Standard Deviation Data__ 
+
+In the case of this dataset there are only 24 predictors so, the train dataset can sample 100 NE points, 100 BS Points and 100 MP points which is sampled  from the Dataset 4. The table Shown below is the Confusion matrix of the model with this dataset.
+
+```{r , echo=FALSE, message=FALSE,warning=FALSE}
+
+data_avg<-readRDS("./Data/dataset_version_2/Average_SD_Data.rds", refhook = NULL)
+copy_data<-data_avg
+t<-copy_data[!(copy_data$type_cross=="DG" | copy_data$type_cross=="SC"),]
+copy_data<-t[!is.na(t$Avg_Lead_Bz), ]
+copy_data$type_cross<-factor(copy_data$type_cross)
+copy_data$id<-seq.int(nrow(copy_data))
+
+cassini.train_unscaled<-copy_data%>% filter(type_cross=='NE')%>%sample_n(100) %>%rbind(copy_data%>%filter(type_cross=='BS')%>%sample_n(100))%>%rbind(copy_data%>%filter(type_cross=='MP')%>%sample_n(100))
+cassini.train_unscaled$type_cross %>% table()
+cassini.train_unscaled$type_cross<-as.factor(cassini.train_unscaled$type_cross)
+cassini.test_unscaled<-copy_data[-cassini.train_unscaled$id,]
+cassini.test_unscaled<-dplyr::select(cassini.test_unscaled,-id)
+cassini.train_unscaled<-dplyr::select(cassini.train_unscaled,-id)
+## Scaling the data
+
+cassini.train_scaled<-cassini.train_unscaled%>%mutate_if(is.numeric,scale)
+means <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), mean)
+sds <- lapply(dplyr::select(cassini.train_unscaled,-c(type_cross,dirn_cross)), sd)
+means <- matrix(unlist(means), ncol = 23, byrow = FALSE)
+sds <- matrix(unlist(sds), ncol = 23, byrow = FALSE)
+
+
+## Normalizing the TEST DATASET
+
+
+cassini.test_scaled<-dplyr::select(cassini.test_unscaled,-c(type_cross,dirn_cross))
+
+for(col in c(1:dim(cassini.test_scaled)[2])){
+  temp<-(cassini.test_scaled[,col]-means[1,col])/sds[1,col]
+  cassini.test_scaled[,col]<-as.matrix(temp)
+  temp<-NULL
+}
+cassini.test_scaled$type_cross<-cassini.test_unscaled$type_cross
+cassini.test_scaled$dirn_cross<-cassini.test_unscaled$dirn_cross
+
+
+## Logistic Regression Model 1 (Average)
+
+
+new_trainData<-cassini.train_scaled
+new_testData<-cassini.test_scaled
+
+### BS as 1 and all other events as 0
+
+## Removing dirn_cross and creating new variable `new_trainData`.
+
+
+#### Model 1 Training and Confusion Matrix
+
+cassini.rfmodel <- ranger(type_cross ~ ., data = new_trainData)
+new_testData$pred<-predict(cassini.rfmodel,data = new_testData)$predictions
+confusionMatrix(new_testData$pred, new_testData$type_cross)
+```
+
+From the matrix we can clearly see that the accuracy is about `r round(conf_mat$overall['Accuracy']*100,1)`% . Eventhough it gives better accuracy than the Model above with Dataset 3 but still the sensitivity of the Model is similar to that of  Logistic Regression Model which classifies Magnetopause Events by using the Dataset3.  `r round(conf_mat$byClass['Sensitivity']*100,1)`% of the Bow Shock boundaries were classified correctly. But when compared to Model that was trained with Dataset 3, The `NE` points were classified more accurately in this model.The specificity of this model is `r round(conf_mat$byClass['Specificity']*100,1)`% which means the `r round(conf_mat$byClass['Specificity']*100,1)`% of the NE Points were classified correctly through this model.
 
 
 
